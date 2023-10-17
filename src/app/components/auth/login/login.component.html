@@ -1,0 +1,90 @@
+<mat-card>
+  <mat-card-title>
+    <div class="avatar">
+      <div class="image d-flex align-items-center justify-content-center">
+        <img class="icon" src="../../../../assets/images/user.png" alt="#"/>
+      </div>
+      <br />
+    </div>
+  </mat-card-title>
+
+  <h3 class="text-center mb-4">Bạn có tài khoản?</h3>
+
+  <mat-card-content>
+    <form
+      *ngIf="!isLoggedIn"
+      name="form"
+      (ngSubmit)="f.form.valid && submit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="form-group">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Tên đăng nhập</mat-label>
+          <input
+            matInput
+            type="text"
+            name="username"
+            [(ngModel)]="form.username"
+            required
+            #username="ngModel"
+            [ngClass]="{ 'mat-invalid': f.submitted && username.invalid }"
+          />
+          <mat-error *ngIf="username.invalid && f.submitted">
+           Tên người dùng là bắt buộc.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field>
+          <mat-label>Mật khẩu</mat-label>
+          <input
+            matInput
+            type="password"
+            name="password"
+            [(ngModel)]="form.password"
+            required
+            minlength="5"
+            #password="ngModel"
+            [ngClass]="{ 'mat-invalid': f.submitted && password.invalid }"
+          />
+          <mat-error *ngIf="password.invalid && f.submitted">
+            <div *ngIf="password.errors?.['required']">
+             Cần có mật khẩu.
+            </div>
+            <div *ngIf="password.errors?.['minlength']">
+             Mật khẩu phải có ít nhất 6 ký tự.
+            </div>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group d-md-flex">
+        <div class="w-5">
+          <label class="checkbox-wrap checkbox-primary"
+            >Nhớ tôi
+            <input type="checkbox" checked />
+            <span class="checkmark"></span>
+          </label>
+        </div>
+        <div class="right">
+          <a href="#"><mat-icon>home</mat-icon>Trang chủ</a>
+        </div>
+      </div>
+
+      <div class="button-container">
+        <button mat-raised-button color="primary" type="submit">Đăng nhập</button>
+      </div>
+      <div class="form-group">
+        <mat-error>
+        <div
+          *ngIf="f.submitted && isLoginFailed"
+          class="mat-alert mat-alert-danger"
+          role="alert"
+        >
+         Lỗi đăng nhập! {{ errorMessage }}
+        </div></mat-error>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

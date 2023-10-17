@@ -1,0 +1,58 @@
+<mat-sidenav-container>
+  <mat-sidenav mode="side" [(opened)]="opened">
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <mat-toolbar-row>
+        <button class="toggle-icon" (click)="opened = !opened">
+          <mat-icon class="toggle">menu</mat-icon>
+        </button>
+        <div class="demo-section">
+          <mat-icon
+            routerLink=""
+            matBadgeColor="warn"
+            matBadgeSize="small"
+            aria-hidden="false"
+            >notifications</mat-icon
+          >
+        </div>
+        <span class="example-spacer"></span>
+        <button
+          mat-button
+          [matMenuTriggerFor]="menu"
+          class="user mt-2 d-flex align-items-center"
+        >
+          <img src="" alt="" class="user-image mr-1 p-2" />
+
+          Xin chào! {{ loggedInUsername }}
+          <mat-icon class="user-image-icon ml-1">keyboard_arrow_down</mat-icon>
+        </button>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon class="logout">more_vert</mat-icon>
+        </button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <mat-menu #menu="matMenu">
+      <button
+        mat-menu-item
+        class="example-icon"
+        aria-label="Example icon-button with share icon"
+        (click)="dangXuat()"
+      >
+        <mat-icon>logout</mat-icon> Đăng xuất
+      </button>
+      <button
+        mat-menu-item
+        class="example-icon"
+        aria-label="Example icon-button with share icon"
+        (click)="DoiMatKhau()"
+      >
+        <mat-icon>lock</mat-icon> Đổi mật khẩu
+      </button>
+    </mat-menu>
+    <app-breadcrumbs></app-breadcrumbs>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

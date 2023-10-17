@@ -1,0 +1,41 @@
+/* CSS cho tiêu đề của dialog */
+h1.mat-dialog-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+/* CSS cho đường kẻ ngang phía dưới tiêu đề */
+h1.mat-dialog-title hr {
+  border: none;
+  border-top: 2px solid #007bff; /* Màu sắc có thể thay đổi */
+  width: 100%;
+  margin-top: 8px;
+}
+
+/* CSS cho bảng dữ liệu */
+.mat-elevation-z2 {
+  padding: 16px;
+  background-color: #fff; /* Màu nền */
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng đổ */
+}
+
+/* CSS cho thông báo không có dữ liệu */
+.no-data-warning {
+  text-align: center;
+  color: #777; /* Màu chữ */
+  padding: 16px;
+}
+
+/* CSS cho nút đóng */
+.mat-dialog-actions button {
+  margin-top: 16px;
+}
+/* styles.css hoặc styles.scss (tùy theo loại file styles của bạn) */
+.mat-elevation-z8 {
+  max-height: 300px;
+  /* Điều chỉnh chiều cao tối đa bạn muốn cho phần chứa nội dung */
+  overflow-y: auto;
+  /* Tạo thanh trượt dọc khi nội dung vượt quá chiều cao tối đa */
+}

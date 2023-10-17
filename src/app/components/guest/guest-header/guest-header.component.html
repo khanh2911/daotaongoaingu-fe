@@ -1,0 +1,78 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="#">
+      <img
+        src="https://api.logo.com/api/v2/images?logo=logo_517f290c-2655-4b5c-b818-a48cbf6c95be&format=webp&margins=0&quality=60&width=500&background=transparent&u=1691841197"
+        height="60"
+        alt=""
+        loading="lazy"
+      />
+    </a>
+    <!-- Toggle button -->
+    <button class="navbar-toggler" type="button" (click)="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div
+      class="collapse navbar-collapse"
+      [ngClass]="{ show: isMenuOpen }"
+      id="navbarSupportedContent"
+    >
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="trang-chu">Trang chủ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="lich-khai-giang">Lịch khai giảng</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="dang-ky-khoa-hoc">Đăng ký khóa học</a>
+        </li>
+      </ul>
+      <!-- Left links -->
+
+      <!-- Search form -->
+      <!-- <div class="search-form">
+        <form class="input-group">
+          <input
+            type="search"
+            class="form-control"
+            placeholder="Tìm kiếm..."
+            aria-label="Tìm kiếm"
+          />
+          <button class="btn btn-primary" type="submit">Tìm kiếm</button>
+        </form>
+      </div> -->
+    </div>
+
+    <!-- <button mat-mini-fab color="primary"  [matMenuTriggerFor]="menu">
+          <mat-icon>menu</mat-icon>
+        </button> -->
+    <button
+      mat-button
+      [matMenuTriggerFor]="menu"
+      class="user mt-2 d-flex align-items-center"
+    >
+      <img src="" alt="" class="user-image mr-1 p-2" />
+
+      Xin chào! {{ loggedInUsername }}
+      <mat-icon class="user-image-icon ml-1">keyboard_arrow_down</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/dang-nhap" >
+        <mat-icon>login</mat-icon> Đăng nhập
+      </button>
+      <button mat-menu-item routerLink="/trang-chu/dang-ky">
+        <mat-icon>how_to_reg</mat-icon> Đăng ký
+      </button>
+    </mat-menu>
+    <!-- Collapsible wrapper -->
+  </div>
+  <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->

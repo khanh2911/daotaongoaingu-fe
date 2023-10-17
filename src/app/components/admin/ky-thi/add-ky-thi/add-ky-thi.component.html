@@ -1,0 +1,66 @@
+<form [formGroup]="myform" (ngSubmit)="saveKyThi()">
+  <h1 mat-dialog-title>{{ isEdit ? 'Chỉnh sửa kỳ thi' : 'Thêm mới kỳ thi' }}</h1>
+  <div mat-dialog-content>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Năm thi</mat-label>
+      <mat-select formControlName="namThi" required>
+        <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="formControls.namThi.errors?.['required']">
+        Năm thi là bắt buộc!
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Tháng thi</mat-label>
+      <mat-select formControlName="thangThi" required>
+        <mat-option *ngFor="let month of months" [value]="month">{{ month }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="formControls.thangThi.errors?.['required']">
+        Tháng thi là bắt buộc!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Số lượng được đăng ký</mat-label>
+      <input formControlName="soLuongDuocDangKy" matInput required />
+      <mat-error *ngIf="formControls.soLuongDuocDangKy.errors?.['required']">
+        Số lượng là bắt buộc
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Chứng chỉ</mat-label>
+      <mat-select formControlName="maChungChi" required>
+        <mat-option *ngFor="let chungChi of availableChungChi" [value]="chungChi.maChungChi">
+          {{ chungChi.tenChungChi }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="formControls.maChungChi.errors?.['required']">
+        Chứng chỉ là bắt buộc!
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Danh sách ngày thi</mat-label>
+      <mat-select
+        formControlName="danhSachNgayThi"
+        multiple
+        required
+      >
+      <mat-option *ngFor="let ngay of availableNgayThi" [value]="ngay">
+        {{ ngay | date: 'dd/MM/yyyy' }}
+      </mat-option>
+
+      </mat-select>
+      <mat-error *ngIf="formControls.danhSachNgayThi.errors?.['required']">
+        Danh sách ngày thi là bắt buộc!
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button type="submit" color="primary">
+      {{ isEdit ? 'Chỉnh sửa' : 'Lưu' }}
+    </button>
+
+    <button (click)="closePopup()" mat-stroked-button color="warn">Đóng</button>
+  </div>
+</form>

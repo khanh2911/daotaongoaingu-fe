@@ -1,0 +1,197 @@
+:host {
+  display: flex;
+  justify-content: center;
+  margin: 100px 0px;
+}
+
+.mat-form-field {
+  width: 500%;
+  min-width: 500px;
+}
+
+mat-card-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+}
+
+mat-card {
+  box-shadow: 0 0 100px rgba(136, 106, 189, 0.878);
+  border-radius: 10px;
+  z-index: 999;
+}
+
+
+mat-card-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-form-field {
+  width: 50%;
+  min-width: 400px;
+  display: flex;
+  justify-content: center;
+}
+
+.error {
+  padding: 16px;
+  width: 300px;
+  color: white;
+  background-color: red;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+
+
+
+}
+
+button[type="submit"] {
+
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 50px;
+
+}
+
+
+/* Global styles */
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+.icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+.text-center {
+  text-align: center;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-size: large;
+  color: #2196F3;
+  /* Đặt độ đậm của chữ */
+
+}
+
+.full-width {
+  width: 100%;
+}
+
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.checkbox-wrap {
+  display: inline-block;
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 20px;
+  user-select: none;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.checkbox-wrap input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkbox-wrap:hover input~.checkmark {
+  background-color: #ccc;
+}
+
+.checkbox-wrap input:checked~.checkmark {
+  background-color: #2196F3;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-wrap input:checked~.checkmark:after {
+  display: block;
+}
+
+.checkbox-wrap .checkmark:after {
+  left: 7px;
+  top: 3px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+/* Additional styles you may need to adjust */
+.button-container {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.w-5 {
+  margin-bottom: 10px;
+  margin-right: 20px;
+  /* Khoảng cách dưới */
+}
+
+
+.right a {
+  display: flex;
+  align-items: center;
+  margin-left: 200px;
+  /* Canh giữa icon và văn bản */
+}
+
+.right mat-icon {
+
+  font-size: 16px;
+  /* Điều chỉnh kích thước font cho mat-icon */
+  margin-right: 5px;
+  /* Tạo khoảng cách giữa mat-icon và văn bản */
+}

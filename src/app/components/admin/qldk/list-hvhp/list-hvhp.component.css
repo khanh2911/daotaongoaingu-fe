@@ -1,0 +1,55 @@
+/* Tạo hiệu ứng nâng độ cao cho container */
+.mat-elevation-z4 {
+  margin: 20px;
+  /* Khoảng cách với các phần khác */
+  padding: 20px;
+  /* Khoảng cách bên trong container */
+  background-color: #ffffff;
+  /* Màu nền của container */
+  border-radius: 10px;
+  /* Góc bo tròn của container */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  /* Hiệu ứng bóng đổ */
+}
+
+/* Tạo hiệu ứng nâng độ cao cho bảng */
+.mat-table {
+  box-shadow: none;
+  /* Loại bỏ bóng đổ mặc định */
+}
+
+/* Tùy chỉnh header row */
+.mat-header-row {
+  background-color: #007acc;
+  /* Màu nền */
+  color: white;
+  /* Màu chữ */
+  font-weight: bold;
+}
+
+/* Tùy chỉnh các ô header cell */
+.mat-header-cell {
+  padding: 10px;
+}
+
+/* Tùy chỉnh các ô dữ liệu */
+.mat-cell {
+  padding: 10px;
+}
+
+/* Tạo hiệu ứng nâng độ cao cho các ô dữ liệu */
+.mat-row {
+  transition: transform 0.2s;
+}
+
+/* Hiệu ứng hover cho các ô dữ liệu */
+.mat-row:hover {
+  transform: scale(1.02);
+  background-color: #f2f2f2;
+  /* Màu nền khi hover */
+}
+.mat-mdc-table .mdc-data-table__header-row {
+  background-color: #092188;
+  border-radius: 100%;
+  color: beige;
+}

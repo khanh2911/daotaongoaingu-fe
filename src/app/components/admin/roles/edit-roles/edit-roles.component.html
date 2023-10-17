@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Chỉnh sửa </h2>
+<div mat-dialog-content>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline" class="full-width">
+      <input matInput placeholder="Tên vai trò" formControlName="tenVaiTro" required />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <textarea matInput placeholder="Mô tả" formControlName="moTa"></textarea>
+    </mat-form-field>
+
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button  color="warn" type="submit" (click)="onCancel()">Hủy</button>
+  <button mat-raised-button color="primary"type="submit"  [disabled]="!editForm.valid" (click)="onSubmit()">
+    Lưu
+  </button>
+</div>

@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>Thông tin chi tiết<hr></h1>
+
+<div mat-dialog-content class="table-container">
+  <div class="table">
+    <div class="table-row">
+      <div class="table-header">Tên khóa học:</div>
+      <div class="table-cell">{{ data.khoaHoc.tenKhoaHoc }}</div>
+    </div>
+
+        <div class="table-row">
+      <div class="table-header">Loại lớp:</div>
+      <div class="table-cell">{{ data.khoaHoc.loaiLop.tenLoaiLop }}</div>
+    </div>
+
+    <div class="table-row">
+      <div class="table-header">Ngày bắt đầu:</div>
+      <div class="table-cell">{{ data.khoaHoc.ngayBatDau | date : " dd/MM/yyyy" }}</div>
+    </div>
+    <div class="table-row">
+      <div class="table-header">Ngày kết thúc:</div>
+      <div class="table-cell">{{ data.khoaHoc.ngayKetThuc | date : " dd/MM/yyyy" }}</div>
+    </div>
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button style="margin-left: 250px;margin-bottom: 8px;"  mat-raised-button color="warn" (click)="closePopup()">Đóng</button>
+</div>

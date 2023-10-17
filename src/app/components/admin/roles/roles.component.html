@@ -1,0 +1,68 @@
+<div class="table-box mat-elevation-z4">
+  <mat-form-field appearance="outline" class="search">
+    <mat-label>Tìm kiếm</mat-label>
+    <input
+      matInput
+      placeholder="Nhập nội dung tìm kiếm..."
+      [(ngModel)]="searchTerm"
+      class="example-full-width"
+    />
+    <mat-icon (click)="onSearch()" matSuffix color="search">search</mat-icon>
+    <mat-icon (click)="refresh()" matSuffix color="search">refresh</mat-icon>
+  </mat-form-field>
+  <button
+    mat-stroked-button
+    color="primary"
+    class="align-right-button"
+    (click)="addRoles()"
+  >
+    Thêm mới <mat-icon>add_circle </mat-icon>
+  </button>
+
+  <mat-table [dataSource]="danhSachVaiTro" matSort class="mat-elevation-z8">
+    <ng-container matColumnDef="stt">
+      <mat-header-cell *matHeaderCellDef>STT</mat-header-cell>
+      <mat-cell *matCellDef="let i = index">{{ i + 1 }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="tenVaiTro">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Tên vai trò</mat-header-cell
+      >
+      <mat-cell *matCellDef="let NhanVien">{{ NhanVien.tenVaiTro }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="moTa">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Mô tả</mat-header-cell
+      >
+      <mat-cell *matCellDef="let NhanVien">{{ NhanVien.moTa }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef ></mat-header-cell>
+      <mat-cell *matCellDef="let NhanVien">
+        <button mat-icon-button (click)="detailRoles(NhanVien)">
+          <mat-icon>infor</mat-icon>
+        </button>
+        <button mat-icon-button (click)="editRoles(NhanVien)">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button mat-icon-button (click)="OpenDeleteRoles(NhanVien.maVaiTro)">
+          <mat-icon class="delete">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row
+      matRipple
+      *matRowDef="let row; columns: displayedColumns"
+    ></mat-row>
+  </mat-table>
+  <mat-paginator
+    [length]="length || 0"
+    [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+  >
+  </mat-paginator>
+</div>

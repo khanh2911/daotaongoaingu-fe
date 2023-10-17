@@ -1,0 +1,93 @@
+<div class="table-box mat-elevation-z4">
+  <mat-form-field appearance="outline" class="search">
+    <mat-label>Tìm kiếm</mat-label>
+    <input
+      matInput
+      placeholder="Nhập nội dung tìm kiếm..."
+      [(ngModel)]="searchTerm"
+      class="example-full-width"
+    />
+    <mat-icon (click)="onSearch()" matSuffix color="primary">search</mat-icon>
+    <mat-icon (click)="refresh()" matSuffix color="warn">refresh</mat-icon>
+  </mat-form-field>
+  <button mat-stroked-button color="primary" class="align-right-button">
+    Khóa học của tôi <mat-icon>event_course</mat-icon>
+  </button>
+  <mat-table [dataSource]="danhSachKhoaHoc" matSort class="mat-elevation-z8">
+    <ng-container matColumnDef="stt">
+      <mat-header-cell *matHeaderCellDef>STT</mat-header-cell>
+      <mat-cell *matCellDef="let i = index">{{ i + 1 }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="tenKhoaHoc">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Tên khóa học</mat-header-cell
+      >
+      <mat-cell *matCellDef="let KhoaHoc">{{ KhoaHoc.tenKhoaHoc }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="ngayBatDau">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Ngày bắt đầu</mat-header-cell
+      >
+      <mat-cell *matCellDef="let KhoaHoc">{{
+        KhoaHoc.ngayBatDau | date : " dd/MM/yyyy"
+      }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="ngayKetThuc">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Ngày kết thúc</mat-header-cell
+      >
+      <mat-cell *matCellDef="let KhoaHoc">
+        {{ KhoaHoc.ngayKetThuc | date : " dd/MM/yyyy" }}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let khoaHoc">
+        <button
+          [disabled]="
+            registrationStatus[khoaHoc.maKhoaHoc] === 'chuadong' ||
+            registrationStatus[khoaHoc.maKhoaHoc] === 'dadong'
+          "
+          mat-raised-button
+          color="primary"
+          (click)="dangkyKH(khoaHoc.maKhoaHoc)"
+        >
+          {{
+            registrationStatus[khoaHoc.maKhoaHoc] === "chuadong"
+              ? "Đã đăng ký"
+              : registrationStatus[khoaHoc.maKhoaHoc] === "dadong"
+              ? "Đã duyệt"
+              : "Đăng ký"
+
+          }}
+        </button>
+
+      </mat-cell>
+    </ng-container>
+      <ng-container matColumnDef="actions1">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let khoaHoc">
+
+        <button
+      *ngIf="registrationStatus[khoaHoc.maKhoaHoc] === 'chuadong'"
+
+      mat-raised-button
+      color="warn"
+      (click)="openHuyDK(khoaHoc.maKhoaHoc)"
+    >
+      Hủy
+    </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <mat-paginator
+    [length]="length || 0"
+    [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+  >
+  </mat-paginator>
+</div>

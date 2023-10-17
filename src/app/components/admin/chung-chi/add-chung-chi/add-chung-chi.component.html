@@ -1,0 +1,39 @@
+<form [formGroup]="myform" (ngSubmit)="savetypeclass()">
+  <h1 mat-dialog-title>Thêm mới</h1>
+  <div mat-dialog-content>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Tên chứng chỉ</mat-label>
+      <input formControlName="tenChungChi" matInput required />
+      <mat-error
+        *ngIf="formControls.tenChungChi.errors?.['required']"
+      >
+       Tên chứng chỉ là bắt buộc!
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Mô tả</mat-label>
+      <input formControlName="moTa" matInput required />
+      <mat-error
+        *ngIf="formControls.moTa.errors?.['required']"
+      >
+    Mô tả là bắt buộc!
+      </mat-error>
+    </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Lệ phí thi</mat-label>
+      <input formControlName="lePhiThi" matInput required />
+      <mat-error *ngIf="formControls.lePhiThi.errors?.['required'] ">
+      Lệ phí thi là bắt buộc!
+      </mat-error>
+      <mat-error *ngIf="formControls.lePhiThi.errors?.['pattern']">
+        Lệ phí thi phải là số!
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button type="submit" color="primary">Lưu</button>
+    <button (click)="closePopup()"  mat-stroked-button  color="warn">Đóng</button>
+  </div>
+</form>

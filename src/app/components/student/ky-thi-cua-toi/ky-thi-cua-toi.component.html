@@ -1,0 +1,71 @@
+<div class="table-box mat-elevation-z4">
+  <mat-form-field appearance="outline" class="search">
+    <mat-label>Tìm kiếm</mat-label>
+    <input
+      matInput
+      placeholder="Nhập nội dung tìm kiếm..."
+      [(ngModel)]="searchTerm"
+      class="example-full-width"
+    />
+    <mat-icon (click)="onSearch()" matSuffix color="primary">search</mat-icon>
+    <mat-icon (click)="refresh()" matSuffix color="warn">refresh</mat-icon>
+  </mat-form-field>
+
+  <mat-table [dataSource]="danhSachDKKyThi" matSort class="mat-elevation-z8">
+    <ng-container matColumnDef="stt">
+      <mat-header-cell *matHeaderCellDef>STT</mat-header-cell>
+      <mat-cell *matCellDef="let i = index">{{ i + 1 }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="kyThi">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Kỳ thi</mat-header-cell
+      >
+      <mat-cell *matCellDef="let item">{{
+        item.kyThi.chungChi.tenChungChi
+      }} tháng {{item.kyThi.thangThi}} năm {{item.kyThi.namThi}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="tenHocVien">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Tên học viên</mat-header-cell
+      >
+      <mat-cell *matCellDef="let item">{{
+        item.hocVien.taiKhoan.hoTen
+      }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="trangThai">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Trạng thái</mat-header-cell
+      >
+      <mat-cell *matCellDef="let item">{{
+        item.trangThaiDangKyThi
+      }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="ngayDangKy">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Ngày đăng ký</mat-header-cell
+      >
+      <mat-cell *matCellDef="let DangKyKH">{{
+        DangKyKH.ngayDangKy | date : "dd/MM/yyyy"
+      }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let DangKyKT">
+          <mat-icon *ngIf="DangKyKT.trangThaiDangKyThi ==='Da_Len_Diem' " (click)="xemDiem(DangKyKT.maDangKyThi)">blur_circular</mat-icon>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <mat-paginator
+    [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+  >
+  </mat-paginator>
+
+</div>

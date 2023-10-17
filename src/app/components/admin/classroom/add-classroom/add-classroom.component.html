@@ -1,0 +1,50 @@
+<form [formGroup]="myform" (ngSubmit)="saveClassroom()">
+  <h1 mat-dialog-title>Thêm phòng</h1>
+  <div mat-dialog-content>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Tên phòng</mat-label>
+      <input formControlName="tenPhong" matInput required />
+      <mat-error
+        *ngIf="formControls.tenPhong.errors?.['required']"
+      >
+       Tên phòng học là bắt buộc!
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Vị trí</mat-label>
+      <input formControlName="viTri" matInput required />
+      <mat-error
+        *ngIf="formControls.viTri.errors?.['required']"
+      >
+     Vị trí là bắt buộc!
+      </mat-error>
+    </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Sức chứa</mat-label>
+      <input formControlName="sucChua" matInput required />
+      <mat-error *ngIf="formControls.sucChua.errors?.['required'] ">
+     Sức chứa là bắt buộc!
+      </mat-error>
+      <mat-error *ngIf="formControls.sucChua.errors?.['pattern']">
+        Sức chứa phải là số!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <input matInput placeholder="Kí hiệu" formControlName="kiHieu" required />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Loại Phòng</mat-label>
+      <mat-select formControlName="loaiPhong" required>
+        <mat-option *ngFor="let loai of loaiPhongOptions" [value]="loai">
+          {{ loai }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button type="submit" color="primary">Lưu</button>
+    <button (click)="closePopup()"  mat-stroked-button  color="warn">Đóng</button>
+  </div>
+</form>

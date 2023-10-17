@@ -1,0 +1,56 @@
+.mat-dialog-title hr {
+  border-top: 1px solid #2c2222;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+}
+
+.table-container {
+  overflow-y: scroll;
+  /* Thêm thanh cuộn nếu nội dung quá dài */
+  max-height: 350px;
+  /* Giới hạn chiều cao tối đa */
+  display: flex;
+  flex-direction: column;
+  /* Canh trái nội dung */
+  align-items: center;
+  /* Canh giữa nội dung */
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Định dạng cho từng hàng */
+.table-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 0;
+  width: 100%;
+  /* Đảm bảo rằng hàng sẽ căn đều theo chiều ngang */
+  box-sizing: border-box;
+  /* Đảm bảo padding không làm cho hàng trở nên rộng hơn */
+  border-bottom: 1px solid #ddd;
+}
+
+.table-row:last-child {
+  border-bottom: none;
+  /* Loại bỏ đường viền dưới cùng */
+}
+
+/* Định dạng cho tiêu đề cột */
+.table-header {
+  flex: 1;
+  font-weight: bold;
+  padding: 8px 8px;
+}
+
+/* Định dạng cho nội dung cột */
+.table-cell {
+  flex: 2;
+  padding: 8px 8px;
+}
+
+/* Định dạng cho nút Đóng */

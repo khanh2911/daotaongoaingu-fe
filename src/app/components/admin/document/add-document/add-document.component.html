@@ -1,0 +1,23 @@
+<form [formGroup]="myform" (ngSubmit)="saveDocument()" enctype="multipart/form-data">
+  <h1 mat-dialog-title>Thêm tài liệu</h1>
+  <div mat-dialog-content>
+
+<!-- File Upload -->
+<!-- File Upload -->
+<label>Chọn Tài Liệu</label>
+<input type="file" (change)="onFileSelect($event)" required/>
+    <!-- Loại Lớp -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Loại Lớp</mat-label>
+      <mat-select formControlName="maLoaiLop" required>
+        <mat-option *ngFor="let loaiLop of ListLoaiLop" [value]="loaiLop.maLoaiLop">
+          {{ loaiLop.tenLoaiLop }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button type="submit" color="primary">Lưu</button>
+    <button (click)="closePopup()" mat-stroked-button color="warn">Đóng</button>
+  </div>
+</form>

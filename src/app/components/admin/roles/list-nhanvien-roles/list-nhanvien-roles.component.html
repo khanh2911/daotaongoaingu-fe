@@ -1,0 +1,25 @@
+  <mat-table [dataSource]="danhSachVaiTro" matSort class="mat-elevation-z8">
+    <ng-container matColumnDef="stt">
+      <mat-header-cell *matHeaderCellDef>STT</mat-header-cell>
+      <mat-cell *matCellDef="let i = index">{{ i + 1 }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="hoTen">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Họ tên</mat-header-cell
+      >
+      <mat-cell *matCellDef="let NhanVien">{{ NhanVien.taiKhoan.hoTen }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="moTa">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Mô tả</mat-header-cell
+      >
+      <mat-cell *matCellDef="let NhanVien">{{ data.staff.moTa}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row
+      matRipple
+      *matRowDef="let row; columns: displayedColumns"
+    ></mat-row>
+  </mat-table>

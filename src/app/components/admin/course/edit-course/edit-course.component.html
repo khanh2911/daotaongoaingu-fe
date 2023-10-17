@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>Chỉnh sửa</h2>
+<div mat-dialog-content>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline" class="full-width">
+      <input matInput placeholder="Tên khóa học" formControlName="tenKhoaHoc" required />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Loại lớp</mat-label>
+      <mat-select formControlName="maLoaiLop">
+        <mat-option *ngFor="let type of ListLoaiLop" [value]="type.maLoaiLop">
+          {{ type.tenLoaiLop }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <input matInput placeholder="Ngày bắt đầu" formControlName="ngayBatDau" [matDatepicker]="picker" required />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <input matInput placeholder="Ngày kết thúc" formControlName="ngayKetThuc" [matDatepicker]="picker2" required />
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button color="warn" type="submit"  (click)="onCancel()">Hủy</button>
+  <button mat-raised-button color="primary" type="submit" [disabled]="!editForm.valid" (click)="onSubmit()">Lưu</button>
+</div>

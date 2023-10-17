@@ -1,0 +1,93 @@
+/* Định dạng hộp chứa bảng */
+.table {
+
+  padding: 16px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+
+}
+
+mat-card{
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* Định dạng biểu tượng tìm kiếm và làm mới */
+mat-icon {
+  cursor: pointer;
+  font-size: 24px;
+  color: #666;
+}
+
+/* Hover effect cho biểu tượng tìm kiếm và làm mới */
+mat-icon:hover {
+  color: #333;
+}
+
+/* Định dạng tiêu đề bảng */
+mat-label {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Định dạng dòng tiêu đề của bảng */
+
+mat-header-cell {
+  color: black;
+}
+
+/* Định dạng cột STT */
+
+
+/* Định dạng dòng dữ liệu của bảng */
+mat-row {
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Hiệu ứng hover cho dòng dữ liệu */
+mat-row:hover {
+  background-color: #fafafa;
+}
+
+/* Định dạng phân trang */
+mat-paginator {
+  justify-content: center;
+  margin-top: 16px;
+}
+
+/* Định dạng nút first và last của phân trang */
+.mat-paginator .mat-paginator-range-actions .mat-paginator-navigation-icon {
+  font-size: 24px;
+}
+
+.mat-mdc-table .mdc-data-table__header-row {
+  background-color: #0897bb;
+  border-radius: 100%;
+  color: beige;
+}
+
+mat-card{
+  margin: 20px;
+}
+
+button {
+  margin: 8px;
+}
+
+
+button[type="submit"] {
+  font-weight: bold;
+  margin-left: 200px;
+  margin-top: 10px;
+  /* Blue color */
+
+}
+mat-dialog-title hr {
+  border-top: 1px solid #080808;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  justify-content: center;
+}

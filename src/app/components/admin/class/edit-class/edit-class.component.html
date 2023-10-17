@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>Chỉnh sửa</h2>
+<div mat-dialog-content>
+  <form [formGroup]="editForm">
+
+<mat-form-field appearance="fill">
+  <mat-label>Lịch Học</mat-label>
+  <mat-select formControlName="lichHoc" (selectionChange)="onLichHocChange($event)">
+    <mat-option *ngFor="let lich of availableLichHoc" [value]="lich.maLichHoc">
+      {{lich.kiHieu}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Hình Thức Học</mat-label>
+  <mat-select formControlName="hinhThucHoc">
+    <mat-option *ngFor="let hinhThuc of hinhThucHocs" [value]="hinhThuc">
+      {{hinhThuc}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+<mat-form-field appearance="fill" *ngIf="!isOnline()"> <!-- Ẩn nếu hình thức học là Online -->
+  <mat-label>Phòng Học</mat-label>
+  <mat-select formControlName="phongHoc">
+    <mat-option *ngFor="let phong of availablePhongHoc" [value]="phong.maPhong">
+      {{phong.tenPhong}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button color="warn" type="button" (click)="onCancel()">Hủy</button>
+  <button mat-raised-button color="primary" type="button" [disabled]="!editForm.valid" (click)="onSubmit()">Lưu</button>
+</div>

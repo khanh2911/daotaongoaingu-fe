@@ -1,0 +1,45 @@
+<h1 mat-dialog-title>Thông tin chi tiết<hr></h1>
+
+<div mat-dialog-content class="table-container">
+  <div class="table-row">
+    <div class="table-header"><strong>Họ Tên:</strong></div>
+    <div class="table-cell">{{ data.staff.taiKhoan?.hoTen }}</div>
+  </div>
+  <div class="table-row">
+    <div class="table-header"><strong>Tên đăng nhập:</strong></div>
+    <div class="table-cell">{{ data.staff.taiKhoan?.tenDangNhap }}</div>
+  </div>
+  <!-- Thêm các dòng khác tương tự ở đây -->
+  <div class="table-row">
+    <div class="table-header"><strong>Email:</strong></div>
+    <div class="table-cell">{{ data.staff.taiKhoan?.email }}</div>
+  </div>
+  <div class="table-row">
+    <div class="table-header"><strong>Số điện thoại:</strong></div>
+    <div class="table-cell">{{ data.staff.taiKhoan?.soDienThoai }}</div>
+  </div>
+  <div class="table-row">
+    <div class="table-header"><strong>Địa chỉ:</strong></div>
+    <div class="table-cell">{{ data.staff.taiKhoan?.diaChi }}</div>
+  </div>
+  <div class="table-row">
+    <div class="table-header"><strong>Giới Tính:</strong></div>
+    <div class="table-cell">{{ data.staff.taiKhoan?.gioiTinh }}</div>
+  </div>
+  <div class="table-row">
+    <div class="table-header"><strong>Ngày Sinh:</strong></div>
+    <div class="table-cell">{{ data.staff.taiKhoan?.ngaySinh  | date : " dd/MM/yyyy" }}</div>
+  </div>
+  <div class="table-row">
+    <div class="table-header"><strong>Ngày Tạo:</strong></div>
+    <div class="table-cell">{{ data.staff.taiKhoan?.ngayTao  | date : "HH:mm:ss dd/MM/yyyy"}}</div>
+  </div>
+  <div class="table-row">
+    <div class="table-header"><strong>Ngày Cập nhật:</strong></div>
+    <div class="table-cell">{{ data.staff.taiKhoan?.ngayCapNhat | date : "HH:mm:ss dd/MM/yyyy"}}</div>
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button style="margin-left: 250px;margin-bottom: 8px;"  mat-raised-button color="warn" (click)="closePopup()">Đóng</button>
+</div>

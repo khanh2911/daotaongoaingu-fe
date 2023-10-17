@@ -1,0 +1,52 @@
+<form [formGroup]="myform" (ngSubmit)="savetypeclass()">
+  <h1 mat-dialog-title>Thêm mới</h1>
+  <div mat-dialog-content>
+     <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Chứng chỉ</mat-label>
+      <mat-select formControlName="maChungChi">
+        <mat-option
+          *ngFor="let type of ListChungChi"
+          [value]="type.maChungChi"
+        >
+          {{ type.tenChungChi }}
+        </mat-option>
+      </mat-select>
+       <mat-error *ngIf="formControls.maChungChi.errors?.['required']">
+      Chứng chỉ là bắt buộc!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Bậc chứng chỉ</mat-label>
+      <input formControlName="bac" matInput required />
+      <mat-error *ngIf="formControls.bac.errors?.['required']">
+        Tên bậc chứng chỉ là bắt buộc!
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Điểm tối thiểu</mat-label>
+      <input formControlName="diemToiThieu" matInput required />
+      <mat-error *ngIf="formControls.diemToiThieu.errors?.['required']">
+        Điểm tối thiểu là bắt buộc!
+      </mat-error>
+      <mat-error *ngIf="formControls.diemToiThieu.errors?.['pattern']">
+        Điểm tối thiểu phải là số!
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Điểm tối đa</mat-label>
+      <input formControlName="diemToiDa" matInput required />
+      <mat-error *ngIf="formControls.diemToiDa.errors?.['required'] ">
+        Điểm tối đa là bắt buộc!
+      </mat-error>
+      <mat-error *ngIf="formControls.diemToiDa.errors?.['pattern']">
+        Điểm tối đa phải là số!
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button type="submit" color="primary">Lưu</button>
+    <button (click)="closePopup()" mat-stroked-button color="warn">Đóng</button>
+  </div>
+</form>

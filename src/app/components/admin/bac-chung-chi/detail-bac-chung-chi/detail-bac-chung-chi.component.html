@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>Thông tin chi tiết<hr></h1>
+
+<div mat-dialog-content class="table-container">
+  <div class="table">
+    <div class="table-row">
+      <div class="table-header">Tên chứng chỉ:</div>
+      <div class="table-cell">{{ data.bacChungChi.chungChi?.tenChungChi }}</div>
+    </div>
+    <div class="table-row">
+      <div class="table-header">Bậc:</div>
+      <div class="table-cell">{{ data.bacChungChi.bac }}</div>
+    </div>
+    <!-- Thêm các dòng khác tương tự ở đây -->
+    <div class="table-row">
+      <div class="table-header">Điểm tối thiểu:</div>
+      <div class="table-cell">{{ data.bacChungChi.diemToiThieu }}</div>
+    </div>
+    <div class="table-row">
+      <div class="table-header">Điểm tối đa:</div>
+      <div class="table-cell">{{ data.bacChungChi.diemToiDa }}</div>
+    </div>
+
+
+
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button style="margin-left: 250px;margin-bottom: 8px;"  mat-raised-button color="warn" (click)="closePopup()">Đóng</button>
+</div>

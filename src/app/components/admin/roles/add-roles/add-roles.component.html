@@ -1,0 +1,28 @@
+<form [formGroup]="myform" (ngSubmit)="savetypeclass()">
+  <h1 mat-dialog-title>Thêm mới</h1>
+  <div mat-dialog-content>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Tên Vai trò</mat-label>
+      <input formControlName="tenVaiTro" matInput required />
+      <mat-error
+        *ngIf="formControls.tenVaiTro.errors?.['required']"
+      >
+       Tên vai trò là bắt buộc!
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Mô tả</mat-label>
+      <input formControlName="moTa" matInput required />
+      <mat-error
+        *ngIf="formControls.moTa.errors?.['required']"
+      >
+     Đề cương là bắt buộc!
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button type="submit" color="primary">Lưu</button>
+    <button (click)="closePopup()"  mat-stroked-button  color="warn">Đóng</button>
+  </div>
+</form>

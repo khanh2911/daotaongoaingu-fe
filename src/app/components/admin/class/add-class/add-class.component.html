@@ -1,0 +1,41 @@
+<form [formGroup]="myform" (ngSubmit)="savetypeclass()">
+  <h1 mat-dialog-title>Thêm mới lớp học</h1>
+  <div mat-dialog-content>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Tên lớp</mat-label>
+      <input formControlName="tenLop" matInput required />
+      <mat-error
+        *ngIf="formControls.tenLop.errors?.['required']"
+      >
+       Tên lớp là bắt buộc!
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Số lượng</mat-label>
+      <input formControlName="soLuong" matInput required />
+      <mat-error
+        *ngIf="formControls.soLuong.errors?.['required']"
+      >
+     Số lượng là bắt buộc!
+      </mat-error>
+       <mat-error *ngIf="formControls.soLuong.errors?.['pattern']">
+        Số lượng phải là số!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Hình Thức Học</mat-label>
+      <mat-select formControlName="hinhThucHoc">
+        <mat-option *ngFor="let hinhThuc of hinhThucHocs" [value]="hinhThuc">
+          {{hinhThuc}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button type="submit" color="primary">Lưu</button>
+    <button (click)="closePopup()"  mat-stroked-button  color="warn">Đóng</button>
+  </div>
+</form>

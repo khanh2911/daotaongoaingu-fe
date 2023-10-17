@@ -1,0 +1,66 @@
+<mat-card>
+  <div class="container content-home" *ngIf="dataNV; else NoData">
+    <div class="center-section">
+      <mat-card class="student-info-card"
+        ><mat-card-header class="center-title">
+          <div class="card-title">Thông Tin Giáo Viên</div>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="info-columns">
+            <div class="info-column">
+              <mat-list>
+                <mat-list-item>
+                  <span class="label">Tên đăng nhập:</span>
+                  <span class="field-infor">{{
+                    dataNV.taiKhoan.tenDangNhap
+                  }}</span>
+                </mat-list-item>
+                <mat-list-item>
+                  <span class="label">Họ tên:</span>
+                  <span class="field-infor">{{ dataNV.taiKhoan.hoTen }}</span>
+                </mat-list-item>
+                <mat-list-item>
+                  <span class="label">Email:</span>
+                  <span class="field-infor">{{ dataNV.taiKhoan.email }}</span>
+                </mat-list-item>
+                <mat-list-item>
+                  <span class="label">Số điện thoại:</span>
+                  <span class="field-infor">{{
+                    dataNV.taiKhoan.soDienThoai
+                  }}</span>
+                </mat-list-item>
+                <mat-list-item>
+                  <span class="label">Địa chỉ:</span>
+                  <span class="field-infor">{{ dataNV.taiKhoan.diaChi }}</span>
+                </mat-list-item>
+              </mat-list>
+            </div>
+            <div class="info-column">
+              <mat-list>
+                <mat-list-item>
+                  <span class="label">Ngày sinh:</span>
+                  <span class="field-infor">{{
+                    dataNV.taiKhoan.ngaySinh  | date : " dd/MM/yyyy"
+                  }}</span>
+                </mat-list-item>
+                <mat-list-item>
+                  <span class="label">Giới Tính:</span>
+                  <span class="field-infor">{{
+                    dataNV.taiKhoan.gioiTinh
+                  }}</span>
+                </mat-list-item>
+                <mat-list-item>
+                  <span class="label">Kinh nghiệm:</span>
+                  <span class="field-infor">{{ dataNV.tenVaiTro }}</span>
+                </mat-list-item>
+                <!-- Tương tự cho các thông tin khác -->
+              </mat-list>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <!-- Additional mat-card for family info, advisory info can go here -->
+    </div>
+  </div>
+  <ng-template #NoData> </ng-template>
+</mat-card>

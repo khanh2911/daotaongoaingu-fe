@@ -1,0 +1,66 @@
+<form [formGroup]="myform" (ngSubmit)="savetypeclass()">
+  <h1 mat-dialog-title>Thêm mới</h1>
+  <div mat-dialog-content>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Tên khóa học</mat-label>
+      <input formControlName="tenKhoaHoc" matInput required />
+      <mat-error *ngIf="formControls.tenKhoaHoc.errors?.['required']">
+        Tên khóa học là bắt buộc!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Loại lớp</mat-label>
+      <mat-select formControlName="maLoaiLop">
+        <mat-option
+          *ngFor="let type of ListLoaiLop"
+          [value]="type.maLoaiLop"
+        >
+          {{ type.tenLoaiLop }}
+        </mat-option>
+      </mat-select>
+       <mat-error *ngIf="formControls.maLoaiLop.errors?.['required']">
+       Loại lớp là bắt buộc!
+      </mat-error>
+    </mat-form-field>
+      <!-- <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Lịch học</mat-label>
+      <mat-select formControlName="maLichHoc">
+        <mat-option
+          *ngFor="let type of ListLichHoc"
+          [value]="type.maLichHoc"
+        >
+          {{ type.moTa }}
+        </mat-option>
+      </mat-select>
+       <mat-error *ngIf="formControls.maLichHoc.errors?.['required']">
+      Lịch học là bắt buộc!
+      </mat-error>
+    </mat-form-field> -->
+
+    <mat-form-field>
+      <mat-label>Chọn ngày bắt đầu</mat-label>
+      <input matInput formControlName="ngayBatDau" [matDatepicker]="startDatePicker" />
+        <mat-error *ngIf="formControls.ngayBatDau.errors?.['required']">
+      Ngày bắt đầu là bắt buộc!
+      </mat-error>
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #startDatePicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Chọn ngày kết thúc</mat-label>
+      <input matInput formControlName="ngayKetThuc" [matDatepicker]="endDatePicker" />
+      <mat-error *ngIf="formControls.ngayKetThuc.errors?.['required']">
+      Ngày kết thúc là bắt buộc!
+      </mat-error>
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #endDatePicker></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button type="submit" color="primary">Lưu</button>
+    <button (click)="closePopup()" mat-stroked-button color="warn">Đóng</button>
+  </div>
+</form>
