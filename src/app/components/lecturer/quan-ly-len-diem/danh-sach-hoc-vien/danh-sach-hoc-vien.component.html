@@ -11,7 +11,7 @@
     <mat-icon (click)="refresh()" matSuffix color="search">refresh</mat-icon>
   </mat-form-field>
 
-
+  <mat-icon (click)="return()" class="back-icon">arrow_back</mat-icon>
   <mat-table [dataSource]="danhSachGiaoVien" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="STT">
       <mat-header-cell *matHeaderCellDef>STT</mat-header-cell>
@@ -43,9 +43,9 @@
      <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef ></mat-header-cell>
       <mat-cell *matCellDef="let item" >
-         <mat-icon *ngIf="trangThai!==1" (click)="xemDiem(item)">bookmark </mat-icon>
-         <mat-icon  (click)="detail(item)">infor </mat-icon>
-         <mat-icon *ngIf="trangThai!==1"(click)="nhapDiem(item)">add_circle </mat-icon>
+         <mat-icon   matTooltip="Xem điểm" *ngIf="trangThai!==1" (click)="xemDiem(item)">remove_red_eye </mat-icon>
+         <mat-icon  matTooltip="Thông tin học viên"  (click)="detail(item)">infor </mat-icon>
+         <mat-icon  matTooltip="Nhập điểm" *ngIf="trangThai!==1"(click)="nhapDiem(item)">add_circle </mat-icon>
       </mat-cell>
     </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

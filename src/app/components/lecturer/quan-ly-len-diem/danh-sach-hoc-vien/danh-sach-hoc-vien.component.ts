@@ -17,9 +17,9 @@ import { DetailStudentComponent } from 'src/app/components/admin/list-student/de
 @Component({
   selector: 'app-danh-sach-hoc-vien',
   templateUrl: './danh-sach-hoc-vien.component.html',
-  styleUrls: ['./danh-sach-hoc-vien.component.css']
+  styleUrls: ['./danh-sach-hoc-vien.component.css'],
 })
-export class DanhSachHocVienComponent implements OnInit{
+export class DanhSachHocVienComponent implements OnInit {
   danhSachGiaoVien: MatTableDataSource<any> = new MatTableDataSource();
   danhSachGiaoVienFull: any[] = [];
   displayedColumns: string[] = [
@@ -60,22 +60,20 @@ export class DanhSachHocVienComponent implements OnInit{
   }
 
   loadDanhSachHocVienCuaLichThi() {
-      this.dangKyThiService
-        .dsHocVienLichThi(this.maLichThi)
-        .subscribe({
-          next: (data) => {
-              this.danhSachGiaoVien = new MatTableDataSource(data);
-              this.danhSachGiaoVien.paginator = this.paginator;
-              this.danhSachGiaoVien.sort = this.sort;
-              this.danhSachGiaoVienFull = data;
-          },
-          error: (error) => {
-            this.toastr.error(
-              'Có lỗi xảy ra khi tải danh sách học viên!',
-              error.message
-            );
-          },
-        });
+    this.dangKyThiService.dsHocVienLichThi(this.maLichThi).subscribe({
+      next: (data) => {
+        this.danhSachGiaoVien = new MatTableDataSource(data);
+        this.danhSachGiaoVien.paginator = this.paginator;
+        this.danhSachGiaoVien.sort = this.sort;
+        this.danhSachGiaoVienFull = data;
+      },
+      error: (error) => {
+        this.toastr.error(
+          'Có lỗi xảy ra khi tải danh sách học viên!',
+          error.message
+        );
+      },
+    });
   }
 
   onSearch() {
@@ -98,32 +96,36 @@ export class DanhSachHocVienComponent implements OnInit{
   }
 
   xemDiem(item: any): void {
-    this.dangKyThiService.layTheoKyThiLTHV(this.maKyThi, this.maLichThi, item.maTaiKhoan).subscribe({
-      next: data => {
-        //áp dụng từ dây
-        this.ketQuaThiService.layKetQuaThiTheoMaDangKy(data.maDangKyThi).subscribe({
-          next:data1=>{
-            console.log(data1)
-            var popup = this.dialog.open(ChiTietDiemComponent, {
-              data: {
-                item: data1,
+    this.dangKyThiService
+      .layTheoKyThiLTHV(this.maKyThi, this.maLichThi, item.maTaiKhoan)
+      .subscribe({
+        next: (data) => {
+          //áp dụng từ dây
+          this.ketQuaThiService
+            .layKetQuaThiTheoMaDangKy(data.maDangKyThi)
+            .subscribe({
+              next: (data1) => {
+                console.log(data1);
+                var popup = this.dialog.open(ChiTietDiemComponent, {
+                  data: {
+                    item: data1,
+                  },
+                  width: '40%',
+                  enterAnimationDuration: '300ms',
+                  exitAnimationDuration: '300ms',
+                });
               },
-              width: '40%',
-              enterAnimationDuration: '300ms',
-              exitAnimationDuration: '300ms',
+              error: (err) => {
+                console.log(err);
+              },
             });
-          }
-          ,error:err=>{
-            console.log(err)
-          }
-        })
-      },
-      error: err => {
-        console.log(err);
-      }
-    });
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
   }
-  detail(item: any){
+  detail(item: any) {
     var popup = this.dialog.open(DetailStudentComponent, {
       data: {
         student: item,
@@ -138,12 +140,14 @@ export class DanhSachHocVienComponent implements OnInit{
       data: {
         item: item,
         maKyThi: this.maKyThi,
-        maLichThi:this.maLichThi
+        maLichThi: this.maLichThi,
       },
       width: '40%',
       enterAnimationDuration: '300ms',
       exitAnimationDuration: '300ms',
     });
   }
-
+  return() {
+    this.router.navigate([`/giao-vien/quan-ly-len-diem`]);
+  }
 }

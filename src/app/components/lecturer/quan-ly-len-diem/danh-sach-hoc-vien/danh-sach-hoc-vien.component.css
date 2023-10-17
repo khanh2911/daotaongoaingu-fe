@@ -86,3 +86,13 @@ mat-paginator {
   /* Khoảng cách phía dưới */
   margin-left: auto;
 }
+.back-icon {
+
+  float: right;
+  float: right;
+  justify-content: flex-end;
+  /* Đặt nút bên phải */
+  margin-left: auto;
+  margin: 10px;
+  /* Điều chỉnh khoảng cách giữa icon và nút */
+}
