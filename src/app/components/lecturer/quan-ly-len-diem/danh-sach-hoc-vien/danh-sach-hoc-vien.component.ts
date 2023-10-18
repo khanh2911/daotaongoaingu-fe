@@ -201,7 +201,8 @@ export class DanhSachHocVienComponent implements OnInit {
           console.log(err);
         },
       });
-  }return () {
+  }
+  return() {
       this.router.navigate([`/giao-vien/quan-ly-len-diem`]);
     }
 }

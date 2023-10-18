@@ -46,7 +46,7 @@
          <mat-icon   matTooltip="Xem điểm" *ngIf="trangThai!==1" (click)="xemDiem(item)">remove_red_eye </mat-icon>
          <mat-icon  matTooltip="Thông tin học viên"  (click)="detail(item)">infor </mat-icon>
          <mat-icon  matTooltip="Nhập điểm" *ngIf="trangThai!==1"(click)="nhapDiem(item)">add_circle </mat-icon>
-         <mat-icon  matTooltip="Chỉnh sửa điểm"  (click)="chinhSuaDiem(item)">edit </mat-icon>
+         <mat-icon  matTooltip="Chỉnh sửa điểm"  *ngIf="trangThai!==1"  (click)="chinhSuaDiem(item)">edit </mat-icon>
       </mat-cell>
     </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

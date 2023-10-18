@@ -22,7 +22,6 @@ export class DanhSachLichThiComponent implements OnInit {
   checkEmtyList: boolean = true;
   data!: any;
   maKyThi!: any;
-  phongThis: any[] = [];
   username: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -38,7 +37,7 @@ export class DanhSachLichThiComponent implements OnInit {
   ngOnInit(): void {
     const user = this.storageService.getUser();
     this.username = user.tenTaiKhoan; this.loadDL();
-   
+
   }
 
   loadDL() {
@@ -72,13 +71,12 @@ export class DanhSachLichThiComponent implements OnInit {
   }
 
   dsHv(lichThi: any) {
+    //trạng thái chỉ xem chi tiết
     const trangThai = 1;
     //chuyển đến Danhsachhocvien trong  phân công lên điểm cảu staff
     this.router.navigate([
-      `danh-sach-lich-gac-thi/${lichThi.KyThi.maKyThi}/danh-sach-lich-gac-thi/${lichThi.maLichThi}/danh-sach-hoc-vien/${trangThai}`,
+      `/giao-vien/danh-sach-lich-gac-thi/${lichThi.kyThi.maKyThi}/danh-sach-lich-gac-thi/${lichThi.maLichThi}/danh-sach-hoc-vien/${trangThai}`,
     ]);
   }
-  return() {
-    this.router.navigate([`/nhan-vien/quan-ly-ky-thi`]);
-  }
+
 }

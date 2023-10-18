@@ -279,7 +279,7 @@ const routes: Routes = [
 
       {
         path: 'danh-sach-lich-gac-thi/:maKyThi/danh-sach-lich-gac-thi/:maLichThi/danh-sach-hoc-vien/:trangThai',
-        component: ListHocVienComponent,
+        component: DanhSachHocVienComponent,
         data: {
           titulo: 'Quản lý lớp học',
           breadcrumbs: [{ label: 'Quản lý lớp học ', url: '/' }],
