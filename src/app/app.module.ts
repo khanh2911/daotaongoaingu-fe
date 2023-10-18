@@ -129,6 +129,13 @@ import { QuanLyLenDiemComponent } from './components/lecturer/quan-ly-len-diem/q
 import { DanhSachHocVienComponent } from './components/lecturer/quan-ly-len-diem/danh-sach-hoc-vien/danh-sach-hoc-vien.component';
 import { NhapDiemHocVienComponent } from './components/lecturer/quan-ly-len-diem/nhap-diem-hoc-vien/nhap-diem-hoc-vien.component';
 import { ChiTietDiemComponent } from './components/lecturer/quan-ly-len-diem/chi-tiet-diem/chi-tiet-diem.component';
+import { ChinhSuaDiemComponent } from './components/lecturer/quan-ly-len-diem/chinh-sua-diem/chinh-sua-diem.component';
+import { LichDayComponent } from './components/lecturer/lich-day/lich-day.component';
+import { DanhSachTaiLieuComponent } from './components/student/my-course/danh-sach-tai-lieu/danh-sach-tai-lieu.component';
+import { QuanLyLopComponent } from './components/lecturer/quan-ly-lop/quan-ly-lop.component';
+import { DetailLopComponent } from './components/lecturer/quan-ly-lop/detail-lop/detail-lop.component';
+import { DanhSachLichThiComponent } from './components/lecturer/danh-sach-lich-thi/danh-sach-lich-thi.component';
+
 
 @NgModule({
   declarations: [
@@ -253,7 +260,14 @@ import { ChiTietDiemComponent } from './components/lecturer/quan-ly-len-diem/chi
     QuanLyLenDiemComponent,
     DanhSachHocVienComponent,
     NhapDiemHocVienComponent,
-    ChiTietDiemComponent
+    ChiTietDiemComponent,
+    ChinhSuaDiemComponent,
+    LichDayComponent,
+    DanhSachTaiLieuComponent,
+    QuanLyLopComponent,
+    DetailLopComponent,
+    DanhSachLichThiComponent
+
   ],
   imports: [
     BrowserModule,

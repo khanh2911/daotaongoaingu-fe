@@ -41,7 +41,14 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header>Trạng thái</mat-header-cell>
       <mat-cell *matCellDef="let DangKyKH">{{ DangKyKH.trangThaiDangKyHoc }}</mat-cell>
     </ng-container>
-
+  <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let DangKyKH">
+        <button mat-icon-button (click)="layDSTL(DangKyKH.khoaHoc.loaiLop.maLoaiLop)">
+          <mat-icon>file_download</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
   </mat-table>

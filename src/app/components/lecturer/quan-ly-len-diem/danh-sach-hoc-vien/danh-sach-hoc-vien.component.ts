@@ -13,6 +13,7 @@ import { NhapDiemHocVienComponent } from '../nhap-diem-hoc-vien/nhap-diem-hoc-vi
 import { ChiTietDiemComponent } from '../chi-tiet-diem/chi-tiet-diem.component';
 import { KetQuaThiService } from './../../../../services/ket-qua-thi.service';
 import { DetailStudentComponent } from 'src/app/components/admin/list-student/detail-student/detail-student.component';
+import { ChinhSuaDiemComponent } from '../chinh-sua-diem/chinh-sua-diem.component';
 
 @Component({
   selector: 'app-danh-sach-hoc-vien',
@@ -46,7 +47,7 @@ export class DanhSachHocVienComponent implements OnInit {
     private ketQuaThiService: KetQuaThiService,
     private activateRoute: ActivatedRoute,
     private router: Router
-  ) {}
+  ) { }
   ngOnInit(): void {
     this.loadDL();
   }
@@ -135,19 +136,72 @@ export class DanhSachHocVienComponent implements OnInit {
       exitAnimationDuration: '300ms',
     });
   }
+
   nhapDiem(item: any): void {
-    var popup = this.dialog.open(NhapDiemHocVienComponent, {
-      data: {
-        item: item,
-        maKyThi: this.maKyThi,
-        maLichThi: this.maLichThi,
-      },
-      width: '40%',
-      enterAnimationDuration: '300ms',
-      exitAnimationDuration: '300ms',
-    });
+    this.dangKyThiService
+      .layTheoKyThiLTHV(this.maKyThi, this.maLichThi, item.maTaiKhoan)
+      .subscribe({
+        next: (data) => {
+          //áp dụng từ dây
+          this.ketQuaThiService
+            .layKetQuaThiTheoMaDangKy(data.maDangKyThi)
+            .subscribe({
+              next: (data1) => {
+                console.log(data1);
+                if (data1 !== null) {
+                  this.toastr.warning('Đã có kết quả thi')
+                } else {
+                  var popup = this.dialog.open(NhapDiemHocVienComponent, {
+                    data: {
+                      item: data,
+                    },
+                    width: '40%',
+                    enterAnimationDuration: '300ms',
+                    exitAnimationDuration: '300ms',
+                  });
+                }
+
+              },
+              error: (err) => {
+                console.log(err);
+              },
+            });
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
   }
-  return() {
-    this.router.navigate([`/giao-vien/quan-ly-len-diem`]);
-  }
+  chinhSuaDiem(item: any): void {
+    this.dangKyThiService
+      .layTheoKyThiLTHV(this.maKyThi, this.maLichThi, item.maTaiKhoan)
+      .subscribe({
+        next: (data) => {
+          //áp dụng từ dây
+          this.ketQuaThiService
+            .layKetQuaThiTheoMaDangKy(data.maDangKyThi)
+            .subscribe({
+              next: (data1) => {
+                console.log(data1);
+                var popup = this.dialog.open(ChinhSuaDiemComponent, {
+                  data: {
+                    item: data1,
+                  },
+                  width: '40%',
+                  enterAnimationDuration: '300ms',
+                  exitAnimationDuration: '300ms',
+                });
+              },
+              error: (err) => {
+                console.log(err);
+              },
+            });
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+  }return () {
+      this.router.navigate([`/giao-vien/quan-ly-len-diem`]);
+    }
 }

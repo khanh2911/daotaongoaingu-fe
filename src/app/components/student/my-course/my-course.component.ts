@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { LoaiLopService } from './../../../services/loai-lop.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -7,6 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 import { DangKyKH } from 'src/app/models/DangKyKH';
 import { DangKyKhoaHocService } from 'src/app/services/dang-ky-khoa-hoc.service';
 import { StorageService } from 'src/app/services/storage.service';
+import { TaiLieuService } from 'src/app/services/tai-lieu.service';
 
 @Component({
   selector: 'app-my-course',
@@ -23,10 +26,11 @@ export class MyCourseComponent implements OnInit {
     'khoaHoc.tenKhoaHoc',
     'trangThaiHocPhi',
     'ngayDangKy',
+    'action',
   ];
   length: number = 0;
   searchTerm: string = '';
-  loggedInUsername!: string ;
+  loggedInUsername!: string;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -35,7 +39,10 @@ export class MyCourseComponent implements OnInit {
     private storageService: StorageService,
     private dangKyKhoaHocService: DangKyKhoaHocService,
     private toastr: ToastrService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private loaiLopService: LoaiLopService,
+    private taiLieuService: TaiLieuService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -46,9 +53,7 @@ export class MyCourseComponent implements OnInit {
       this.toastr.error('Không tìm thấy tên đăng nhập', 'Lỗi');
       return;
     }
-    this.loadDanhSachKhoaHoc(
-
-    );
+    this.loadDanhSachKhoaHoc();
   }
 
   ngAfterViewInit() {
@@ -79,7 +84,7 @@ export class MyCourseComponent implements OnInit {
     sortBy: string = '',
     sortDir: string = 'ASC'
   ) {
-    console.log(page)
+    console.log(page);
     this.dangKyKhoaHocService
       .getAllDangKyKhoaHoc(
         page,
@@ -92,7 +97,6 @@ export class MyCourseComponent implements OnInit {
         undefined
       )
       .subscribe((data: any) => {
-
         this.danhSachDangKy = new MatTableDataSource<DangKyKH>(data.content);
         this.paginator.length = data.totalElements;
         this.length = data.totalElements;
@@ -110,6 +114,11 @@ export class MyCourseComponent implements OnInit {
     }
     this.loadDanhSachKhoaHoc();
   }
+  layDSTL(maLoaiLop:any) {
+    this.router.navigate([
+      `/hoc-vien/khoa-hoc-cua-toi/tai-tai-lieu/${maLoaiLop}`
 
-  // Các hàm xử lý khác
-}
+    ]);
+  }
+
+  }

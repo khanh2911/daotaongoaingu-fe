@@ -125,12 +125,13 @@ export class LopHocService {
     }
     lopHocCuaGiaoVien(tenDangNhap: string): Observable<any> {
       return this.http.get(
-        `${this.apiBaseUrl}/lay-lop-hoc-cua-mot-giao-vien/${tenDangNhap}`);
+        `${this.apiBaseUrl}/lop-hoc/lay-lop-hoc-cua-mot-giao-vien/${tenDangNhap}`
+      );
     }
 
     guiThongBao(maLop: number): Observable<any> {
       return this.http.post(
-        `${this.apiBaseUrl}/gui-thong-bao/${maLop}`,
+        `${this.apiBaseUrl}/lop-hoc/gui-thong-bao/${maLop}`,
         null
       );
     }

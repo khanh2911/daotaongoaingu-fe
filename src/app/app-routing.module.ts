@@ -49,6 +49,11 @@ import { ListGiaoVienGacThiComponent } from './components/admin/ky-thi/list-giao
 import { ListGiaoVienLenDiemComponent } from './components/admin/ky-thi/list-giao-vien-len-diem/list-giao-vien-len-diem.component';
 import { QuanLyLenDiemComponent } from './components/lecturer/quan-ly-len-diem/quan-ly-len-diem.component';
 import { DanhSachHocVienComponent } from './components/lecturer/quan-ly-len-diem/danh-sach-hoc-vien/danh-sach-hoc-vien.component';
+import { LichDayComponent } from './components/lecturer/lich-day/lich-day.component';
+import { DanhSachTaiLieuComponent } from './components/student/my-course/danh-sach-tai-lieu/danh-sach-tai-lieu.component';
+import { QuanLyLopComponent } from './components/lecturer/quan-ly-lop/quan-ly-lop.component';
+import { DanhSachLichThiComponent } from './components/lecturer/danh-sach-lich-thi/danh-sach-lich-thi.component';
+
 
 const routes: Routes = [
   {
@@ -148,8 +153,6 @@ const routes: Routes = [
           breadcrumbs: [{ label: 'Bậc chứng chỉ', url: '/' }],
         },
       },
-
-
     ],
   },
 
@@ -188,6 +191,14 @@ const routes: Routes = [
         },
       },
       {
+        path: 'khoa-hoc-cua-toi/tai-tai-lieu/:maLoaiLop',
+        component: DanhSachTaiLieuComponent,
+        data: {
+          titulo: 'Danh sách tài liệu',
+          breadcrumbs: [{ label: 'Danh sách tài liệu', url: '/' }],
+        },
+      },
+      {
         path: 'ho-so',
         component: HosoStudentComponent,
         data: {
@@ -211,7 +222,6 @@ const routes: Routes = [
           breadcrumbs: [{ label: 'Kỳ thi', url: '/' }],
         },
       },
-
     ],
   },
   //giao vien
@@ -242,10 +252,44 @@ const routes: Routes = [
         },
       },
       {
+        path: 'quan-ly-lop-hoc',
+        component: QuanLyLopComponent,
+        data: {
+          titulo: 'Quản lý lớp học',
+          breadcrumbs: [{ label: 'Quản lý lớp học ', url: '/' }],
+        },
+      },
+
+      {
+        path: 'quan-ly-lop-hoc/:maKhoaHoc/danh-sach-lop-hoc/:maLopHoc/danh-sach-hoc-vien',
+        component: ListHocVienComponent,
+        data: {
+          titulo: 'Quản lý lớp học',
+          breadcrumbs: [{ label: 'Quản lý lớp học ', url: '/' }],
+        },
+      },
+      {
+        path: 'danh-sach-lich-gac-thi',
+        component: DanhSachLichThiComponent,
+        data: {
+          titulo: 'Danh sách lịch gác thi',
+          breadcrumbs: [{ label: 'Quản lý lớp học ', url: '/' }],
+        },
+      },
+
+      {
+        path: 'danh-sach-lich-gac-thi/:maKyThi/danh-sach-lich-gac-thi/:maLichThi/danh-sach-hoc-vien/:trangThai',
+        component: ListHocVienComponent,
+        data: {
+          titulo: 'Quản lý lớp học',
+          breadcrumbs: [{ label: 'Quản lý lớp học ', url: '/' }],
+        },
+      },
+      {
         path: 'quan-ly-len-diem',
         component: QuanLyLenDiemComponent,
         data: {
-          titulo: 'Lên điểm',
+          titulo: 'Nhập điểm',
           breadcrumbs: [{ label: 'Quản lý lên điểm', url: '/' }],
         },
       },
@@ -399,7 +443,6 @@ const routes: Routes = [
           breadcrumbs: [{ label: 'Chọn giáo viên', url: '/' }],
         },
       },
-
     ],
   },
   {
@@ -417,7 +460,6 @@ const routes: Routes = [
   { path: '403', component: Page403Component },
   { path: 'bao-tri', component: Page0Component },
   { path: '**', component: Page404Component },
-
 ];
 
 @NgModule({

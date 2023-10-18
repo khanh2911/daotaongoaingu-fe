@@ -18,8 +18,7 @@ export class NhapDiemHocVienComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA)
     public data: {
       item: any,
-      maKyThi: any,
-      maLichThi: any
+
     },
     private dialogRef: MatDialogRef<NhapDiemHocVienComponent>,
     private formBuilder: FormBuilder,
@@ -29,19 +28,9 @@ export class NhapDiemHocVienComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loadDangKyThi();
   }
 
-  loadDangKyThi() {
-    this.dangKyThiService.layTheoKyThiLTHV(this.data.maKyThi, this.data.maLichThi, this.data.item.maTaiKhoan).subscribe({
-      next: data => {
-        this.maDangKyThi = data.maDangKyThi;
-      },
-      error: err => {
-        console.log(err);
-      }
-    });
-  }
+
 
   get formControls() {
     return this.myform.controls;
@@ -58,7 +47,7 @@ export class NhapDiemHocVienComponent implements OnInit {
     if (this.myform.valid) {
       const formData = {
         ...this.myform.value,
-        maDangKyThi: this.maDangKyThi
+        maDangKyThi: this.data.item.maDangKyThi
       };
       this.ketQuaThiService.themKetQuaThi(formData).subscribe({
         next: data => {

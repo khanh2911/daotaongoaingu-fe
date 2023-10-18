@@ -1,0 +1,40 @@
+<form [formGroup]="myform" (ngSubmit)="savetypeclass()">
+  <h1 mat-dialog-title>Chỉnh sửa điểm</h1>
+  <div mat-dialog-content>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Điểm Nghe</mat-label>
+      <input formControlName="diemNghe" matInput required />
+      <mat-error *ngIf="formControls.diemNghe.errors?.['required']">Điểm Nghe là bắt buộc!</mat-error>
+      <mat-error *ngIf="formControls.diemNghe.errors?.['pattern']">Điểm Nghe phải là số!</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Điểm Nói</mat-label>
+      <input formControlName="diemNoi" matInput required />
+      <mat-error *ngIf="formControls.diemNoi.errors?.['required']">Điểm Nói là bắt buộc!</mat-error>
+      <mat-error *ngIf="formControls.diemNoi.errors?.['pattern']">Điểm Nói phải là số!</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Điểm Đọc</mat-label>
+      <input formControlName="diemDoc" matInput required />
+      <mat-error *ngIf="formControls.diemDoc.errors?.['required']">Điểm Đọc là bắt buộc!</mat-error>
+      <mat-error *ngIf="formControls.diemDoc.errors?.['pattern']">Điểm Đọc phải là số!</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Điểm Viết</mat-label>
+      <input formControlName="diemViet" matInput required />
+      <mat-error *ngIf="formControls.diemViet.errors?.['required']">Điểm Viết là bắt buộc!</mat-error>
+      <mat-error *ngIf="formControls.diemViet.errors?.['pattern']">Điểm Viết phải là số!</mat-error>
+    </mat-form-field>
+
+  </div>
+  <div mat-dialog-actions>
+    <button  mat-stroked-button color="warn" type="submit" (click)="closePopup()">Đóng</button>
+    <button mat-raised-button color="primary" type="submit"  [disabled]="!myform.valid">Lưu</button>
+
+  </div>
+</form>
+

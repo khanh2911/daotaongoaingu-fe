@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>Thông tin chi tiết<hr></h1>
+
+<div mat-dialog-content class="table-container">
+  <div class="table">
+    <div class="table-row">
+      <div class="table-header">Tên lớp:</div>
+      <div class="table-cell">{{ data.lopHoc.tenLop }}</div>
+    </div>
+    <!-- Thêm các dòng khác tương tự ở đây -->
+    <div class="table-row" >
+      <div class="table-header">Tên khóa học:</div>
+      <div class="table-cell">{{ data.lopHoc.khoaHoc.tenKhoaHoc }}</div>
+    </div>
+    <div class="table-row">
+      <div class="table-header">Hình thức dạy:</div>
+      <div class="table-cell">{{ data.lopHoc.hinhThucHoc }}</div>
+    </div>
+    <div class="table-row" *ngIf="data.lopHoc.phong">
+      <div class="table-header">Tên phòng:</div>
+      <div class="table-cell">{{ data.lopHoc.phong.tenPhong }}</div>
+    </div>
+       <div class="table-row">
+      <div class="table-header">Lịch dạy:</div>
+      <div class="table-cell">{{ data.lopHoc.lichHoc?.moTa }}</div>
+    </div>
+    <div class="table-row">
+      <div class="table-header">Giáo viên dạy:</div>
+      <div class="table-cell">{{ data.lopHoc.giaoVien?.taiKhoan?.hoTen }}</div>
+    </div>
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button style="margin-left: 250px;margin-bottom: 8px;"  mat-raised-button color="warn" (click)="closePopup()">Đóng</button>
+
+</div>
