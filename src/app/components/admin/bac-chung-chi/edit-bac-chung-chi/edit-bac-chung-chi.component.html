@@ -1,7 +1,7 @@
-<h2 mat-dialog-title>Chỉnh sửa </h2>
+<h2 mat-dialog-title>Chỉnh sửa</h2>
 <div mat-dialog-content>
   <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
-     <mat-form-field appearance="outline" class="full-width">
+    <mat-form-field appearance="outline" class="full-width">
       <mat-label>Chứng chỉ</mat-label>
       <mat-select formControlName="maChungChi">
         <mat-option *ngFor="let type of ListChungChi" [value]="type.maChungChi">
@@ -10,19 +10,42 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="outline" class="full-width">
-      <input matInput placeholder="Bậc chứng chỉ" formControlName="bac" required />
+      <input
+        matInput
+        placeholder="Bậc chứng chỉ"
+        formControlName="bac"
+        required
+      />
     </mat-form-field>
     <mat-form-field appearance="outline" class="full-width">
-      <textarea matInput placeholder="Điểm tối thiểu" formControlName="diemToiThieu" required></textarea>
+      <textarea
+        matInput
+        placeholder="Điểm tối thiểu"
+        formControlName="diemToiThieu"
+        required
+      ></textarea>
     </mat-form-field>
     <mat-form-field appearance="outline" class="full-width">
-      <input matInput placeholder="Điểm tối đa" formControlName="diemToiDa" required />
+      <input
+        matInput
+        placeholder="Điểm tối đa"
+        formControlName="diemToiDa"
+        required
+      />
     </mat-form-field>
   </form>
 </div>
 <div mat-dialog-actions>
-  <button mat-stroked-button  color="warn" type="submit" (click)="onCancel()">Hủy</button>
-  <button mat-raised-button color="primary"type="submit"  [disabled]="!editForm.valid" (click)="onSubmit()">
+  <button mat-stroked-button color="warn" type="submit" (click)="onCancel()">
+    Hủy
+  </button>
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="!editForm.valid"
+    (click)="onSubmit()"
+  >
     Lưu
   </button>
 </div>

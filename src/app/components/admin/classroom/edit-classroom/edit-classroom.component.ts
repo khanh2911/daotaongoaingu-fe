@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { LoaiPhong, Phong } from 'src/app/models/Phong';
 import { PhongService } from 'src/app/services/phong.service';
 
@@ -17,14 +18,15 @@ export class EditClassroomComponent implements OnInit {
     private dialogRef: MatDialogRef<EditClassroomComponent>,
     private formBuilder: FormBuilder,
     private phongService: PhongService,
+    private toastr: ToastrService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.editForm = this.formBuilder.group({
       tenPhong: ['', Validators.required],
       sucChua: ['', Validators.required],
       viTri: ['', Validators.required],
-      kiHieu:  ['', Validators.required],
-      loaiPhong:  ['', Validators.required],
+      kiHieu: ['', Validators.required],
+      loaiPhong: ['', Validators.required],
     });
   }
 
@@ -35,7 +37,7 @@ export class EditClassroomComponent implements OnInit {
       kiHieu: this.data.kiHieu,
       sucChua: this.data.sucChua,
       viTri: this.data.viTri,
-      loaiPhong: this.data.loaiPhong
+      loaiPhong: this.data.loaiPhong,
     });
   }
 
@@ -46,7 +48,7 @@ export class EditClassroomComponent implements OnInit {
         kiHieu: this.editForm.value.kiHieu,
         sucChua: this.editForm.value.sucChua,
         viTri: this.editForm.value.viTri,
-        loaiPhong: this.editForm.value.loaiPhong
+        loaiPhong: this.editForm.value.loaiPhong,
       };
 
       // Gọi service để cập nhật thông tin phòng
@@ -55,6 +57,7 @@ export class EditClassroomComponent implements OnInit {
         .subscribe((response) => {
           if (response) {
             // Cập nhật thành công, đóng dialog và thông báo
+            this.toastr.success('Bạn đã chỉnh sửa thành công!');
             this.dialogRef.close(response);
           } else {
             // Xử lý lỗi nếu cần

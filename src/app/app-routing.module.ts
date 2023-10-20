@@ -107,7 +107,7 @@ const routes: Routes = [
         path: 'loai-lop',
         component: TypeClassComponent,
         data: {
-          titulo: 'Loại lớp',
+          titulo: 'Quản lý loại lớp',
           breadcrumbs: [{ label: 'Loại lớp', url: '/' }],
         },
       },
@@ -115,7 +115,7 @@ const routes: Routes = [
         path: 'lich-hoc',
         component: ScheduleComponent,
         data: {
-          titulo: 'Lịch học',
+          titulo: 'Quản lý lịch học',
           breadcrumbs: [{ label: 'Lịch học', url: '/' }],
         },
       },
@@ -123,7 +123,7 @@ const routes: Routes = [
         path: 'quan-ly-phong-hoc',
         component: ClassroomComponent,
         data: {
-          titulo: 'Quản lí phòng học',
+          titulo: 'Quản lý phòng học',
           breadcrumbs: [{ label: 'Phòng học', url: '/' }],
         },
       },
@@ -132,7 +132,7 @@ const routes: Routes = [
         path: 'danh-sach-vai-tro',
         component: RolesComponent,
         data: {
-          titulo: 'Quản lí vai trò',
+          titulo: 'Quản lý vai trò',
           breadcrumbs: [{ label: 'Vai trò', url: '/' }],
         },
       },
@@ -141,7 +141,7 @@ const routes: Routes = [
         path: 'quan-ly-chung-chi',
         component: ChungChiComponent,
         data: {
-          titulo: 'Quản lí chứng chỉ',
+          titulo: 'Quản lý chứng chỉ',
           breadcrumbs: [{ label: 'Chứng chỉ', url: '/' }],
         },
       },
@@ -149,7 +149,7 @@ const routes: Routes = [
         path: 'quan-ly-bac-chung-chi',
         component: BacChungChiComponent,
         data: {
-          titulo: 'Quản lí bậc chứng chỉ',
+          titulo: 'Quản lý bậc chứng chỉ',
           breadcrumbs: [{ label: 'Bậc chứng chỉ', url: '/' }],
         },
       },

@@ -12,7 +12,7 @@ import { KhoaHocService } from 'src/app/services/khoa-hoc.service';
   templateUrl: './edit-bac-chung-chi.component.html',
   styleUrls: ['./edit-bac-chung-chi.component.css'],
 })
-export class EditBacChungChiComponent {
+export class EditBacChungChiComponent implements OnInit {
   editForm: FormGroup;
   ListChungChi: any[] = [];
 
@@ -23,19 +23,27 @@ export class EditBacChungChiComponent {
     private toastr: ToastrService,
     private bacChungChiService: BacChungChiService,
     private chungChiService: ChungChiService,
-      @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.editForm = this.formBuilder.group({
       maChungChi: [this.data.chungChi.maChungChi],
-      bac: ['', Validators.required],
-      diemToiThieu: ['', Validators.pattern(/^\d+(\.\d{1,2})?$/)],
-      diemToiDa: ['', Validators.pattern(/^\d+(\.\d{1,2})?$/)],
+      bac: [this.data.bac, Validators.required],
+      diemToiThieu: [
+        this.data.diemToiThieu,
+        Validators.pattern(/^\d+(\.\d{1,2})?$/),
+      ],
+      diemToiDa: [this.data.diemToiDa, Validators.pattern(/^\d+(\.\d{1,2})?$/)],
     });
   }
 
   ngOnInit(): void {
-    // Lấy dữ liệu loại lớp và lịch học để hiển thị trong dropdown
     this.loadBacChungChi();
+    this.editForm.setValue({
+      maChungChi: this.data.chungChi.maChungChi,
+      bac: this.data.bac,
+      diemToiThieu: this.data.diemToiThieu,
+      diemToiDa: this.data.diemToiDa,
+    });
   }
 
   loadBacChungChi() {
@@ -47,18 +55,16 @@ export class EditBacChungChiComponent {
   onSubmit(): void {
     if (this.editForm.valid) {
       const updatedKhoaHoc = {
-        tenChungChi: this.editForm.value.tenChungChi,
+        maChungChi: this.editForm.value.maChungChi,
         bac: this.editForm.value.bac,
         diemToiThieu: this.editForm.value.diemToiThieu,
         diemToiDa: this.editForm.value.diemToiDa,
       };
 
-      // Gọi service để cập nhật thông tin khóa học
       this.bacChungChiService
         .updateBacChungChi(this.data.maBacChungChi, updatedKhoaHoc)
         .subscribe((response) => {
           if (response) {
-            // Cập nhật thành công, đóng dialog và thông báo
             this.toastr.success('Bạn đã chỉnh sửa thành công!');
             this.dialogRef.close(response);
           } else {
