@@ -48,12 +48,12 @@
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef ></mat-header-cell>
       <mat-cell *matCellDef="let LoaiLop">
-        <button mat-icon-button (click)="editTypeclass(LoaiLop)">
+        <button mat-icon-button  matTooltip="Chỉnh sửa loại lớp"(click)="editTypeclass(LoaiLop)">
           <mat-icon>edit</mat-icon>
         </button>
 
-        <button mat-icon-button (click)="modeleteTypeclass(LoaiLop.maLoaiLop)">
-          <mat-icon class="delete">delete</mat-icon>
+        <button mat-icon-button matTooltip="Xóa loại lớp"(click)="modeleteTypeclass(LoaiLop.maLoaiLop)">
+          <mat-icon  class="delete">delete</mat-icon>
         </button>
       </mat-cell>
     </ng-container>

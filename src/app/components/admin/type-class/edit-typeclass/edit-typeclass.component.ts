@@ -20,7 +20,7 @@ export class EditTypeclassComponent implements OnInit {
   ) {
     this.editForm = this.formBuilder.group({
       tenLoaiLop: ['', Validators.required],
-      deCuong: [''],
+      deCuong: ['', Validators.required],
       hocPhi: ['', Validators.required],
     });
   }

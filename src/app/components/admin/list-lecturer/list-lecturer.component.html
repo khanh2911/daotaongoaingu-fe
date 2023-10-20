@@ -55,7 +55,7 @@
       </mat-cell>
     </ng-container>
      <ng-container matColumnDef="taiKhoan.trangThai">
-      <mat-header-cell *matHeaderCellDef 
+      <mat-header-cell *matHeaderCellDef
         >Trạng thái</mat-header-cell
       >
       <mat-cell *matCellDef="let giaoVien">
@@ -83,7 +83,7 @@
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef ></mat-header-cell>
       <mat-cell *matCellDef="let giaoVien" (click)="detail(giaoVien)">
-        <mat-icon>infor </mat-icon>
+        <mat-icon matTooltip="Thông tin chi tiết">infor </mat-icon>
       </mat-cell>
     </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

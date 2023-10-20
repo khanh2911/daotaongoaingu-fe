@@ -58,14 +58,14 @@
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef ></mat-header-cell>
       <mat-cell *matCellDef="let PhongHoc">
-        <button mat-icon-button (click)="detail(PhongHoc)">
+        <button mat-icon-button matTooltip="Chi tiết phòng" (click)="detail(PhongHoc)">
           <mat-icon>info</mat-icon>
         </button>
-        <button mat-icon-button (click)="editClassroom(PhongHoc)">
+        <button mat-icon-button matTooltip="Chỉnh sửa phòng" (click)="editClassroom(PhongHoc)">
           <mat-icon>edit</mat-icon>
         </button>
 
-        <button mat-icon-button (click)="OpenDeleteClassroom(PhongHoc.maPhong)">
+        <button mat-icon-button matTooltip="Xóa phòng"(click)="OpenDeleteClassroom(PhongHoc.maPhong)">
           <mat-icon class="delete">delete</mat-icon>
         </button>
       </mat-cell>

@@ -43,11 +43,19 @@ export class AddTypeclassComponent implements OnInit {
       this.loaiLopService.themLoaiLop(formData).subscribe({
         next: (data) => {
           console.log(data);
-        this.closePopup();
+          this.closePopup();
           this.toastr.success('Thêm loại lớp thành công!');
         },
         error: (err) => {
-          this.toastr.error(err);
+          if (err.error.message === 'Tên loại lớp đã tồn tại') {
+            // Xử lý khi Tên loại lớp đã tồn tại
+            this.toastr.error(
+              'Tên loại lớp đã tồn tại. Vui lòng chọn một tên khác.'
+            );
+          } else {
+            // Xử lý các lỗi khác
+            this.toastr.error('Có lỗi xảy ra khi thêm loại lớp.');
+          }
         },
       });
     }

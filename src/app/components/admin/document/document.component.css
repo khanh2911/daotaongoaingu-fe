@@ -92,21 +92,9 @@ mat-paginator {
 }
 
 .align-right-button {
- margin: 2px;
-
-}
-.form-fields {
-  display: flex;
-  justify-content: space-between;
-  /* Để có khoảng cách giữa các items */
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-  /* Cho phép các items chuyển xuống dòng tiếp theo nếu không đủ không gian */
-}
-
-.mat-form-field {
-  flex-basis: calc(25% - 20px);
-  /* Chiếm 25% không gian nhưng trừ đi 20px cho padding/margin */
-  margin: 10px;
-  /* Khoảng cách giữa các form field */
+  float: right;
+  justify-content: flex-end;
+  /* Đặt nút bên phải */
+  /* Khoảng cách phía dưới */
+  margin-left: auto;
 }

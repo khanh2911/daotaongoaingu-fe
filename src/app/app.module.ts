@@ -135,6 +135,7 @@ import { DanhSachTaiLieuComponent } from './components/student/my-course/danh-sa
 import { QuanLyLopComponent } from './components/lecturer/quan-ly-lop/quan-ly-lop.component';
 import { DetailLopComponent } from './components/lecturer/quan-ly-lop/detail-lop/detail-lop.component';
 import { DanhSachLichThiComponent } from './components/lecturer/danh-sach-lich-thi/danh-sach-lich-thi.component';
+import { DetailClassroomComponent } from './components/admin/classroom/detail-classroom/detail-classroom.component';
 
 
 @NgModule({
@@ -203,6 +204,7 @@ import { DanhSachLichThiComponent } from './components/lecturer/danh-sach-lich-t
     AddClassroomComponent,
     EditClassroomComponent,
     DeleteClassroomComponent,
+    DetailClassroomComponent,
     RolesComponent,
     AddRolesComponent,
     EditRolesComponent,

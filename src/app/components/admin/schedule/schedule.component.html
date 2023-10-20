@@ -24,13 +24,6 @@
       <mat-header-cell *matHeaderCellDef>STT</mat-header-cell>
       <mat-cell *matCellDef="let i = index">{{ i + 1 }}</mat-cell>
     </ng-container>
-
-    <!-- <ng-container matColumnDef="maLichHoc">
-      <mat-header-cell *matHeaderCellDef mat-sort-header
-        >Mã lịch học</mat-header-cell
-      >
-      <mat-cell *matCellDef="let LichHoc">{{ LichHoc.maLichHoc }}</mat-cell>
-    </ng-container> -->
     <ng-container matColumnDef="kiHieu">
       <mat-header-cell *matHeaderCellDef mat-sort-header
         >Kí hiệu</mat-header-cell
@@ -48,10 +41,10 @@
 <ng-container matColumnDef="actions">
   <mat-header-cell *matHeaderCellDef ></mat-header-cell>
   <mat-cell *matCellDef="let LichHoc">
-     <button mat-icon-button (click)="editschedule(LichHoc)">
+     <button mat-icon-button matTooltip="Chỉnh sửa loại lớp"  (click)="editschedule(LichHoc)">
       <mat-icon>edit</mat-icon>
     </button>
-     <button mat-icon-button (click)="modeleteschedule(LichHoc.maLichHoc)">
+     <button mat-icon-button matTooltip="Xóa loại lớp"(click)="modeleteschedule(LichHoc.maLichHoc)">
       <mat-icon class="delete">delete</mat-icon>
     </button>
   </mat-cell>

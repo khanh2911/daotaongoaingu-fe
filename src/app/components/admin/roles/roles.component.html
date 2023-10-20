@@ -40,14 +40,14 @@
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef ></mat-header-cell>
       <mat-cell *matCellDef="let NhanVien">
-        <button mat-icon-button (click)="detailRoles(NhanVien)">
-          <mat-icon>infor</mat-icon>
+        <button matTooltip="Danh sách nhân viên" mat-icon-button (click)="detailRoles(NhanVien)">
+          <mat-icon>people</mat-icon>
         </button>
-        <button mat-icon-button (click)="editRoles(NhanVien)">
+        <button matTooltip="Chỉnh sửa vai trò" mat-icon-button (click)="editRoles(NhanVien)">
           <mat-icon>edit</mat-icon>
         </button>
 
-        <button mat-icon-button (click)="OpenDeleteRoles(NhanVien.maVaiTro)">
+        <button matTooltip="Xóa vai trò" mat-icon-button (click)="OpenDeleteRoles(NhanVien.maVaiTro)">
           <mat-icon class="delete">delete</mat-icon>
         </button>
       </mat-cell>

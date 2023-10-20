@@ -75,13 +75,13 @@
      <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef > </mat-header-cell>
       <mat-cell *matCellDef="let nhanvien" (click)="detail(nhanvien)">
-         <mat-icon>infor </mat-icon>
+         <mat-icon matTooltip="Thông tin chi tiết">infor </mat-icon>
       </mat-cell>
     </ng-container>
     <ng-container matColumnDef="vaiTro">
       <mat-header-cell *matHeaderCellDef > </mat-header-cell>
       <mat-cell *matCellDef="let nhanvien" (click)="vaitro(nhanvien)">
-         <mat-icon>add_circle </mat-icon>
+         <mat-icon matTooltip="Thêm vai trò ">add_circle </mat-icon>
       </mat-cell>
     </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
