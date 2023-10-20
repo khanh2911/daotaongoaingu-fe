@@ -49,11 +49,11 @@
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef ></mat-header-cell>
       <mat-cell *matCellDef="let ChungChi">
-        <button mat-icon-button (click)="editChungChi(ChungChi)">
+        <button mat-icon-button  matTooltip="Chỉnh sửa chứng chỉ"(click)="editChungChi(ChungChi)">
           <mat-icon>edit</mat-icon>
         </button>
 
-        <button mat-icon-button (click)="modeleteChungChi(ChungChi.maChungChi)">
+        <button mat-icon-button matTooltip="Xóa chứng chỉ"(click)="modeleteChungChi(ChungChi.maChungChi)">
           <mat-icon class="delete">delete</mat-icon>
         </button>
       </mat-cell>
