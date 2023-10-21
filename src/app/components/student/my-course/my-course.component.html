@@ -44,8 +44,8 @@
   <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let DangKyKH">
-        <button mat-icon-button (click)="layDSTL(DangKyKH.khoaHoc.loaiLop.maLoaiLop)">
-          <mat-icon>file_download</mat-icon>
+        <button mat-icon-button  matTooltip="Tài liệu" (click)="layDSTL(DangKyKH.khoaHoc.loaiLop.maLoaiLop)">
+          <mat-icon>picture_as_pdf</mat-icon>
         </button>
       </mat-cell>
     </ng-container>

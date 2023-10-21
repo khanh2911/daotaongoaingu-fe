@@ -1,5 +1,4 @@
 <div class="table-box mat-elevation-z4">
-
   <mat-form-field appearance="outline" class="search">
     <mat-label>Tìm kiếm</mat-label>
     <input
@@ -11,11 +10,9 @@
     <mat-icon (click)="onSearch()" matSuffix color="search">search</mat-icon>
     <mat-icon (click)="refresh()" matSuffix color="search">refresh</mat-icon>
   </mat-form-field>
- <div class="form-fields">
-
-</div>
-
-
+  <mat-icon matTooltip="Quay lại" (click)="return()" class="back-icon"
+    >arrow_back</mat-icon
+  >
 
   <mat-table [dataSource]="danhSachTaiLieu" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="stt">
@@ -37,9 +34,9 @@
     </ng-container>
 
     <ng-container matColumnDef="actions">
-      <mat-header-cell *matHeaderCellDef ></mat-header-cell>
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let item">
-        <button mat-icon-button (click)="taiFile(item.maTaiLieu)">
+        <button mat-icon-button matTooltip="Tải file" (click)="taiFile(item.maTaiLieu)">
           <mat-icon>file_download</mat-icon>
         </button>
       </mat-cell>

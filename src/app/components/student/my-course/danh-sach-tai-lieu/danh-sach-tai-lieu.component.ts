@@ -1,4 +1,4 @@
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -24,35 +24,33 @@ export class DanhSachTaiLieuComponent {
   @ViewChild(MatSort) sort!: MatSort;
   searchTerm: string = '';
   ListLoaiLop: any[] = [];
-  maLoaiLop:any
+  maLoaiLop: any;
   constructor(
     private taiLieuService: TaiLieuService,
     private dialog: MatDialog,
     private loailopService: LoaiLopService,
     private toastr: ToastrService,
-    private activateRoute:ActivatedRoute
+    private activateRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
-
     this.activateRoute.params.subscribe((params: Params) => {
-
       this.maLoaiLop = +params['maLoaiLop'];
       this.loadTLbyLL();
-
     });
   }
-
 
   //bỏ loại lớp
   loadTLbyLL() {
-    this.taiLieuService.getAllTaiLieuByLoaiLop(this.maLoaiLop).subscribe((data) => {
-      this.danhSachTaiLieu = new MatTableDataSource<TaiLieu>(data);
-      this.danhSachTaiLieu.paginator = this.paginator;
-      this.danhSachTaiLieu.sort = this.sort;
-    });
+    this.taiLieuService
+      .getAllTaiLieuByLoaiLop(this.maLoaiLop)
+      .subscribe((data) => {
+        this.danhSachTaiLieu = new MatTableDataSource<TaiLieu>(data);
+        this.danhSachTaiLieu.paginator = this.paginator;
+        this.danhSachTaiLieu.sort = this.sort;
+      });
   }
-
 
   onSearch() {
     this.danhSachTaiLieu.filter = this.searchTerm.trim().toLowerCase();
@@ -96,5 +94,7 @@ export class DanhSachTaiLieuComponent {
     });
   }
 
-
+  return() {
+    this.router.navigate([`/hoc-vien/khoa-hoc-cua-toi`]);
+  }
 }

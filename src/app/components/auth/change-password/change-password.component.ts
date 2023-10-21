@@ -1,5 +1,5 @@
 import { TaiKhoanService } from './../../../services/tai-khoan.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
@@ -12,7 +12,7 @@ import { StorageService } from 'src/app/services/storage.service';
   templateUrl: './change-password.component.html',
   styleUrls: ['./change-password.component.css'],
 })
-export class ChangePasswordComponent {
+export class ChangePasswordComponent implements OnInit {
   invalidPass = false;
   invalidPassOld = false;
   userId: string = '';
@@ -46,7 +46,6 @@ export class ChangePasswordComponent {
     const user = this.storageService.getUser();
     this.token = user.access_token;
     // this.auth.getUserInfo(user.access_token)
-
   }
 
   closePopup() {
@@ -66,26 +65,23 @@ export class ChangePasswordComponent {
       } else {
         const matKhau = {
           matKhauCu: this.myform.value.matKhauCu,
-          matKhauMoi:this.myform.value.matKhauMoi
-        }
-        this.taiKhoanService
-
-           .doiMatKhau(matKhau)
-           .subscribe({
-             next: (data) => {
-               if (data.message === 'NO_CHANGE') {
-                 this.toastr.warning('Không có thay đổi');
-               }
-               this.toastr.success('Đổi mật khẩu thành công');
-               this.closePopup();
-             },
-             error: (err) => {
-               if (err.error.message === 'NOT_MACTH') {
-                 this.invalidPassOld = true;
-               }
-               console.log(err);
-             },
-           });
+          matKhauMoi: this.myform.value.matKhauMoi,
+        };
+        this.taiKhoanService.doiMatKhau(matKhau).subscribe({
+          next: (data) => {
+            if (data.message === 'NO_CHANGE') {
+              this.toastr.warning('Không có thay đổi');
+            }
+            this.toastr.success('Đổi mật khẩu thành công');
+            this.closePopup();
+          },
+          error: (err) => {
+            if (err.error.message === 'NOT_MACTH') {
+              this.invalidPassOld = true;
+            }
+            console.log(err);
+          },
+        });
       }
     } else {
       this.myform.markAllAsTouched();

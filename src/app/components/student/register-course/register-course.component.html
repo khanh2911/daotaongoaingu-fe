@@ -10,9 +10,6 @@
     <mat-icon (click)="onSearch()" matSuffix color="primary">search</mat-icon>
     <mat-icon (click)="refresh()" matSuffix color="warn">refresh</mat-icon>
   </mat-form-field>
-  <button mat-stroked-button color="primary" class="align-right-button">
-    Khóa học của tôi <mat-icon>event_course</mat-icon>
-  </button>
   <mat-table [dataSource]="danhSachKhoaHoc" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="stt">
       <mat-header-cell *matHeaderCellDef>STT</mat-header-cell>

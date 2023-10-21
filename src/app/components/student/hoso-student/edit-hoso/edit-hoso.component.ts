@@ -1,6 +1,6 @@
 import { TaiKhoan } from './../../../../models/TaiKhoan';
 import { StorageService } from './../../../../services/storage.service';
-import { Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TaiKhoanService } from './../../../../services/tai-khoan.service';
@@ -20,7 +20,9 @@ export class EditHosoComponent implements OnInit {
     private TaiKhoanService: TaiKhoanService,
     private storageService: StorageService,
     private toastr: ToastrService,
-    @Inject(MAT_DIALOG_DATA) public data: any
+
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private cdr: ChangeDetectorRef
   ) {
     console.log(this.data);
     this.editForm = this.formBuilder.group({
@@ -31,16 +33,17 @@ export class EditHosoComponent implements OnInit {
       gioiTinh: ['', Validators.required],
       ngaySinh: ['', Validators.required],
       // Các trường riêng cho từng loại tài khoản
-      lop: [''], // HocVien
+      lop: ['', Validators.required], // HocVien
       truongHoc: [''], // HocVien
       soDTNguoiThan: [''], // HocVien
-      kinhNghiem: [''], // GiaoVien
+      trinhDo: [''], // GiaoVien
     });
   }
 
   ngOnInit(): void {
     // Lấy roles từ dữ liệu được truyền vào
     this.roles = this.data.roles;
+     this.cdr.detectChanges();
 
     this.editForm = this.formBuilder.group({
       hoTen: ['', Validators.required],
@@ -53,7 +56,7 @@ export class EditHosoComponent implements OnInit {
       lop: [''], // HocVien
       truongHoc: [''], // HocVien
       soDTNguoiThan: [''], // HocVien
-      kinhNghiem: [''], // GiaoVien
+      trinhDo: [''], // GiaoVien
     });
 
     // Điền dữ liệu người dùng vào form dựa trên roles
@@ -70,7 +73,7 @@ export class EditHosoComponent implements OnInit {
         diaChi: this.data.dataUser.taiKhoan.diaChi,
         gioiTinh: this.data.dataUser.taiKhoan.gioiTinh,
         ngaySinh: this.data.dataUser.taiKhoan.ngaySinh,
-        kinhNghiem: this.data.dataUser.kinhNghiem,
+        trinhDo: this.data.dataUser.trinhDo,
       });
     } else if (roles === 'HocVien') {
       // Điền dữ liệu cho học viên
@@ -86,7 +89,6 @@ export class EditHosoComponent implements OnInit {
         soDTNguoiThan: this.data.dataUser.soDTNguoiThan,
       });
     } else if (roles === 'NhanVien') {
-      // Điền dữ liệu cho nhân viên
       this.editForm.patchValue({
         hoTen: this.data.dataUser.taiKhoan.hoTen,
         email: this.data.dataUser.taiKhoan.email,
@@ -94,6 +96,7 @@ export class EditHosoComponent implements OnInit {
         diaChi: this.data.dataUser.taiKhoan.diaChi,
         gioiTinh: this.data.dataUser.taiKhoan.gioiTinh,
         ngaySinh: this.data.dataUser.taiKhoan.ngaySinh,
+
       });
     } else {
       // Xử lý trường hợp khác nếu cần
@@ -111,7 +114,7 @@ export class EditHosoComponent implements OnInit {
         diaChi: any;
         gioiTinh: any;
         ngaySinh: any;
-        kinhNghiem?: any; // Thêm "?" để cho phép trường này có hoặc không có
+        trinhDo?: any; // Thêm "?" để cho phép trường này có hoặc không có
         lop?: any; // Thêm "?" để cho phép trường này có hoặc không có
         truongHoc?: any; // Thêm "?" để cho phép trường này có hoặc không có
         soDTNguoiThan?: any; // Thêm "?" để cho phép trường này có hoặc không có
@@ -125,8 +128,8 @@ export class EditHosoComponent implements OnInit {
       };
 
       // Thêm các trường riêng cho từng loại tài khoản nếu cần
-      if (this.roles === 'GiaoVien') {
-        updatedHoSo.kinhNghiem = this.editForm.value.kinhNghiem;
+      if (this.roles === 'GiaoVien' ) {
+        updatedHoSo.trinhDo = this.editForm.value.trinhDo;
       } else if (this.roles === 'HocVien') {
         updatedHoSo.lop = this.editForm.value.lop;
         updatedHoSo.truongHoc = this.editForm.value.truongHoc;
@@ -143,10 +146,12 @@ export class EditHosoComponent implements OnInit {
           this.closePopup();
           this.toastr.success('Chỉnh sửa thành công!');
           this.dialogRef.close('acept');
+          this.cdr.detectChanges();
         },
         error: (err) => {
           this.toastr.error(err);
           console.log(err);
+          this.cdr.detectChanges();
         },
       });
     }

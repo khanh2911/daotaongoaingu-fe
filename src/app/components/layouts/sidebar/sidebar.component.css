@@ -2,16 +2,18 @@ mat-list {
   width: 230px;
   margin: 5px 10px;
   border-radius: 10px;
-  
+
 }
 .overflow{
   max-height: auto;
   overflow-y: auto;
+
 }
 mat-list-item {
   padding: 0;
   height: 100%;
   margin-bottom: 0;
+  
 }
 
 mat-list-item a {

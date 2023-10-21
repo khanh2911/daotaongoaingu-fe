@@ -1,5 +1,6 @@
 /* Định dạng hộp chứa bảng */
 .table-box {
+
   padding: 16px;
   box-sizing: border-box;
   border-radius: 8px;
@@ -32,16 +33,6 @@ mat-icon {
   color: #064b8b;
 }
 
-/* Đổi màu của biểu tượng "delete" sang màu đỏ */
-mat-icon.delete {
-  color: red;
-}
-
-/* Đổi màu của biểu tượng "delete" sang màu đỏ khi hover */
-mat-icon.delete:hover {
-  color: red;
-}
-
 /* Hover effect cho biểu tượng tìm kiếm và làm mới */
 mat-icon:hover {
   color: #12135c;
@@ -54,9 +45,8 @@ mat-label {
 }
 
 /* Định dạng dòng tiêu đề của bảng */
-
-.mat-header-cell {
-  color: black;
+.mat-header-row {
+  background-color: #e0e0e0;
 }
 
 /* Định dạng cột STT */
@@ -86,28 +76,23 @@ mat-paginator {
 }
 
 .mat-mdc-table .mdc-data-table__header-row {
-  background-color: #1a1e1f;
+  background-color: #0f8aa8;
   border-radius: 100%;
   color: beige;
 }
 
 .align-right-button {
-  margin: 2px;
-
+  float: right;
+  justify-content: flex-end;
+  /* Đặt nút bên phải */
+  /* Khoảng cách phía dưới */
+  margin-left: auto;
 }
 
-.form-fields {
-  display: flex;
-  justify-content: space-between;
-  /* Để có khoảng cách giữa các items */
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-  /* Cho phép các items chuyển xuống dòng tiếp theo nếu không đủ không gian */
-}
-
-.mat-form-field {
-  flex-basis: calc(25% - 20px);
-  /* Chiếm 25% không gian nhưng trừ đi 20px cho padding/margin */
+.back-icon {
+  float: right;
+  justify-content: flex-end;
+  margin-left: auto;
   margin: 10px;
-  /* Khoảng cách giữa các form field */
+
 }

@@ -10,7 +10,7 @@
     <mat-icon (click)="onSearch()" matSuffix color="search">search</mat-icon>
     <mat-icon (click)="refresh()" matSuffix color="search">refresh</mat-icon>
   </mat-form-field>
-
+<div class="filter">
  <mat-form-field appearance="outline" class="search">
     <mat-label>Chọn chứng chỉ</mat-label>
     <mat-select [(ngModel)]="selectedChungChi" (ngModelChange)="onChungChiChange()">
@@ -18,7 +18,7 @@
         {{ chungChi.tenChungChi }}
       </mat-option>
     </mat-select>
-  </mat-form-field>
+  </mat-form-field></div>
 <!--
   <mat-form-field appearance="outline" class="search">
     <mat-label>Chọn năm</mat-label>
@@ -61,10 +61,18 @@
         {{item.thangThi }}/{{ item.namThi }}
       </mat-cell>
     </ng-container>
+     <ng-container matColumnDef="Chitiet">
+      <mat-header-cell *matHeaderCellDef
+        ></mat-header-cell
+      >
+      <mat-cell *matCellDef="let item">
+        <mat-icon matTooltip="Thông tin chi tiết" (click)="detailKyThi(item)">info</mat-icon>
+      </mat-cell>
+    </ng-container>
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef ></mat-header-cell>
       <mat-cell *matCellDef="let item">
-          <mat-icon (click)="detailKyThi(item)">info</mat-icon>
+
           <button
           [disabled]="
             registrationStatus[item.maKyThi] === 'chuaduyet' ||

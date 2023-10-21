@@ -23,7 +23,7 @@ import { DangKyThiService } from './../../../services/dang-ky-thi.service';
 })
 export class DangKyKyThiComponent implements OnInit {
   danhSachKyThi: MatTableDataSource<KyThi> = new MatTableDataSource();
-  displayedColumns: string[] = ['stt', 'tenKyThi', 'tenChungChi', 'actions'];
+  displayedColumns: string[] = ['stt', 'tenKyThi', 'tenChungChi','Chitiet', 'actions'];
   searchTerm: string = '';
   chungChis: ChungChi[] = [];
   namList: number[] = [];

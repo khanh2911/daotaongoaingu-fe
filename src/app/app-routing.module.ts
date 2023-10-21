@@ -53,6 +53,7 @@ import { LichDayComponent } from './components/lecturer/lich-day/lich-day.compon
 import { DanhSachTaiLieuComponent } from './components/student/my-course/danh-sach-tai-lieu/danh-sach-tai-lieu.component';
 import { QuanLyLopComponent } from './components/lecturer/quan-ly-lop/quan-ly-lop.component';
 import { DanhSachLichThiComponent } from './components/lecturer/danh-sach-lich-thi/danh-sach-lich-thi.component';
+import { HosoStaffComponent } from './components/staff/hoso-staff/hoso-staff.component';
 
 
 const routes: Routes = [
@@ -303,6 +304,8 @@ const routes: Routes = [
       },
     ],
   },
+
+  //nhanvien
   {
     path: 'nhan-vien',
     component: StaffComponent,
@@ -319,6 +322,14 @@ const routes: Routes = [
         data: {
           titulo: 'Trang chủ',
           breadcrumbs: [{ label: 'Trang chủ', url: '/' }],
+        },
+      },
+      {
+        path: 'ho-so',
+        component: HosoStaffComponent,
+        data: {
+          titulo: 'Hồ sơ',
+          breadcrumbs: [{ label: 'Hồ sơ cá nhân', url: '/' }],
         },
       },
       {

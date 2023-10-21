@@ -5,7 +5,12 @@
         ><mat-card-header class="center-title">
           <div class="card-title">Thông tin cá nhân</div>
         </mat-card-header>
-        <button mat-stroked-button color="primary" class="align-right-button" (click)="editHoSo(dataHV)"  >
+        <button
+          mat-stroked-button
+          color="primary"
+          class="align-right-button"
+          (click)="editHoSo(dataHV)"
+        >
           Chỉnh sửa <mat-icon>edit</mat-icon>
         </button>
         <div class="info-columns">
@@ -13,7 +18,7 @@
             <mat-list>
               <mat-list-item>
                 <span class="label">Tên đăng nhập:</span>
-                <span class="field-infor" >{{
+                <span class="field-infor">{{
                   dataHV.taiKhoan.tenDangNhap
                 }}</span>
               </mat-list-item>
@@ -49,21 +54,23 @@
                 <span class="label">Giới Tính:</span>
                 <span class="field-infor">{{ dataHV.taiKhoan.gioiTinh }}</span>
               </mat-list-item>
-              <mat-list-item *ngIf="roles ==='HocVien'">
+              <mat-list-item *ngIf="roles === 'HocVien'">
                 <span class="label">Lớp:</span>
-                <span class="field-infor" >{{ dataHV.lop }}</span>
-              </mat-list-item >
-              <mat-list-item *ngIf="roles ==='HocVien'">
+                <span class="field-infor">{{ dataHV.lop }}</span>
+              </mat-list-item>
+              <mat-list-item *ngIf="roles === 'HocVien'">
                 <span class="label">Trường học:</span>
                 <span class="field-infor">{{ dataHV.truongHoc }}</span>
               </mat-list-item>
-              <mat-list-item *ngIf="roles ==='HocVien'">
+              <mat-list-item *ngIf="roles === 'HocVien'">
                 <span class="label">SĐT người thân:</span>
                 <span class="field-infor">{{ dataHV.soDTNguoiThan }}</span>
               </mat-list-item>
-                <mat-list-item *ngIf="roles ==='GiaoVien'">
-                <span class="label">Kinh nghiệm:</span>
-                <span class="field-infor">{{ dataHV.kinhNghiem }}</span>
+              <mat-list-item
+                *ngIf="roles === 'GiaoVien'"
+              >
+                <span class="label">Trình độ:</span>
+                <span class="field-infor">{{ dataHV.trinhDo }} </span>
               </mat-list-item>
               <!-- Tương tự cho các thông tin khác -->
             </mat-list>

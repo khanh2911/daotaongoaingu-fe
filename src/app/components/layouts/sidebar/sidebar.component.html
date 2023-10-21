@@ -71,13 +71,6 @@
       <mat-icon>home</mat-icon> <span>Trang chủ</span>
     </a>
   </mat-list-item>
-  <mat-list-item>
-    <a (click)="toggleMenu()" routerLinkActive="active-link">
-      <mat-icon>category</mat-icon> <span>Danh mục</span>
-      <mat-icon *ngIf="!showMenu">chevron_right</mat-icon>
-      <mat-icon *ngIf="showMenu">expand_more</mat-icon>
-    </a>
-  </mat-list-item>
 
   <mat-list-item>
     <a routerLink="/hoc-vien/ho-so" routerLinkActive="active-link">
@@ -96,7 +89,7 @@
   </mat-list-item>
   <mat-list-item>
     <a routerLink="/hoc-vien/danh-sach-ky-thi" routerLinkActive="active-link">
-      <mat-icon>local_library</mat-icon> <span>Danh sách kỳ thi</span>
+      <mat-icon>local_library</mat-icon> <span>Đăng ký kỳ thi</span>
     </a>
   </mat-list-item>
   <mat-list-item>
@@ -144,7 +137,11 @@
   <div style="height: 65px; border-bottom: 2px solid #ffffff; text-align: center;">
     <img src="https://api.logo.com/api/v2/images?logo=logo_517f290c-2655-4b5c-b818-a48cbf6c95be&format=webp&margins=0&quality=60&width=500&background=transparent&u=1691841197" alt="" width="100px" >
   </div>
-
+<mat-list-item>
+    <a routerLink="/nhan-vien/ho-so" routerLinkActive="active-link">
+      <mat-icon>person</mat-icon> <span>Hồ sơ</span>
+    </a>
+  </mat-list-item>
 
   <mat-list-item *ngIf="hasVaiTro('QL-KH')">
     <a routerLink="/nhan-vien/khoa-hoc" routerLinkActive="active-link">
