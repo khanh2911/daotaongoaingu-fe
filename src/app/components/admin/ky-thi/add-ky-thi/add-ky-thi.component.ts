@@ -125,7 +125,11 @@ export class AddKyThiComponent implements OnInit {
             }
           },
           error: (err) => {
-            this.toastr.error(err);
+             if (err.status === 400) {
+               // Handle the case where the deletion is not allowed
+               this.toastr.warning('Không thể chỉnh sửa kỳ thi này. ');
+             }
+            console.log(err);
           },
         });
       } else {

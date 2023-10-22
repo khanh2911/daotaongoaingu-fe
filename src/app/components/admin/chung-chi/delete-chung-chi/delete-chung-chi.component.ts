@@ -44,6 +44,10 @@ export class DeleteChungChiComponent {
         }
       },
       error: (err) => {
+         if (err.status === 400) {
+           // Handle the case where the deletion is not allowed
+           this.toastr.warning('Không thể xóa chứng chỉ này.');
+         }
         console.log(err);
       },
     });

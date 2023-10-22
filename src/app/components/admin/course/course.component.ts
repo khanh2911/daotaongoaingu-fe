@@ -26,6 +26,7 @@ export class CourseComponent {
     'tenKhoaHoc',
     'ngayBatDau',
     'ngayKetThuc',
+    'lopHoc',
     'action',
   ];
   length: number = 0;

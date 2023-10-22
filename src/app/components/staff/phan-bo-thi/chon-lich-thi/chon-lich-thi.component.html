@@ -48,10 +48,10 @@
     </ng-container>
     <ng-container matColumnDef="soLuong">
       <mat-header-cell *matHeaderCellDef mat-sort-header
-        >Phòng</mat-header-cell
+        >Số lượng</mat-header-cell
       >
       <mat-cell *matCellDef="let item">
-        {{ item.soLuongDangKy }}/{{ item.phong?.sucChua }}
+        {{ item.soLuongDangKy }}/{{ item.phong?.sucChua??0}}
       </mat-cell>
     </ng-container>
     <ng-container matColumnDef="actions">

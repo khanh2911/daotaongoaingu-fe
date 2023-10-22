@@ -18,7 +18,7 @@
   >
     Thêm mới <mat-icon>add_circle </mat-icon>
   </button>
-   
+
 
   <mat-table [dataSource]="danhSachKhoaHoc" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="stt">
@@ -48,6 +48,16 @@
         {{ KhoaHoc.ngayKetThuc | date : " dd/MM/yyyy" }}
       </mat-cell>
     </ng-container>
+      <ng-container matColumnDef="lopHoc">
+      <mat-header-cell *matHeaderCellDef
+        ></mat-header-cell
+      >
+      <mat-cell *matCellDef="let KhoaHoc">
+ <mat-icon  matTooltip="Quản lý lớp học" (click)="layDanhSachLopHoc(KhoaHoc)"
+        >list</mat-icon
+      >
+      </mat-cell>
+    </ng-container>
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let KhoaHoc">
@@ -60,9 +70,7 @@
         >
 
 
-        <mat-icon  matTooltip="Quản lý lớp học" (click)="layDanhSachLopHoc(KhoaHoc)"
-        >list</mat-icon
-      >
+
       </mat-cell>
     </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

@@ -90,7 +90,7 @@ export class ChonLichThiComponent implements OnInit {
         next: (data) => {
           if(data.message && data.message === 'phongnull'){
             this.toastr.warning('Chưa sắp phòng học cho lịch thi!');
-          } if(data.message && data.message === 'full'){
+          } else if(data.message && data.message === 'full'){
             this.toastr.warning('Phòng thi đầy!');
           }
           else{

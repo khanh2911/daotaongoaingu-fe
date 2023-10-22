@@ -60,6 +60,10 @@ export class DeleteScheduleComponent {
         }
       },
       error: (err) => {
+         if (err.status === 400) {
+           // Handle the case where the deletion is not allowed
+           this.toastr.warning('Không thể xóa lịch học này.');
+         }
         console.log(err);
       },
     });

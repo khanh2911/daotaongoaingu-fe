@@ -43,6 +43,10 @@ export class DeleteClassroomComponent {
         }
       },
       error: (err) => {
+         if (err.status === 400) {
+           // Handle the case where the deletion is not allowed
+           this.toastr.warning('Không thể xóa phòng này.');
+         }
         console.log(err);
       },
     });

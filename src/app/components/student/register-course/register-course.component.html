@@ -44,7 +44,8 @@
         <button
           [disabled]="
             registrationStatus[khoaHoc.maKhoaHoc] === 'chuadong' ||
-            registrationStatus[khoaHoc.maKhoaHoc] === 'dadong'
+            registrationStatus[khoaHoc.maKhoaHoc] === 'dadong' ||
+              registrationStatus[khoaHoc.maKhoaHoc] === 'daphanlop'
           "
           mat-raised-button
           color="primary"
@@ -55,6 +56,8 @@
               ? "Đã đăng ký"
               : registrationStatus[khoaHoc.maKhoaHoc] === "dadong"
               ? "Đã duyệt"
+               : registrationStatus[khoaHoc.maKhoaHoc] === "daphanlop"
+              ? "Đã phân lớp"
               : "Đăng ký"
 
           }}

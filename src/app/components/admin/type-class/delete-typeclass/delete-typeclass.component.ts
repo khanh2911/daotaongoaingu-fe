@@ -84,6 +84,10 @@ export class DeleteTypeclassComponent {
         }
       },
       error: (err) => {
+         if (err.status === 400) {
+           // Handle the case where the deletion is not allowed
+           this.toastr.warning('Không thể xóa loại lớp này.');
+         }
         console.log(err);
       },
     });

@@ -30,6 +30,7 @@ export class ListGiaoVienComponent {
     'taiKhoan.hoTen',
     'taiKhoan.soDienThoai',
     'taiKhoan.gioiTinh',
+    'detail',
     'actions',
   ];
   searchTerm: string = '';

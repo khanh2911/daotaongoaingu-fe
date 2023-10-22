@@ -47,7 +47,7 @@ export class DanhSachHocVienComponent implements OnInit {
     private ketQuaThiService: KetQuaThiService,
     private activateRoute: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {}
   ngOnInit(): void {
     this.loadDL();
   }
@@ -142,30 +142,33 @@ export class DanhSachHocVienComponent implements OnInit {
       .layTheoKyThiLTHV(this.maKyThi, this.maLichThi, item.maTaiKhoan)
       .subscribe({
         next: (data) => {
-          //áp dụng từ dây
-          this.ketQuaThiService
-            .layKetQuaThiTheoMaDangKy(data.maDangKyThi)
-            .subscribe({
-              next: (data1) => {
-                console.log(data1);
-                if (data1 !== null) {
-                  this.toastr.warning('Đã có kết quả thi')
-                } else {
-                  var popup = this.dialog.open(NhapDiemHocVienComponent, {
-                    data: {
-                      item: data,
-                    },
-                    width: '40%',
-                    enterAnimationDuration: '300ms',
-                    exitAnimationDuration: '300ms',
-                  });
-                }
+          if (data.trangThaiDangKyThi !== 'Da_Sap_Lich') {
+            this.toastr.warning('Không thể lên điểm');
+          } else {
+            //áp dụng từ dây
 
-              },
-              error: (err) => {
-                console.log(err);
-              },
-            });
+            this.ketQuaThiService
+              .layKetQuaThiTheoMaDangKy(data.maDangKyThi)
+              .subscribe({
+                next: (data1) => {
+                  if (data1 !== null) {
+                    this.toastr.warning('Đã có kết quả thi');
+                  } else {
+                    var popup = this.dialog.open(NhapDiemHocVienComponent, {
+                      data: {
+                        item: data,
+                      },
+                      width: '40%',
+                      enterAnimationDuration: '300ms',
+                      exitAnimationDuration: '300ms',
+                    });
+                  }
+                },
+                error: (err) => {
+                  console.log(err);
+                },
+              });
+          }
         },
         error: (err) => {
           console.log(err);
@@ -203,6 +206,6 @@ export class DanhSachHocVienComponent implements OnInit {
       });
   }
   return() {
-      this.router.navigate([`/giao-vien/quan-ly-len-diem`]);
-    }
+    this.router.navigate([`/giao-vien/quan-ly-len-diem`]);
+  }
 }

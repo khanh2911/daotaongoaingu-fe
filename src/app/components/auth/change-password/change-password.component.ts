@@ -6,7 +6,6 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 import { StorageService } from 'src/app/services/storage.service';
 
-
 @Component({
   selector: 'app-changepass',
   templateUrl: './change-password.component.html',
@@ -71,12 +70,13 @@ export class ChangePasswordComponent implements OnInit {
           next: (data) => {
             if (data.message === 'NO_CHANGE') {
               this.toastr.warning('Không có thay đổi');
+            } else {
+              this.toastr.success('Đổi mật khẩu thành công');
+              this.closePopup();
             }
-            this.toastr.success('Đổi mật khẩu thành công');
-            this.closePopup();
           },
           error: (err) => {
-            if (err.error.message === 'NOT_MACTH') {
+            if (err.error.message === 'NOT_MATCH') {
               this.invalidPassOld = true;
             }
             console.log(err);

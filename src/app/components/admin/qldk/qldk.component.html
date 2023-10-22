@@ -10,9 +10,6 @@
     <mat-icon (click)="onSearch()" matSuffix color="primary">search</mat-icon>
     <mat-icon (click)="refresh()" matSuffix color="warn">refresh</mat-icon>
   </mat-form-field>
-  <button mat-stroked-button color="primary" class="align-right-button" (click)="listHVHP()" >
- Danh sách HP <mat-icon >list</mat-icon>
-</button>
   <mat-table [dataSource]="danhSachDKKhoaHoc" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="stt">
       <mat-header-cell *matHeaderCellDef>STT</mat-header-cell>
