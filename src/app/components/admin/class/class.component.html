@@ -79,12 +79,25 @@
           >
         </mat-cell>
       </ng-container>
-       <ng-container matColumnDef="danhSach">
-        <mat-header-cell *matHeaderCellDef mat-sort-header
-          >Số lượng</mat-header-cell
-        >
+      <ng-container matColumnDef="danhSach">
+        <mat-header-cell *matHeaderCellDef >Học viên</mat-header-cell>
         <mat-cell *matCellDef="let LopHoc">
-          {{ LopHoc.soLuongHocVien }}/{{ LopHoc.soLuong }}
+          <mat-icon
+            matTooltip="Danh sách học viên"
+            (click)="listHv(LopHoc.maLop)"
+            >people</mat-icon
+          >
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="chon">
+        <mat-header-cell *matHeaderCellDef ></mat-header-cell>
+        <mat-cell *matCellDef="let LopHoc">
+           <mat-icon
+            matTooltip="Chọn lớp cho học viên"
+            *ngIf="data?.isThem"
+            (click)="chon(LopHoc.maLop)"
+            >check_circle</mat-icon
+          >
         </mat-cell>
       </ng-container>
       <ng-container matColumnDef="actions">
@@ -99,17 +112,8 @@
             (click)="modeleteclass(LopHoc.maLop)"
             >delete</mat-icon
           >
-          <mat-icon
-            matTooltip="Danh sách học viên"
-            (click)="listHv(LopHoc.maLop)"
-            >people</mat-icon
-          >
-          <mat-icon
-            matTooltip="Chuyển lớp"
-            *ngIf="data?.isThem"
-            (click)="chon(LopHoc.maLop)"
-            >check_circle</mat-icon
-          >
+
+
         </mat-cell>
       </ng-container>
 

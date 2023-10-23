@@ -57,7 +57,7 @@
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let item">
-        <mat-icon *ngIf="trangThai !== 2" (click)="chonLich(item.maLichThi)">check_circle </mat-icon>
+        <button mat-stroked-button color="primary" matTooltip="Chọn" *ngIf="trangThai !== 2" (click)="chonLich(item.maLichThi)">Chọn</button>
       </mat-cell>
     </ng-container>
 

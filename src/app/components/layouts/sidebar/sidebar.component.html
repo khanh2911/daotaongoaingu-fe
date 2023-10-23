@@ -1,70 +1,104 @@
-
-<mat-list *ngIf="roles==='QuanTriVien'" >
-  <div style="height: 65px; border-bottom: 2px solid #ffffff; text-align: center;">
-    <img src="https://api.logo.com/api/v2/images?logo=logo_517f290c-2655-4b5c-b818-a48cbf6c95be&format=webp&margins=0&quality=60&width=500&background=transparent&u=1691841197" alt="" width="100px" >
+<mat-list *ngIf="roles === 'QuanTriVien'">
+  <div
+    style="height: 65px; border-bottom: 2px solid #ffffff; text-align: center"
+  >
+    <img
+      src="https://api.logo.com/api/v2/images?logo=logo_517f290c-2655-4b5c-b818-a48cbf6c95be&format=webp&margins=0&quality=60&width=500&background=transparent&u=1691841197"
+      alt=""
+      width="100px"
+    />
   </div>
   <div class="overflow">
-  <mat-list-item  >
-    <a routerLink="/quan-tri-vien/trang-chu" routerLinkActive="active-link">
-      <mat-icon>home</mat-icon> <span>Trang chủ</span>
-    </a>
-  </mat-list-item>
-  <mat-list-item >
-    <a (click)="toggleMenu()" routerLinkActive="active-link">
-      <mat-icon>person_add </mat-icon> <span> Quản lý Tài khoản</span>
-      <mat-icon *ngIf="!showMenu">chevron_right</mat-icon>
-      <mat-icon *ngIf="showMenu">expand_more</mat-icon>
-    </a>
-  </mat-list-item >
-  <mat-nav-list class="sidenav-submenu" *ngIf="showMenu" >
-    <a mat-list-item routerLink="/quan-tri-vien/danh-sach-giao-vien" routerLinkActive="active-link">
-      <span>Giáo viên</span>
-    </a>
-     <a mat-list-item routerLink="/quan-tri-vien/danh-sach-nhan-vien" routerLinkActive="active-link">
-      <span>Nhân viên</span>
-    </a>
-    <a mat-list-item routerLink="/quan-tri-vien/danh-sach-hoc-vien" routerLinkActive="active-link">
-      <span>Học viên</span>
-    </a>
-  </mat-nav-list>
-   <mat-list-item>
-    <a routerLink="/quan-tri-vien/danh-sach-vai-tro" routerLinkActive="active-link">
-      <mat-icon>assignment add</mat-icon> <span>Quản lý vai trò</span>
-    </a>
-  </mat-list-item>
-  <mat-list-item >
-    <a routerLink="/quan-tri-vien/loai-lop" routerLinkActive="active-link">
-      <mat-icon>local_library</mat-icon> <span>Quản lý loại lớp</span>
-    </a>
-  </mat-list-item>
-   <mat-list-item >
-    <a routerLink="/quan-tri-vien/lich-hoc" routerLinkActive="active-link">
-      <mat-icon>date_range</mat-icon> <span>Quản lý lịch học</span>
-    </a>
-  </mat-list-item >
+    <mat-list-item>
+      <a routerLink="/quan-tri-vien/trang-chu" routerLinkActive="active-link">
+        <mat-icon>home</mat-icon> <span>Trang chủ</span>
+      </a>
+    </mat-list-item>
+    <mat-list-item>
+      <a (click)="toggleMenu()" routerLinkActive="active-link">
+        <mat-icon>person_add </mat-icon> <span> Quản lý Tài khoản</span>
+        <mat-icon *ngIf="!showMenu">chevron_right</mat-icon>
+        <mat-icon *ngIf="showMenu">expand_more</mat-icon>
+      </a>
+    </mat-list-item>
+    <mat-nav-list class="sidenav-submenu" *ngIf="showMenu">
+      <a
+        mat-list-item
+        routerLink="/quan-tri-vien/danh-sach-giao-vien"
+        routerLinkActive="active-link"
+      >
+        <span>Giáo viên</span>
+      </a>
+      <a
+        mat-list-item
+        routerLink="/quan-tri-vien/danh-sach-nhan-vien"
+        routerLinkActive="active-link"
+      >
+        <span>Nhân viên</span>
+      </a>
+      <a
+        mat-list-item
+        routerLink="/quan-tri-vien/danh-sach-hoc-vien"
+        routerLinkActive="active-link"
+      >
+        <span>Học viên</span>
+      </a>
+    </mat-nav-list>
+    <mat-list-item>
+      <a
+        routerLink="/quan-tri-vien/danh-sach-vai-tro"
+        routerLinkActive="active-link"
+      >
+        <mat-icon>assignment add</mat-icon> <span>Quản lý vai trò</span>
+      </a>
+    </mat-list-item>
+    <mat-list-item>
+      <a routerLink="/quan-tri-vien/loai-lop" routerLinkActive="active-link">
+        <mat-icon>local_library</mat-icon> <span>Quản lý loại lớp</span>
+      </a>
+    </mat-list-item>
+    <mat-list-item>
+      <a routerLink="/quan-tri-vien/lich-hoc" routerLinkActive="active-link">
+        <mat-icon>date_range</mat-icon> <span>Quản lý lịch học</span>
+      </a>
+    </mat-list-item>
 
-  <mat-list-item>
-    <a routerLink="/quan-tri-vien/quan-ly-phong-hoc" routerLinkActive="active-link">
-      <mat-icon>classroom</mat-icon> <span>Quản lý phòng học</span>
-    </a>
-  </mat-list-item>
-  <mat-list-item>
-    <a routerLink="/quan-tri-vien/quan-ly-chung-chi" routerLinkActive="active-link">
-      <mat-icon>text_format</mat-icon> <span>Quản lý chứng chỉ</span>
-    </a>
-  </mat-list-item>
-  <mat-list-item>
-    <a routerLink="/quan-tri-vien/quan-ly-bac-chung-chi" routerLinkActive="active-link">
-      <mat-icon>text_format</mat-icon> <span>Quản lý bậc chứng chỉ</span>
-    </a>
-  </mat-list-item>
-
-</div>
+    <mat-list-item>
+      <a
+        routerLink="/quan-tri-vien/quan-ly-phong-hoc"
+        routerLinkActive="active-link"
+      >
+        <mat-icon>classroom</mat-icon> <span>Quản lý phòng học</span>
+      </a>
+    </mat-list-item>
+    <mat-list-item>
+      <a
+        routerLink="/quan-tri-vien/quan-ly-chung-chi"
+        routerLinkActive="active-link"
+      >
+        <mat-icon>text_format</mat-icon> <span>Quản lý chứng chỉ</span>
+      </a>
+    </mat-list-item>
+    <mat-list-item>
+      <a
+        routerLink="/quan-tri-vien/quan-ly-bac-chung-chi"
+        routerLinkActive="active-link"
+      >
+        <mat-icon>text_format</mat-icon> <span>Quản lý bậc chứng chỉ</span>
+      </a>
+    </mat-list-item>
+  </div>
 </mat-list>
 
-<mat-list *ngIf= "roles ==='HocVien'">
-  <div style="height: 65px; border-bottom: 2px solid #ffffff; text-align: center;">
-    <img src="https://api.logo.com/api/v2/images?logo=logo_517f290c-2655-4b5c-b818-a48cbf6c95be&format=webp&margins=0&quality=60&width=500&background=transparent&u=1691841197" alt="" width="100px" >
+<mat-list *ngIf="roles === 'HocVien'">
+  <div
+    style="height: 65px; border-bottom: 2px solid #ffffff; text-align: center"
+  >
+    <img
+      src="https://api.logo.com/api/v2/images?logo=logo_517f290c-2655-4b5c-b818-a48cbf6c95be&format=webp&margins=0&quality=60&width=500&background=transparent&u=1691841197"
+      alt=""
+      width="100px"
+    />
   </div>
   <mat-list-item>
     <a routerLink="/hoc-vien/trang-chu" routerLinkActive="active-link">
@@ -99,26 +133,24 @@
   </mat-list-item>
 </mat-list>
 
-
-
-<mat-list *ngIf= "roles ==='GiaoVien'">
-  <div style="height: 65px; border-bottom: 2px solid #ffffff; text-align: center;">
-    <img src="https://api.logo.com/api/v2/images?logo=logo_517f290c-2655-4b5c-b818-a48cbf6c95be&format=webp&margins=0&quality=60&width=500&background=transparent&u=1691841197" alt="" width="100px" >
+<mat-list *ngIf="roles === 'GiaoVien'">
+  <div
+    style="height: 65px; border-bottom: 2px solid #ffffff; text-align: center"
+  >
+    <img
+      src="https://api.logo.com/api/v2/images?logo=logo_517f290c-2655-4b5c-b818-a48cbf6c95be&format=webp&margins=0&quality=60&width=500&background=transparent&u=1691841197"
+      alt=""
+      width="100px"
+    />
   </div>
   <mat-list-item>
     <a routerLink="/giao-vien/trang-chu" routerLinkActive="active-link">
       <mat-icon>home</mat-icon> <span>Trang chủ</span>
     </a>
   </mat-list-item>
-   <mat-list-item>
+  <mat-list-item>
     <a routerLink="/giao-vien/ho-so" routerLinkActive="active-link">
       <mat-icon>person</mat-icon> <span>Hồ sơ</span>
-    </a>
-  </mat-list-item>
-
-  <mat-list-item>
-    <a routerLink="/giao-vien/danh-sach-lich-gac-thi" routerLinkActive="active-link">
-      <mat-icon>local_library</mat-icon> <span>Lịch gác thi</span>
     </a>
   </mat-list-item>
   <mat-list-item>
@@ -127,17 +159,32 @@
     </a>
   </mat-list-item>
   <mat-list-item>
+    <a
+      routerLink="/giao-vien/danh-sach-lich-gac-thi"
+      routerLinkActive="active-link"
+    >
+      <mat-icon>local_library</mat-icon> <span>Lịch gác thi</span>
+    </a>
+  </mat-list-item>
+
+  <mat-list-item>
     <a routerLink="/giao-vien/quan-ly-len-diem" routerLinkActive="active-link">
       <mat-icon>star</mat-icon> <span>Nhập điểm</span>
     </a>
   </mat-list-item>
 </mat-list>
 
-<mat-list *ngIf= "roles ==='NhanVien'">
-  <div style="height: 65px; border-bottom: 2px solid #ffffff; text-align: center;">
-    <img src="https://api.logo.com/api/v2/images?logo=logo_517f290c-2655-4b5c-b818-a48cbf6c95be&format=webp&margins=0&quality=60&width=500&background=transparent&u=1691841197" alt="" width="100px" >
+<mat-list *ngIf="roles === 'NhanVien'">
+  <div
+    style="height: 65px; border-bottom: 2px solid #ffffff; text-align: center"
+  >
+    <img
+      src="https://api.logo.com/api/v2/images?logo=logo_517f290c-2655-4b5c-b818-a48cbf6c95be&format=webp&margins=0&quality=60&width=500&background=transparent&u=1691841197"
+      alt=""
+      width="100px"
+    />
   </div>
-<mat-list-item>
+  <mat-list-item>
     <a routerLink="/nhan-vien/ho-so" routerLinkActive="active-link">
       <mat-icon>person</mat-icon> <span>Hồ sơ</span>
     </a>
@@ -149,11 +196,14 @@
     </a>
   </mat-list-item>
   <mat-list-item *ngIf="hasVaiTro('QL-DKKH')">
-    <a routerLink="/nhan-vien/quan-ly-dang-ky-khoa-hoc" routerLinkActive="active-link">
+    <a
+      routerLink="/nhan-vien/quan-ly-dang-ky-khoa-hoc"
+      routerLinkActive="active-link"
+    >
       <mat-icon>how_to_reg</mat-icon> <span>Quản lý đăng ký khóa học</span>
     </a>
   </mat-list-item>
-  <mat-list-item  *ngIf="hasVaiTro('QL-DKKH')">
+  <mat-list-item *ngIf="hasVaiTro('QL-DKKH')">
     <a routerLink="/nhan-vien/phan-cong-lop-hoc" routerLinkActive="active-link">
       <mat-icon>home</mat-icon> <span>Phân lớp học</span>
     </a>
@@ -164,12 +214,15 @@
     </a>
   </mat-list-item>
   <mat-list-item *ngIf="hasVaiTro('QL-DKT')">
-    <a routerLink="/nhan-vien/quan-ly-dang-ky-thi" routerLinkActive="active-link">
+    <a
+      routerLink="/nhan-vien/quan-ly-dang-ky-thi"
+      routerLinkActive="active-link"
+    >
       <mat-icon>event_course</mat-icon> <span>Quản lý đăng ký thi</span>
     </a>
   </mat-list-item>
 
-  <mat-list-item  *ngIf="hasVaiTro('QL-DKT')">
+  <mat-list-item *ngIf="hasVaiTro('QL-DKT')">
     <a routerLink="/nhan-vien/phan-bo-thi" routerLinkActive="active-link">
       <mat-icon>home</mat-icon> <span>Phân bổ thi</span>
     </a>

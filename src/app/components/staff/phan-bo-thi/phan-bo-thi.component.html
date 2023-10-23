@@ -50,16 +50,22 @@
         DangKyKH.ngayDangKy | date : "dd/MM/yyyy"
       }} </mat-cell>
     </ng-container>
+    <ng-container matColumnDef="detail">
+      <mat-header-cell *matHeaderCellDef
+        ></mat-header-cell
+      >
+      <mat-cell *matCellDef="let DangKyThi"><mat-icon matTooltip="Chi tiết" (click)="chiTietLich(DangKyThi)">info</mat-icon> </mat-cell>
+    </ng-container>
 
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let DangKyThi">
-        <mat-icon (click)="chiTietLich(DangKyThi)">info</mat-icon>
-        <mat-icon *ngIf="DangKyThi.trangThaiDangKyThi === 'Da_Duyet'"
-       color="primary" (click)="chonLich(DangKyThi, 0)">check_circle</mat-icon>
-        <mat-icon *ngIf="DangKyThi.trangThaiDangKyThi ==='Da_Sap_Lich'"
-        color="primary" (click)="chonLich(DangKyThi,1)">refresh</mat-icon>
-       
+
+        <button mat-stroked-button color="primary" matTooltip="Chọn lịch"  *ngIf="DangKyThi.trangThaiDangKyThi === 'Da_Duyet'"
+       color="primary" (click)="chonLich(DangKyThi, 0)">Chọn lịch</button>
+        <button mat-stroked-button color="primary" matTooltip="Đổi lịch" *ngIf="DangKyThi.trangThaiDangKyThi ==='Da_Sap_Lich'"
+        color="primary" (click)="chonLich(DangKyThi,1)">Đổi lịch</button>
+
 
       </mat-cell>
     </ng-container>

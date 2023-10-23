@@ -10,8 +10,6 @@
     <mat-icon (click)="onSearch()" matSuffix color="search">search</mat-icon>
     <mat-icon (click)="refresh()" matSuffix color="search">refresh</mat-icon>
   </mat-form-field>
-
-  <mat-icon (click)="return()" class="back-icon">arrow_back</mat-icon>
   <mat-table [dataSource]="danhSachGiaoVien" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="STT">
       <mat-header-cell *matHeaderCellDef>STT</mat-header-cell>

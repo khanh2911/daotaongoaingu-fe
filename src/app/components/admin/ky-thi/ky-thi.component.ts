@@ -25,7 +25,8 @@ export class KyThiComponent {
   displayedColumns: string[] = [
     'stt',
     'tenKyThi',
-    'tenChungChi',
+    'thoiGian',
+    'lichThi',
     'actions',
   ];
   searchTerm: string = '';

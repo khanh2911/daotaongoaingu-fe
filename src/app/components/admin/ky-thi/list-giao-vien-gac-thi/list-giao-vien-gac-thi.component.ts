@@ -32,6 +32,7 @@ export class ListGiaoVienGacThiComponent {
     'taiKhoan.hoTen',
     'taiKhoan.soDienThoai',
     'taiKhoan.gioiTinh',
+    'detail',
     'actions',
   ];
   searchTerm: string = '';
@@ -236,4 +237,5 @@ export class ListGiaoVienGacThiComponent {
     ]);
   }
 }
+
 

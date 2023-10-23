@@ -30,6 +30,8 @@ export class ClassComponent {
     'soLuong',
     'lichHoc',
     'giaoVien',
+    'danhSach',
+    'chon',
     'actions',
   ];
   length: number = 0;

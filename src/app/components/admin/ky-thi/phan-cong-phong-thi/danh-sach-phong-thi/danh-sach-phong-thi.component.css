@@ -1,41 +1,94 @@
-/* CSS cho tiêu đề của dialog */
-h1.mat-dialog-title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 16px;
-}
+/* Định dạng hộp chứa bảng */
+.table {
 
-/* CSS cho đường kẻ ngang phía dưới tiêu đề */
-h1.mat-dialog-title hr {
-  border: none;
-  border-top: 2px solid #007bff; /* Màu sắc có thể thay đổi */
-  width: 100%;
-  margin-top: 8px;
-}
-
-/* CSS cho bảng dữ liệu */
-.mat-elevation-z2 {
   padding: 16px;
-  background-color: #fff; /* Màu nền */
+  box-sizing: border-box;
   border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng đổ */
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+
 }
 
-/* CSS cho thông báo không có dữ liệu */
-.no-data-warning {
-  text-align: center;
-  color: #777; /* Màu chữ */
-  padding: 16px;
+mat-card {
+  max-height: 300px;
+  overflow-y: auto;
 }
 
-/* CSS cho nút đóng */
-.mat-dialog-actions button {
+/* Định dạng biểu tượng tìm kiếm và làm mới */
+mat-icon {
+  cursor: pointer;
+  font-size: 24px;
+  color: #666;
+}
+
+/* Hover effect cho biểu tượng tìm kiếm và làm mới */
+mat-icon:hover {
+  color: #333;
+}
+
+/* Định dạng tiêu đề bảng */
+mat-label {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Định dạng dòng tiêu đề của bảng */
+
+mat-header-cell {
+  color: black;
+}
+
+/* Định dạng cột STT */
+
+
+/* Định dạng dòng dữ liệu của bảng */
+mat-row {
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Hiệu ứng hover cho dòng dữ liệu */
+mat-row:hover {
+  background-color: #fafafa;
+}
+
+/* Định dạng phân trang */
+mat-paginator {
+  justify-content: center;
   margin-top: 16px;
 }
-/* styles.css hoặc styles.scss (tùy theo loại file styles của bạn) */
-.mat-elevation-z8 {
-  max-height: 300px;
-  /* Điều chỉnh chiều cao tối đa bạn muốn cho phần chứa nội dung */
-  overflow-y: auto;
-  /* Tạo thanh trượt dọc khi nội dung vượt quá chiều cao tối đa */
+
+/* Định dạng nút first và last của phân trang */
+.mat-paginator .mat-paginator-range-actions .mat-paginator-navigation-icon {
+  font-size: 24px;
+}
+
+.mat-mdc-table .mdc-data-table__header-row {
+  background-color: #0897bb;
+  border-radius: 100%;
+  color: beige;
+}
+
+mat-card {
+  margin: 20px;
+}
+
+button {
+  margin: 8px;
+}
+
+
+button[type="submit"] {
+  font-weight: bold;
+  margin-left: 200px;
+  margin-top: 10px;
+  /* Blue color */
+
+}
+
+mat-dialog-title hr {
+  border-top: 1px solid #080808;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  justify-content: center;
 }

@@ -25,6 +25,7 @@ export class PhanCongPhongThiComponent implements OnInit {
     'soLuong',
     'giaoVienGT',
     'giaoVienLD',
+    'dsHocVien',
     'actions',
   ];
   searchTerm: string = '';

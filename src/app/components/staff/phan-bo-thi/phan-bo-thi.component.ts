@@ -29,6 +29,7 @@ export class PhanBoThiComponent implements OnInit{
     'tenHocVien',
     'trangThai',
     'ngayDangKy',
+    'detail',
     'action',
   ];
   searchTerm: string = '';
@@ -82,7 +83,7 @@ export class PhanBoThiComponent implements OnInit{
     this.loadDanhSachDKKyThi();
   }
   chonLich(item: any, trangThai:number) {
-    
+
     this.router.navigate([`/nhan-vien/phan-bo-thi/${item.maDangKyThi}/chon-lich-thi/${item.kyThi.maKyThi}/${trangThai}`]);
   }
   chiTietLich(item:any){
