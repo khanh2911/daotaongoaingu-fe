@@ -76,7 +76,10 @@
           <button
           [disabled]="
             registrationStatus[item.maKyThi] === 'chuaduyet' ||
-            registrationStatus[item.maKyThi] === 'daduyet'
+            registrationStatus[item.maKyThi] === 'daduyet' ||
+            registrationStatus[item.maKyThi] === 'dasaplich' ||
+              registrationStatus[item.maKyThi] === 'dalendiem'
+
           "
           mat-raised-button
           color="primary"
@@ -87,7 +90,14 @@
               ? "Đã đăng ký"
               : registrationStatus[item.maKyThi] === "daduyet"
               ? "Đã duyệt"
+             
+              : registrationStatus[item.maKyThi] === "dasaplich"
+              ? "Đã sắp lịch"
+
+              : registrationStatus[item.maKyThi] === "dalendiem"
+              ? "Đã lên điểm"
               : "Đăng ký"
+
 
           }}
         </button>

@@ -136,6 +136,7 @@ export class AddKyThiComponent implements OnInit {
         // Trong chế độ thêm mới, gọi phương thức thêm kỳ thi
         this.kyThiService.themKyThi(formData).subscribe({
           next: (data) => {
+            console.log(data);
             if (data.message && data.message === 'exist') {
               this.toastr.warning('Kỳ thi đã tồn tại trong tháng này!');
             } else {
