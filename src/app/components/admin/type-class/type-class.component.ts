@@ -11,6 +11,7 @@ import { TaiKhoanService } from 'src/app/services/tai-khoan.service';
 import { AddTypeclassComponent } from './add-typeclass/add-typeclass.component';
 import { EditTypeclassComponent } from './edit-typeclass/edit-typeclass.component';
 import { DeleteTypeclassComponent } from './delete-typeclass/delete-typeclass.component';
+import { TaiLieuService } from 'src/app/services/tai-lieu.service';
 
 @Component({
   selector: 'app-type-class',
@@ -22,8 +23,8 @@ export class TypeClassComponent implements OnInit {
   displayedColumns: string[] = [
     'stt',
     'tenLoaiLop',
-    'deCuong',
     'hocPhi',
+    'deCuong',
     'actions',
   ];
   length: number = 0;
@@ -34,7 +35,8 @@ export class TypeClassComponent implements OnInit {
   constructor(
     private loaiLopService: LoaiLopService,
     private toastr: ToastrService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private taiLieuService: TaiLieuService
   ) {}
 
   ngOnInit() {
@@ -88,20 +90,6 @@ export class TypeClassComponent implements OnInit {
     });
   }
 
-  // deleteTypeclass(maLoaiLop: number): void {
-  //   const confirmDelete = confirm('Bạn có chắc chắn muốn xóa loại lớp này?');
-  //   if (confirmDelete) {
-  //     this.loaiLopService.xoaLoaiLop(maLoaiLop).subscribe((response) => {
-  //       if (response) {
-  //         this.loadDL();
-  //         this.toastr.success('Xóa loại lớp thành công', 'Thành công');
-  //       } else {
-  //         // Xử lý lỗi nếu cần
-  //         this.toastr.error('Xóa loại lớp không thành công', 'Lỗi');
-  //       }
-  //     });
-  //   }
-  // }
   modeleteTypeclass(maLoaiLop: number): void {
     const dialogRef = this.dialog.open(DeleteTypeclassComponent, {
       width: '350px',
@@ -115,6 +103,38 @@ export class TypeClassComponent implements OnInit {
         // Handle any further actions if needed after deletion
       }
       this.loadDL();
+    });
+  }
+
+  taiFile(ma: any) {
+    this.loaiLopService.downloadDeCuong(ma).subscribe({
+      next: (response) => {
+        const blob = new Blob([response.body as Blob], {
+          type: 'application/octet-stream',
+        });
+        // Extract filename from the Content-Disposition header
+        const contentDisposition = response.headers.get('content-disposition');
+        let filename = 'default-filename.ext'; // default filename if not provided
+        if (contentDisposition) {
+          const matches = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/.exec(
+            contentDisposition
+          );
+          if (matches != null && matches[1]) {
+            filename = matches[1].replace(/['"]/g, '');
+          }
+        }
+        const a = document.createElement('a');
+        const objectUrl = URL.createObjectURL(blob);
+        a.href = objectUrl;
+        a.download = filename;
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      },
+      error: (err) => {
+        this.toastr.error('Tải thất bại');
+      },
     });
   }
 }

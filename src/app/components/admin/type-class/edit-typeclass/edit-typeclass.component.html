@@ -5,16 +5,18 @@
       <input matInput placeholder="Tên loại lớp" formControlName="tenLoaiLop" required />
     </mat-form-field>
     <mat-form-field appearance="outline" class="full-width">
-      <textarea matInput placeholder="Đề cương" formControlName="deCuong" required></textarea>
-    </mat-form-field>
-    <mat-form-field appearance="outline" class="full-width">
       <input matInput placeholder="Học phí" formControlName="hocPhi" required />
+    </mat-form-field>
+    <mat-form-field  >
+      <input matInput placeholder="Đề cương"  />
+      <input type="file" (change)="onFileSelect($event)" required/>
     </mat-form-field>
   </form>
 </div>
 <div mat-dialog-actions>
-  <button mat-stroked-button  color="warn" type="submit" (click)="onCancel()">Hủy</button>
-  <button mat-raised-button color="primary"type="submit"  [disabled]="!editForm.valid" (click)="onSubmit()">
+  <button mat-stroked-button style="margin-left: 200px;margin-bottom: 8px;"  mat-stroked-button color="warn" color="warn" type="submit"(click)="onCancel()">Hủy</button>
+  <button  style="margin-right: 200px;margin-bottom: 8px;"  mat-stroked-button color="warn"  mat-stroked-button color="warn"  mat-stroked-button color="warn"color="primary"type="submit"  [disabled]="!editForm.valid" (click)="onSubmit()">
+
     Lưu
   </button>
 </div>
