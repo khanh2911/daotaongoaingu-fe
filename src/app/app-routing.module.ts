@@ -54,6 +54,7 @@ import { DanhSachTaiLieuComponent } from './components/student/my-course/danh-sa
 import { QuanLyLopComponent } from './components/lecturer/quan-ly-lop/quan-ly-lop.component';
 import { DanhSachLichThiComponent } from './components/lecturer/danh-sach-lich-thi/danh-sach-lich-thi.component';
 import { HosoStaffComponent } from './components/staff/hoso-staff/hoso-staff.component';
+import { ListGiaoVienRaDeComponent } from './components/admin/ky-thi/list-giao-vien-ra-de/list-giao-vien-ra-de.component';
 
 
 const routes: Routes = [
@@ -443,6 +444,23 @@ const routes: Routes = [
         component: ListGiaoVienLenDiemComponent,
         data: {
           titulo: 'Chọn giáo viên lên điểm',
+          breadcrumbs: [{ label: 'Chọn giáo viên', url: '/' }],
+        },
+      },
+
+      // {
+      //   path: 'quan-ly-ky-thi/:maKyThi/danh-sach-giao-vien-ra-de',
+      //   component: ListGiaoVienRaDeComponent,
+      //   data: {
+      //     titulo: 'Danh sách giáo viên ra đề',
+      //     breadcrumbs: [{ label: 'Danh sách giáo viên ra đề', url: '/' }],
+      //   },
+      // },
+      {
+        path: 'quan-ly-ky-thi/:maKyThi/phan-cong-ra-de/:trangThai',
+        component: ListGiaoVienRaDeComponent,
+        data: {
+          titulo: 'Chọn giáo viên ra đề',
           breadcrumbs: [{ label: 'Chọn giáo viên', url: '/' }],
         },
       },

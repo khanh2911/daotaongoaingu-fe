@@ -79,6 +79,14 @@
          <mat-icon matTooltip="Danh sách lịch thi"(click)="navigateToDanhSachLichThi(item.maKyThi)">event_course</mat-icon>
       </mat-cell>
     </ng-container>
+    <ng-container matColumnDef="giaoVienRaDe">
+      <mat-header-cell *matHeaderCellDef
+        ></mat-header-cell
+      >
+      <mat-cell *matCellDef="let item">
+         <mat-icon matTooltip="Phân công ra đề"(click)="navigateToDanhSachGiaoVienRaDe(item.maKyThi)">person</mat-icon>
+      </mat-cell>
+    </ng-container>
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef ></mat-header-cell>
       <mat-cell *matCellDef="let item">

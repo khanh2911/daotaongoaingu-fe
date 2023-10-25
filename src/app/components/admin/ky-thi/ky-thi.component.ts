@@ -17,9 +17,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-ky-thi',
   templateUrl: './ky-thi.component.html',
-  styleUrls: ['./ky-thi.component.css']
+  styleUrls: ['./ky-thi.component.css'],
 })
-
 export class KyThiComponent {
   danhSachKyThi: MatTableDataSource<KyThi> = new MatTableDataSource();
   displayedColumns: string[] = [
@@ -27,6 +26,7 @@ export class KyThiComponent {
     'tenKyThi',
     'thoiGian',
     'lichThi',
+    'giaoVienRaDe',
     'actions',
   ];
   searchTerm: string = '';
@@ -61,7 +61,7 @@ export class KyThiComponent {
     });
 
     // Tạo danh sách tháng từ 1 đến 12
-    this.thangList = Array.from({length: 12}, (_, i) => i + 1);
+    this.thangList = Array.from({ length: 12 }, (_, i) => i + 1);
   }
   onChungChiChange() {
     this.loadDL();
@@ -79,18 +79,22 @@ export class KyThiComponent {
     // Kiểm tra xem có tham số lọc nào được chọn hay không
     if (this.selectedChungChi !== null) {
       // Trường hợp 3: Lấy theo chứng chỉ
-      this.kyThiService.getKhoaHocByChungChi(this.selectedChungChi).subscribe((data) => {
-        this.danhSachKyThi = new MatTableDataSource<KyThi>(data);
-        this.danhSachKyThi.paginator = this.paginator;
-        this.danhSachKyThi.sort = this.sort;
-      });
+      this.kyThiService
+        .getKhoaHocByChungChi(this.selectedChungChi)
+        .subscribe((data) => {
+          this.danhSachKyThi = new MatTableDataSource<KyThi>(data);
+          this.danhSachKyThi.paginator = this.paginator;
+          this.danhSachKyThi.sort = this.sort;
+        });
     } else if (this.selectedNam !== null && this.selectedThang !== null) {
       // Trường hợp 2: Lấy theo tháng và năm
-      this.kyThiService.getKhoaHocByMonthYear(this.selectedThang, this.selectedNam).subscribe((data) => {
-        this.danhSachKyThi = new MatTableDataSource<KyThi>(data);
-        this.danhSachKyThi.paginator = this.paginator;
-        this.danhSachKyThi.sort = this.sort;
-      });
+      this.kyThiService
+        .getKhoaHocByMonthYear(this.selectedThang, this.selectedNam)
+        .subscribe((data) => {
+          this.danhSachKyThi = new MatTableDataSource<KyThi>(data);
+          this.danhSachKyThi.paginator = this.paginator;
+          this.danhSachKyThi.sort = this.sort;
+        });
     } else {
       // Trường hợp 1: Lấy tất cả
       this.kyThiService.layTatCaKyThi().subscribe((data) => {
@@ -100,7 +104,6 @@ export class KyThiComponent {
       });
     }
   }
-
 
   onSearch() {
     this.danhSachKyThi.filter = this.searchTerm.trim().toLowerCase();
@@ -122,7 +125,6 @@ export class KyThiComponent {
     this.resetFilterValues();
     this.loadDL();
   }
-
 
   addKyThi(): void {
     var popup = this.dialog.open(AddKyThiComponent, {
@@ -152,37 +154,42 @@ export class KyThiComponent {
       width: '45%',
       data: { kyThi },
     });
-
   }
   xoaKyThi(maKyThi: any) {
     const dialogRef = this.dialog.open(DeleteComponent, {
       width: '45%',
-
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'ok') {
         this.kyThiService.xoaKyThi(maKyThi).subscribe({
-          next:data=>{
-            if(data.message && data.message ==='cant-delete'){
-              this.toastr.warning('Không thể xóa!')
-            }else{
-              this.toastr.success('Xóa thành công!')
-              this.loadDL()
+          next: (data) => {
+            if (data.message && data.message === 'cant-delete') {
+              this.toastr.warning('Không thể xóa!');
+            } else {
+              this.toastr.success('Xóa thành công!');
+              this.loadDL();
             }
           },
-          error:err=>{
-            console.log(err)
-            if(err.status ===401){
-              this.toastr.warning('Không thể xóa!')
+          error: (err) => {
+            console.log(err);
+            if (err.status === 401) {
+              this.toastr.warning('Không thể xóa!');
             }
-          }
-        })
+          },
+        });
       }
     });
   }
   navigateToDanhSachLichThi(maKyThi: number) {
-    this.router.navigate([`/nhan-vien/quan-ly-ky-thi/${maKyThi}/danh-sach-lich-thi`]);
+    this.router.navigate([
+      `/nhan-vien/quan-ly-ky-thi/${maKyThi}/danh-sach-lich-thi`,
+    ]);
   }
-
+  navigateToDanhSachGiaoVienRaDe(maKyThi: number) {
+    const trangThai = 1;
+     this.router.navigate([
+       `/nhan-vien/quan-ly-ky-thi/${maKyThi}/danh-sach-giao-vien-ra-de/phan-cong-len-diem/${trangThai}`,
+     ]);
+  }
 }
