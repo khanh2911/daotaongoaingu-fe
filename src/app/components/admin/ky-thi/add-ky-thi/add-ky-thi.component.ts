@@ -150,8 +150,6 @@ export class AddKyThiComponent implements OnInit {
           },
         });
       }
-    } else {
-      this.toastr.error('Vui lòng kiểm tra lại thông tin nhập.');
     }
   }
 

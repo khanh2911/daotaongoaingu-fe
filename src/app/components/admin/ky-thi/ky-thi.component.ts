@@ -187,9 +187,10 @@ export class KyThiComponent {
     ]);
   }
   navigateToDanhSachGiaoVienRaDe(maKyThi: number) {
-    const trangThai = 1;
+    const trangThai = 0;
      this.router.navigate([
-       `/nhan-vien/quan-ly-ky-thi/${maKyThi}/danh-sach-giao-vien-ra-de/phan-cong-len-diem/${trangThai}`,
+       `/nhan-vien/quan-ly-ky-thi/${maKyThi}/danh-sach-giao-vien-ra-de/phan-cong-ra-de/${trangThai}`,
      ]);
   }
+  
 }

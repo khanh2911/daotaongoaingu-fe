@@ -138,6 +138,7 @@ import { DanhSachLichThiComponent } from './components/lecturer/danh-sach-lich-t
 import { DetailClassroomComponent } from './components/admin/classroom/detail-classroom/detail-classroom.component';
 import { ListGiaoVienRaDeComponent } from './components/admin/ky-thi/list-giao-vien-ra-de/list-giao-vien-ra-de.component';
 import { DetailGiaoVienRaDeComponent } from './components/admin/ky-thi/detail-giao-vien-ra-de/detail-giao-vien-ra-de.component';
+import { QuanLiRaDeComponent } from './components/lecturer/quan-li-ra-de/quan-li-ra-de.component';
 
 
 @NgModule({
@@ -272,7 +273,8 @@ import { DetailGiaoVienRaDeComponent } from './components/admin/ky-thi/detail-gi
     DetailLopComponent,
     DanhSachLichThiComponent,
     ListGiaoVienRaDeComponent,
-    DetailGiaoVienRaDeComponent
+    DetailGiaoVienRaDeComponent,
+    QuanLiRaDeComponent
 
   ],
   imports: [

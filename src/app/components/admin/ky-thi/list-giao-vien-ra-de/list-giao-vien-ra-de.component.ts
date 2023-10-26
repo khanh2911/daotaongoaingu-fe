@@ -47,7 +47,7 @@ export class ListGiaoVienRaDeComponent {
     private phanCongGiaoVienService: PhanCongGiaoVienService,
     private activateRoute: ActivatedRoute,
     private router: Router,
-     private kyThiService: KyThiService
+    private kyThiService: KyThiService
   ) {}
 
   ngOnInit(): void {
@@ -64,26 +64,24 @@ export class ListGiaoVienRaDeComponent {
 
   loadDanhSachGiaoVienRaDe() {
     if (this.trangThai === 0) {
-      this.kyThiService
-        .layDanhSachGiaoVienRaDe(this.maKyThi)
-        .subscribe({
-          next: (data) => {
-            if (data.message && data.message === 'null') {
-              this.danhSachGiaoVienFull = [];
-            } else {
-              this.danhSachGiaoVien = new MatTableDataSource(data);
-              this.danhSachGiaoVien.paginator = this.paginator;
-              this.danhSachGiaoVien.sort = this.sort;
-              this.danhSachGiaoVienFull = data;
-            }
-          },
-          error: (error) => {
-            this.toastr.error(
-              'Có lỗi xảy ra khi tải danh sách giáo viên!',
-              error.message
-            );
-          },
-        });
+      this.kyThiService.layDanhSachGiaoVienRaDe(this.maKyThi).subscribe({
+        next: (data) => {
+          if (data.message && data.message === 'null') {
+            this.danhSachGiaoVienFull = [];
+          } else {
+            this.danhSachGiaoVien = new MatTableDataSource(data);
+            this.danhSachGiaoVien.paginator = this.paginator;
+            this.danhSachGiaoVien.sort = this.sort;
+            this.danhSachGiaoVienFull = data;
+          }
+        },
+        error: (error) => {
+          this.toastr.error(
+            'Có lỗi xảy ra khi tải danh sách giáo viên!',
+            error.message
+          );
+        },
+      });
     }
     //lấy danh sách để chọn
     else if (this.trangThai === 1) {
@@ -144,36 +142,32 @@ export class ListGiaoVienRaDeComponent {
   themGiaoVien() {
     const trangThai = 1; //chọn giáo viên lên điểm
     this.router.navigate([
-      `/nhan-vien/quan-ly-ky-thi/${this.maKyThi}/phan-cong-ra-de/${trangThai}`,
+      `/nhan-vien/quan-ly-ky-thi/${this.maKyThi}/danh-sach-giao-vien-ra-de/phan-cong-ra-de/${trangThai}`,
     ]);
   }
   luuGiaoVienRaDe(body: any) {
-  this.kyThiService.themGiaoVienRaDe(body.maKyThi, body.maTaiKhoan).subscribe({
-    next: (data: any) => {
-      if (data.message && data.message === 'phongnull') {
-        this.toastr.warning(
-          'Không thể chọn giáo viên!',
-          'Chưa đặt phòng cho lịch thi này!'
-        );
-      } else {
-        this.toastr.success('Phân công giáo viên lên điểm thành công!');
-        const trangThai = 0;
-        this.router.navigate([
-          `/nhan-vien/quan-ly-ky-thi/${this.maKyThi}/lich-thi/${this.maLichThi}/phan-cong-ra-de/${trangThai}`,
-        ]);
-      }
-    },
-    error: (err) => {
-      console.log(err);
-    },
-  });
-}
+    this.kyThiService
+      .themGiaoVienRaDe(body.maKyThi, body.maTaiKhoan)
+      .subscribe({
+        next: (data: any) => {
 
+            this.toastr.success('Phân công giáo viên ra đề thành công!');
+            const trangThai = 0;
+            this.router.navigate([
+              `/nhan-vien/quan-ly-ky-thi/${this.maKyThi}/danh-sach-giao-vien-ra-de/phan-cong-ra-de/${trangThai}`,
+            ]);
+
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+  }
 
   chonGiaoVien(giaoVien: GiaoVien) {
     const body = {
       maKyThi: this.maKyThi,
-      maGiaoVien: giaoVien.maTaiKhoan,
+      maTaiKhoan: giaoVien.maTaiKhoan,
     };
     this.luuGiaoVienRaDe(body);
   }
@@ -186,18 +180,22 @@ export class ListGiaoVienRaDeComponent {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'ok') {
-        this.kyThiService
-          .xoaGiaoVienRaDe(ma, this.maKyThi)
-          .subscribe({
-            next: (data) => {
-              this.loadDL();
-              this.toastr.success('Xóa giáo viên ra đề thành công!');
-            },
-            error: (err) => {
-              console.log(err);
-            },
-          });
+        this.kyThiService.xoaGiaoVienRaDe(ma, this.maKyThi).subscribe({
+          next: (data) => {
+            this.loadDL();
+            this.toastr.success('Xóa giáo viên ra đề thành công!');
+          },
+          error: (err) => {
+            console.log(err);
+          },
+        });
       }
     });
+  }
+  return() {
+    // Thực hiện điều hướng đến địa chỉ mong muốn khi quay lại
+    this.router.navigate([
+      `/nhan-vien/quan-ly-ky-thi`,
+    ]);
   }
 }

@@ -18,9 +18,9 @@
     class="align-right-button"
     (click)="themGiaoVien()"
   >
-    Thêm mới <mat-icon>add_circle </mat-icon>
+    Thêm giáo viên ra đề<mat-icon>add_circle </mat-icon>
   </button>
-  
+<mat-icon (click)="return()" class="back-icon">arrow_back</mat-icon>
   <mat-table [dataSource]="danhSachGiaoVien" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="STT">
       <mat-header-cell *matHeaderCellDef>STT</mat-header-cell>
