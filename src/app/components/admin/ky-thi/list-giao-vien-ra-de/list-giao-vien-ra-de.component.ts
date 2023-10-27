@@ -180,7 +180,7 @@ export class ListGiaoVienRaDeComponent {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'ok') {
-        this.kyThiService.xoaGiaoVienRaDe(ma, this.maKyThi).subscribe({
+        this.kyThiService.xoaGiaoVienRaDe(this.maKyThi,ma).subscribe({
           next: (data) => {
             this.loadDL();
             this.toastr.success('Xóa giáo viên ra đề thành công!');

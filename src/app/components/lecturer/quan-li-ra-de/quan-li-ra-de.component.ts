@@ -45,7 +45,7 @@ export class QuanLiRaDeComponent implements OnInit {
       .subscribe((data) => {
         if (data.length !== 0) {
           console.log(data);
-          this.danhSachKyThi = new MatTableDataSource<any>(data);
+          this.danhSachKyThi = new MatTableDataSource<KyThi>(data);
           this.danhSachKyThi.paginator = this.paginator;
           this.danhSachKyThi.sort = this.sort;
           this.checkEmtyList = false;
