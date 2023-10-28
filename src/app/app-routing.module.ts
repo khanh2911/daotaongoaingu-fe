@@ -166,17 +166,17 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: StudentHomeComponent,
-        data: { titulo: 'Trang chủ' },
+        component: HosoStudentComponent,
+        data: { titulo: 'Hồ sơ' },
       },
-      {
-        path: 'trang-chu',
-        component: StudentHomeComponent,
-        data: {
-          titulo: 'Trang chủ',
-          breadcrumbs: [{ label: 'Trang chủ', url: '/' }],
-        },
-      },
+      // {
+      //   path: 'trang-chu',
+      //   component: StudentHomeComponent,
+      //   data: {
+      //     titulo: 'Trang chủ',
+      //     breadcrumbs: [{ label: 'Trang chủ', url: '/' }],
+      //   },
+      // },
       {
         path: 'dang-ky-khoa-hoc',
         component: RegisterCourseComponent,
@@ -234,18 +234,18 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: LecturerHomeComponent,
-        data: { titulo: 'Trang chủ' },
+        component: HosoLecturerComponent,
+        data: { titulo: 'Hồ sơ' },
       },
 
-      {
-        path: 'trang-chu',
-        component: LecturerHomeComponent,
-        data: {
-          titulo: 'Trang chủ',
-          breadcrumbs: [{ label: 'Trang chủ', url: '/' }],
-        },
-      },
+      // {
+      //   path: 'trang-chu',
+      //   component: LecturerHomeComponent,
+      //   data: {
+      //     titulo: 'Trang chủ',
+      //     breadcrumbs: [{ label: 'Trang chủ', url: '/' }],
+      //   },
+      // },
       {
         path: 'ho-so',
         component: HosoLecturerComponent,
@@ -322,18 +322,18 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: StaffHomeComponent,
-        data: { titulo: 'Trang chủ' },
+        component: HosoStaffComponent,
+        data: { titulo: 'Hồ sơ' },
       },
 
-      {
-        path: 'trang-chu',
-        component: StaffHomeComponent,
-        data: {
-          titulo: 'Trang chủ',
-          breadcrumbs: [{ label: 'Trang chủ', url: '/' }],
-        },
-      },
+      // {
+      //   path: 'trang-chu',
+      //   component: StaffHomeComponent,
+      //   data: {
+      //     titulo: 'Trang chủ',
+      //     breadcrumbs: [{ label: 'Trang chủ', url: '/' }],
+      //   },
+      // },
       {
         path: 'ho-so',
         component: HosoStaffComponent,

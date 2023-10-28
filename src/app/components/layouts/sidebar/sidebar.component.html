@@ -100,11 +100,11 @@
       width="100px"
     />
   </div>
-  <mat-list-item>
+  <!-- <mat-list-item>
     <a routerLink="/hoc-vien/trang-chu" routerLinkActive="active-link">
       <mat-icon>home</mat-icon> <span>Trang chủ</span>
     </a>
-  </mat-list-item>
+  </mat-list-item> -->
 
   <mat-list-item>
     <a routerLink="/hoc-vien/ho-so" routerLinkActive="active-link">
@@ -113,17 +113,17 @@
   </mat-list-item>
   <mat-list-item>
     <a routerLink="/hoc-vien/dang-ky-khoa-hoc" routerLinkActive="active-link">
-      <mat-icon>local_library</mat-icon> <span>Đăng ký khóa học</span>
+      <mat-icon>how_to_vote</mat-icon> <span>Đăng ký khóa học</span>
     </a>
   </mat-list-item>
   <mat-list-item>
     <a routerLink="/hoc-vien/khoa-hoc-cua-toi" routerLinkActive="active-link">
-      <mat-icon>local_library</mat-icon> <span>Khóa học của tôi</span>
+      <mat-icon>event_course</mat-icon> <span>Khóa học của tôi</span>
     </a>
   </mat-list-item>
   <mat-list-item>
     <a routerLink="/hoc-vien/danh-sach-ky-thi" routerLinkActive="active-link">
-      <mat-icon>local_library</mat-icon> <span>Đăng ký kỳ thi</span>
+      <mat-icon>how_to_vote</mat-icon> <span>Đăng ký kỳ thi</span>
     </a>
   </mat-list-item>
   <mat-list-item>
@@ -143,11 +143,11 @@
       width="100px"
     />
   </div>
-  <mat-list-item>
+  <!-- <mat-list-item>
     <a routerLink="/giao-vien/trang-chu" routerLinkActive="active-link">
       <mat-icon>home</mat-icon> <span>Trang chủ</span>
     </a>
-  </mat-list-item>
+  </mat-list-item> -->
   <mat-list-item>
     <a routerLink="/giao-vien/ho-so" routerLinkActive="active-link">
       <mat-icon>person</mat-icon> <span>Hồ sơ</span>
@@ -155,24 +155,24 @@
   </mat-list-item>
   <mat-list-item>
     <a routerLink="/giao-vien/quan-ly-lop-hoc" routerLinkActive="active-link">
-      <mat-icon>layers</mat-icon> <span>Quản lý lớp học</span>
+      <mat-icon>location_city</mat-icon> <span>Quản lý lớp học</span>
     </a>
   </mat-list-item>
     <mat-list-item>
     <a routerLink="/giao-vien/quan-ly-ra-de" routerLinkActive="active-link">
-      <mat-icon>local_library</mat-icon> <span>Quản lý ra đề</span>
+      <mat-icon>picture_as_pdf</mat-icon> <span>Quản lý ra đề</span>
     </a>
   </mat-list-item>
   <mat-list-item>
     <a routerLink="/giao-vien/danh-sach-lich-gac-thi"
       routerLinkActive="active-link">
-      <mat-icon>local_library</mat-icon> <span>Lịch gác thi</span>
+      <mat-icon>date_range</mat-icon> <span>Lịch gác thi</span>
     </a>
   </mat-list-item>
 
   <mat-list-item>
     <a routerLink="/giao-vien/quan-ly-len-diem" routerLinkActive="active-link">
-      <mat-icon>star</mat-icon> <span>Nhập điểm</span>
+      <mat-icon>local_florist</mat-icon> <span>Nhập điểm</span>
     </a>
   </mat-list-item>
 </mat-list>
@@ -208,12 +208,12 @@
   </mat-list-item>
   <mat-list-item *ngIf="hasVaiTro('QL-DKKH')">
     <a routerLink="/nhan-vien/phan-cong-lop-hoc" routerLinkActive="active-link">
-      <mat-icon>home</mat-icon> <span>Phân lớp học</span>
+      <mat-icon>touch_app</mat-icon> <span>Phân lớp học</span>
     </a>
   </mat-list-item>
   <mat-list-item *ngIf="hasVaiTro('QL-KT')">
     <a routerLink="/nhan-vien/quan-ly-ky-thi" routerLinkActive="active-link">
-      <mat-icon>event_course</mat-icon> <span>Quản lý kỳ thi</span>
+      <mat-icon>flag</mat-icon> <span>Quản lý kỳ thi</span>
     </a>
   </mat-list-item>
   <mat-list-item *ngIf="hasVaiTro('QL-DKT')">
@@ -221,18 +221,18 @@
       routerLink="/nhan-vien/quan-ly-dang-ky-thi"
       routerLinkActive="active-link"
     >
-      <mat-icon>event_course</mat-icon> <span>Quản lý đăng ký thi</span>
+      <mat-icon>how_to_vote</mat-icon> <span>Quản lý đăng ký thi</span>
     </a>
   </mat-list-item>
 
   <mat-list-item *ngIf="hasVaiTro('QL-DKT')">
     <a routerLink="/nhan-vien/phan-bo-thi" routerLinkActive="active-link">
-      <mat-icon>home</mat-icon> <span>Phân bổ thi</span>
+      <mat-icon>touch_app</mat-icon> <span>Phân bổ thi</span>
     </a>
   </mat-list-item>
   <mat-list-item *ngIf="hasVaiTro('QL-TL')">
     <a routerLink="/nhan-vien/quan-ly-tai-lieu" routerLinkActive="active-link">
-      <mat-icon>text_format</mat-icon> <span>Quản lý tài liệu</span>
+      <mat-icon>description</mat-icon> <span>Quản lý tài liệu</span>
     </a>
   </mat-list-item>
 </mat-list>

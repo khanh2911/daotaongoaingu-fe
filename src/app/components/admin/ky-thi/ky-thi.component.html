@@ -55,7 +55,7 @@
       <mat-cell *matCellDef="let i = index">{{ i + 1 }}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="tenKyThi">
+    <ng-container matColumnDef="thangThi">
       <mat-header-cell *matHeaderCellDef mat-sort-header
         >Tên kỳ thi
         </mat-header-cell
@@ -63,7 +63,7 @@
       <mat-cell *matCellDef="let item">{{ item.chungChi.tenChungChi }} tháng {{item.thangThi }} năm {{ item.namThi }}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="thoiGian">
+    <ng-container matColumnDef="namThi">
       <mat-header-cell *matHeaderCellDef mat-sort-header
         >Thời gian</mat-header-cell
       >
@@ -76,7 +76,7 @@
         ></mat-header-cell
       >
       <mat-cell *matCellDef="let item">
-         <mat-icon matTooltip="Danh sách lịch thi"(click)="navigateToDanhSachLichThi(item.maKyThi)">event_course</mat-icon>
+         <mat-icon matTooltip="Danh sách lịch thi"(click)="navigateToDanhSachLichThi(item.maKyThi)">list_alt</mat-icon>
       </mat-cell>
     </ng-container>
     <ng-container matColumnDef="giaoVienRaDe">

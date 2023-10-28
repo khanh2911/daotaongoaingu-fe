@@ -28,6 +28,9 @@ export class DanhSachHocVienComponent implements OnInit {
     'taiKhoan.hoTen',
     'taiKhoan.soDienThoai',
     'taiKhoan.gioiTinh',
+    'nhapDiem',
+    'edit', 
+    'xem',
     'actions',
   ];
   searchTerm: string = '';
@@ -205,5 +208,5 @@ export class DanhSachHocVienComponent implements OnInit {
         },
       });
   }
-  
+
 }

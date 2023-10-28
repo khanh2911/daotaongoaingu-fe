@@ -20,13 +20,13 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header
         >Họ tên</mat-header-cell
       >
-      <mat-cell *matCellDef="let item">{{
-        item.taiKhoan?.hoTen
-      }}</mat-cell>
+      <mat-cell *matCellDef="let item">{{ item.taiKhoan?.hoTen }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="taiKhoan.gioiTinh">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Giới tính</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Giới tính</mat-header-cell
+      >
       <mat-cell *matCellDef="let item">
         {{ item.taiKhoan?.gioiTinh }}
       </mat-cell>
@@ -37,14 +37,48 @@
         {{ item.taiKhoan?.soDienThoai }}
       </mat-cell>
     </ng-container>
+    <ng-container matColumnDef="nhapDiem">
+      <mat-header-cell *matHeaderCellDef>Nhập điểm</mat-header-cell>
+      <mat-cell *matCellDef="let item">
+        <mat-icon
+          matTooltip="Nhập điểm"
+          *ngIf="trangThai !== 1"
+          (click)="nhapDiem(item)"
+          >add_circle
+        </mat-icon>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef>Chỉnh sửa</mat-header-cell>
+      <mat-cell *matCellDef="let item">
+        <mat-icon
+          matTooltip="Chỉnh sửa điểm"
+          *ngIf="trangThai !== 1"
+          (click)="chinhSuaDiem(item)"
+          >edit
+        </mat-icon>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="xem">
+      <mat-header-cell *matHeaderCellDef>Xem điểm</mat-header-cell>
+      <mat-cell *matCellDef="let item">
+        <mat-icon
+          matTooltip="Xem điểm"
+          *ngIf="trangThai !== 1"
+          (click)="xemDiem(item)"
+          >remove_red_eye
+        </mat-icon>
+      </mat-cell>
+    </ng-container>
 
-     <ng-container matColumnDef="actions">
-      <mat-header-cell *matHeaderCellDef ></mat-header-cell>
-      <mat-cell *matCellDef="let item" >
-         <mat-icon   matTooltip="Xem điểm" *ngIf="trangThai!==1" (click)="xemDiem(item)">remove_red_eye </mat-icon>
-         <mat-icon  matTooltip="Thông tin học viên"  (click)="detail(item)">infor </mat-icon>
-         <mat-icon  matTooltip="Nhập điểm" *ngIf="trangThai!==1"(click)="nhapDiem(item)">add_circle </mat-icon>
-         <mat-icon  matTooltip="Chỉnh sửa điểm"  *ngIf="trangThai!==1"  (click)="chinhSuaDiem(item)">edit </mat-icon>
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let item">
+
+        <mat-icon matTooltip="Thông tin học viên" (click)="detail(item)"
+          >infor
+        </mat-icon>
+
       </mat-cell>
     </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

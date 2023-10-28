@@ -23,8 +23,8 @@ export class KyThiComponent {
   danhSachKyThi: MatTableDataSource<KyThi> = new MatTableDataSource();
   displayedColumns: string[] = [
     'stt',
-    'tenKyThi',
-    'thoiGian',
+    'thangThi',
+    'namThi',
     'lichThi',
     'giaoVienRaDe',
     'actions',
@@ -188,9 +188,8 @@ export class KyThiComponent {
   }
   navigateToDanhSachGiaoVienRaDe(maKyThi: number) {
     const trangThai = 0;
-     this.router.navigate([
-       `/nhan-vien/quan-ly-ky-thi/${maKyThi}/danh-sach-giao-vien-ra-de/phan-cong-ra-de/${trangThai}`,
-     ]);
+    this.router.navigate([
+      `/nhan-vien/quan-ly-ky-thi/${maKyThi}/danh-sach-giao-vien-ra-de/phan-cong-ra-de/${trangThai}`,
+    ]);
   }
-  
 }
