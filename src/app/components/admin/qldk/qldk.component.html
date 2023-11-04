@@ -54,9 +54,9 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header
         >Trạng thái</mat-header-cell
       >
-      <mat-cell *matCellDef="let DangKyKH">{{
-        DangKyKH.trangThaiDangKyHoc
-      }}</mat-cell>
+      <mat-cell *matCellDef="let DangKyKH">
+        {{ translateStatus(DangKyKH.trangThaiDangKyHoc) }}
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="action">
@@ -64,13 +64,18 @@
       <mat-cell *matCellDef="let DangKyKH">
         <button
           mat-stroked-button
-          [disabled]="DangKyKH.trangThaiDangKyHoc==='DA_DUYET' || DangKyKH.trangThaiDangKyHoc==='DA_PHAN_LOP'"
+          [disabled]="
+            DangKyKH.trangThaiDangKyHoc === 'DA_DUYET' ||
+            DangKyKH.trangThaiDangKyHoc === 'DA_PHAN_LOP'
+          "
           [color]="
             DangKyKH.trangThaiDangKyHoc === 'CHUA_DUYET' ? 'warn' : 'primary'
           "
           (click)="capNhatTrangThaiHocPhi(DangKyKH.maDangKy)"
         >
-          {{ DangKyKH.trangThaiDangKyHoc === "CHUA_DUYET" ? "Duyệt" : "Đã duyệt" }}
+          {{
+            DangKyKH.trangThaiDangKyHoc === "CHUA_DUYET" ? "Duyệt" : "Đã duyệt"
+          }}
         </button>
       </mat-cell>
     </ng-container>
@@ -85,5 +90,4 @@
     showFirstLastButtons
   >
   </mat-paginator>
-
 </div>

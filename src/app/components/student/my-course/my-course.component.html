@@ -37,10 +37,13 @@
       <mat-cell *matCellDef="let DangKyKH">{{ DangKyKH.ngayDangKy | date : "HH:mm:ss dd/MM/yyyy" }}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="trangThaiHocPhi">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Trạng thái</mat-header-cell>
-      <mat-cell *matCellDef="let DangKyKH">{{ DangKyKH.trangThaiDangKyHoc }}</mat-cell>
-    </ng-container>
+  <ng-container matColumnDef="trangThaiDangKyHoc">
+  <mat-header-cell *matHeaderCellDef mat-sort-header>Trạng thái</mat-header-cell>
+  <mat-cell *matCellDef="let DangKyKH">
+    {{ translateStatus(DangKyKH.trangThaiDangKyHoc) }}
+  </mat-cell>
+</ng-container>
+
   <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let DangKyKH">

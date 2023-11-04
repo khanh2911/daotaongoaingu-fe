@@ -21,9 +21,10 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header
         >Kỳ thi</mat-header-cell
       >
-      <mat-cell *matCellDef="let item">{{
-        item.kyThi.chungChi.tenChungChi
-      }} tháng {{item.kyThi.thangThi}} năm {{item.kyThi.namThi}} </mat-cell>
+      <mat-cell *matCellDef="let item"
+        >{{ item.kyThi.chungChi.tenChungChi }} tháng
+        {{ item.kyThi.thangThi }} năm {{ item.kyThi.namThi }}
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="tenHocVien">
@@ -38,23 +39,35 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header
         >Trạng thái</mat-header-cell
       >
-      <mat-cell *matCellDef="let item">{{
-        item.trangThaiDangKyThi
-      }}</mat-cell>
+      <mat-cell *matCellDef="let item">
+        <span *ngIf="item.trangThaiDangKyThi === 'Chua_Duyet'">CHƯA DUYỆT</span>
+        <span *ngIf="item.trangThaiDangKyThi === 'Da_Duyet'">ĐÃ DUYỆT</span>
+        <span *ngIf="item.trangThaiDangKyThi === 'Da_Sap_Lich'"
+          >ĐÃ SẮP LỊCH</span
+        >
+        <span *ngIf="item.trangThaiDangKyThi === 'Da_Len_Diem'"
+          >ĐÃ LÊN ĐIỂM</span
+        >
+      </mat-cell>
     </ng-container>
+
     <ng-container matColumnDef="ngayDangKy">
       <mat-header-cell *matHeaderCellDef mat-sort-header
         >Ngày đăng ký</mat-header-cell
       >
-      <mat-cell *matCellDef="let DangKyKH">{{
-        DangKyKH.ngayDangKy | date : "dd/MM/yyyy"
-      }} </mat-cell>
+      <mat-cell *matCellDef="let DangKyKH"
+        >{{ DangKyKH.ngayDangKy | date : "dd/MM/yyyy" }}
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let DangKyKT">
-          <mat-icon *ngIf="DangKyKT.trangThaiDangKyThi ==='Da_Len_Diem' " (click)="xemDiem(DangKyKT.maDangKyThi)">blur_circular</mat-icon>
+        <mat-icon
+          *ngIf="DangKyKT.trangThaiDangKyThi === 'Da_Len_Diem'"
+          (click)="xemDiem(DangKyKT.maDangKyThi)"
+          >blur_circular</mat-icon
+        >
       </mat-cell>
     </ng-container>
 
@@ -67,5 +80,4 @@
     showFirstLastButtons
   >
   </mat-paginator>
-
 </div>

@@ -19,33 +19,13 @@
       </mat-option>
     </mat-select>
   </mat-form-field></div>
-<!--
-  <mat-form-field appearance="outline" class="search">
-    <mat-label>Chọn năm</mat-label>
-    <mat-select [(ngModel)]="selectedNam" (ngModelChange)="onNamChange()">
-      <mat-option *ngFor="let nam of namList" [value]="nam">
-        {{ nam }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-form-field appearance="outline" class="search">
-    <mat-label>Chọn tháng</mat-label>
-    <mat-select [(ngModel)]="selectedThang" (ngModelChange)="onThangChange()">
-      <mat-option *ngFor="let thang of thangList" [value]="thang">
-        {{ thang }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field> -->
-
-
   <mat-table [dataSource]="danhSachKyThi" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="stt">
       <mat-header-cell *matHeaderCellDef>STT</mat-header-cell>
       <mat-cell *matCellDef="let i = index">{{ i + 1 }}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="tenKyThi">
+    <ng-container matColumnDef="thangThi">
       <mat-header-cell *matHeaderCellDef mat-sort-header
         >Tên kỳ thi
         </mat-header-cell
@@ -53,7 +33,7 @@
       <mat-cell *matCellDef="let item">{{ item.chungChi.tenChungChi }} tháng {{item.thangThi }} năm {{ item.namThi }}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="tenChungChi">
+    <ng-container matColumnDef="namThi">
       <mat-header-cell *matHeaderCellDef mat-sort-header
         >Thời gian</mat-header-cell
       >
@@ -90,7 +70,7 @@
               ? "Đã đăng ký"
               : registrationStatus[item.maKyThi] === "daduyet"
               ? "Đã duyệt"
-             
+
               : registrationStatus[item.maKyThi] === "dasaplich"
               ? "Đã sắp lịch"
 

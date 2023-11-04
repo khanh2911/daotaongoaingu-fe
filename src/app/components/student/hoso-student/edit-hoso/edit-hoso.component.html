@@ -47,8 +47,9 @@
   </form>
 </div>
 <div mat-dialog-actions>
-  <button mat-stroked-button color="warn" type="button" (click)="onCancel()">Hủy</button>
+
   <button mat-raised-button color="primary" type="submit" [disabled]="!editForm.valid" (click)="onSubmit()">
     Lưu
   </button>
+   <button mat-stroked-button color="warn" type="button" (click)="onCancel()">Hủy</button>
 </div>

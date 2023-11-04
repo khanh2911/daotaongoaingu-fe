@@ -29,7 +29,8 @@ export class EditClassComponent implements OnInit {
     this.editForm = this.formBuilder.group({
       lichHoc: ['', Validators.required],
       phongHoc: ['', Validators.required],
-      hinhThucHoc: [`${HinhThucHoc.Offline}`, Validators.required],
+      // hinhThucHoc: [`${HinhThucHoc.Offline}`, Validators.required],
+      hinhThucHoc: ['', Validators.required],
     });
     this.setupPhongHocValidators();
     this.hinhThucHocs = Object.values(HinhThucHoc);

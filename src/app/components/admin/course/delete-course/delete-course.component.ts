@@ -35,7 +35,7 @@ export class DeleteCourseComponent {
       next: (data: any) => {
         if (data.message === 'cant-delete') {
           // Handle the case where the deletion is not allowed
-          this.toastr.warning('Không thể xóa Khóa học này.');
+          this.toastr.warning('Không thể xóa Khóa học này!');
         } else {
           // Handle other cases or errors
           this.toastr.success('Bạn đã xóa thành công!');
@@ -43,6 +43,10 @@ export class DeleteCourseComponent {
         }
       },
       error: (err) => {
+        if (err.status === 401) {
+          // Handle the case where the deletion is not allowed
+          this.toastr.warning('Không thể xóa Khóa học này!');
+        }
         console.log(err);
       },
     });

@@ -68,7 +68,7 @@ export class AddDocumentComponent implements OnInit {
         this.dialogRef.close('ok');
       });
     } else {
-      this.toastr.error('Form không hợp lệ hoặc không có tệp nào được chọn.');
+       this.dialogRef.close();
     }
 
   }

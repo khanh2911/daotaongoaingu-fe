@@ -24,7 +24,7 @@ export class MyCourseComponent implements OnInit {
     'hocVien.taiKhoan.tenDangNhap',
     'hocVien.taiKhoan.hoTen',
     'khoaHoc.tenKhoaHoc',
-    'trangThaiHocPhi',
+    'trangThaiDangKyHoc',
     'ngayDangKy',
     'action',
   ];
@@ -114,11 +114,21 @@ export class MyCourseComponent implements OnInit {
     }
     this.loadDanhSachKhoaHoc();
   }
-  layDSTL(maLoaiLop:any) {
+  layDSTL(maLoaiLop: any) {
     this.router.navigate([
-      `/hoc-vien/khoa-hoc-cua-toi/tai-tai-lieu/${maLoaiLop}`
-
+      `/hoc-vien/khoa-hoc-cua-toi/tai-tai-lieu/${maLoaiLop}`,
     ]);
   }
-
+  translateStatus(statusCode: string): string {
+    switch (statusCode) {
+      case 'DA_DUYET':
+        return 'ĐÃ DUYỆT';
+      case 'CHUA_DUYET':
+        return 'CHƯA DUYỆT';
+      case 'DA_PHAN_LOP':
+        return 'ĐÃ PHÂN LỚP';
+      default:
+        return statusCode; // Or return a default/fallback status if you wish
+    }
   }
+}

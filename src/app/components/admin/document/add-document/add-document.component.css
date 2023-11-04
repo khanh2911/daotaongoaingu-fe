@@ -51,12 +51,15 @@ div[mat-dialog-actions] {
 }
 
 /* Style cho nút Lưu */
-button[color="primary"] {
-  background-color: #3f51b5;
-  color: #fff;
+button[type="submit"] {
+  font-weight: bold;
+  margin-left: 200px;
+  /* Blue color */
 }
 
-/* Style cho nút Đóng */
+
 button[color="warn"] {
-  color: #f44336;
+  font-weight: bold;
+  margin-right: 200px;
+  /* Orange color */
 }

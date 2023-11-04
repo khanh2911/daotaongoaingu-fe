@@ -14,9 +14,9 @@ import { Route, Router } from '@angular/router';
 @Component({
   selector: 'app-phan-cong-lop-hoc',
   templateUrl: './phan-cong-lop-hoc.component.html',
-  styleUrls: ['./phan-cong-lop-hoc.component.css']
+  styleUrls: ['./phan-cong-lop-hoc.component.css'],
 })
-export class PhanCongLopHocComponent implements OnInit{
+export class PhanCongLopHocComponent implements OnInit {
   danhSachDKKhoaHoc: MatTableDataSource<DangKyKH> = new MatTableDataSource();
   displayedColumns: string[] = [
     'stt',
@@ -76,7 +76,16 @@ export class PhanCongLopHocComponent implements OnInit{
     sortDir: string = 'ASC'
   ) {
     this.dangKyKhoaHocService
-      .getAllDangKyKhoaHoc(page, size, sortBy, sortDir, this.searchTerm, undefined, undefined, true)
+      .getAllDangKyKhoaHoc(
+        page,
+        size,
+        sortBy,
+        sortDir,
+        this.searchTerm,
+        undefined,
+        undefined,
+        true
+      )
       .subscribe((data: any) => {
         this.danhSachDKKhoaHoc = new MatTableDataSource<DangKyKH>(data.content);
         this.paginator.length = data.totalElements;
@@ -88,10 +97,32 @@ export class PhanCongLopHocComponent implements OnInit{
     this.loadDanhSachDKKhoaHoc();
   }
 
+  translateStatus(statusCode: string): string {
+    switch (statusCode) {
+      case 'DA_DUYET':
+        return 'ĐÃ DUYỆT';
+      case 'CHUA_DUYET':
+        return 'CHƯA DUYỆT';
+      case 'DA_PHAN_LOP':
+        return 'ĐÃ PHÂN LỚP';
+      default:
+        return statusCode; // Or return a default/fallback status if you wish
+    }
+  }
+
   layDanhSachLopHoc(dangKy: DangKyKH, loai: string): void {
-    const jsonData = { isThem: true, tenHocVien: dangKy.hocVien.taiKhoan.tenDangNhap, maDangKy:dangKy.maDangKy, loai, maLopCu: 1};
+    const jsonData = {
+      isThem: true,
+      tenHocVien: dangKy.hocVien.taiKhoan.tenDangNhap,
+      maDangKy: dangKy.maDangKy,
+      loai,
+      maLopCu: 1,
+    };
     const jsonParam = JSON.stringify(jsonData);
-    this.router.navigate([`/nhan-vien/quan-ly-khoa-hoc/${dangKy.khoaHoc.maKhoaHoc}/danh-sach-lop-hoc`,  { data: jsonParam }]);
+    this.router.navigate([
+      `/nhan-vien/quan-ly-khoa-hoc/${dangKy.khoaHoc.maKhoaHoc}/danh-sach-lop-hoc`,
+      { data: jsonParam },
+    ]);
   }
   refresh() {
     this.searchTerm = '';
@@ -100,5 +131,4 @@ export class PhanCongLopHocComponent implements OnInit{
     }
     this.loadDanhSachDKKhoaHoc();
   }
-
 }

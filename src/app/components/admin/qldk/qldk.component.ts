@@ -1,4 +1,4 @@
-import { DangKyKH } from 'src/app/models/DangKyKH';
+import { DangKyKH, TrangThaiDangKyHoc } from 'src/app/models/DangKyKH';
 import { DangKyKhoaHocService } from 'src/app/services/dang-ky-khoa-hoc.service';
 import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -6,11 +6,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
-import { KhoaHoc } from 'src/app/models/KhoaHoc';
-import { KhoaHocService } from 'src/app/services/khoa-hoc.service';
 import { DeleteQldkComponent } from './delete-qldk/delete-qldk.component';
 import { ListHVHPComponent } from './list-hvhp/list-hvhp.component';
-import { DuyetDkkhComponent } from './duyet-dkkh/duyet-dkkh.component';
+
 
 @Component({
   selector: 'app-qldk',
@@ -111,39 +109,18 @@ export class QldkComponent {
       this.loadDanhSachDKKhoaHoc();
     });
   }
-  // duyet(dangKy: DangKyKH) {
-  //   const dialogRef = this.dialog.open(DuyetDkkhComponent, {
-  //     width: '350px',
-  //     data: {
-  //       maDangKy: dangKy.maDangKy,
-  //       isThem: true,
-  //       tenHocVien: dangKy.hocVien.taiKhoan.tenDangNhap,
-  //       maKhoaHoc: dangKy.khoaHoc.maKhoaHoc,
-  //     }, // Pass the maLoaiLop value to the dialog
-  //     enterAnimationDuration: '300ms',
-  //     exitAnimationDuration: '300ms',
-  //   });
-
-  //   dialogRef.afterClosed().subscribe((result) => {
-  //     if (result === 'ok') {
-  //       const newTrangThai = 'DA_DONG'; // Trạng thái "Đã duyệt"
-  //       this.dangKyKhoaHocService
-  //         .capNhatTrangThaiDangKyKhoaHoc(dangKy.maDangKy, {
-  //           trangThaiHocPhi: newTrangThai,
-  //         })
-  //         .subscribe({
-  //           next: (data) => {
-  //             console.log('Cập nhật thành công');
-  //             this.toastr.success('Cập nhật thành công!');
-  //             this.loadDanhSachDKKhoaHoc();
-  //           },
-  //           error: (err) => {
-  //             console.log(err);
-  //           },
-  //         });
-  //     }
-  //   });
-  // }
+  translateStatus(statusCode: string): string {
+    switch (statusCode) {
+      case 'DA_DUYET':
+        return 'ĐÃ DUYỆT';
+      case 'CHUA_DUYET':
+        return 'CHƯA DUYỆT';
+      case 'DA_PHAN_LOP':
+        return 'ĐÃ PHÂN LỚP';
+      default:
+        return statusCode; // Or return a default/fallback status if you wish
+    }
+  }
 
   capNhatTrangThaiHocPhi(maDangKy: number) {
     const newTrangThai = 'DA_DUYET'; // Trạng thái "Đã duyệt"

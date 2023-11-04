@@ -5,17 +5,15 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 import { DangKyKH } from 'src/app/models/DangKyKH';
-import { DangKyKhoaHocService } from 'src/app/services/dang-ky-khoa-hoc.service';
-import { KhoaHoc } from 'src/app/models/KhoaHoc';
-import { KhoaHocService } from 'src/app/services/khoa-hoc.service';
 import { DangKyThiService } from './../../../services/dang-ky-thi.service';
 import { KetQuaThiService } from './../../../services/ket-qua-thi.service';
 import { ChiTietDiemComponent } from '../../lecturer/quan-ly-len-diem/chi-tiet-diem/chi-tiet-diem.component';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-ky-thi-cua-toi',
   templateUrl: './ky-thi-cua-toi.component.html',
-  styleUrls: ['./ky-thi-cua-toi.component.css']
+  styleUrls: ['./ky-thi-cua-toi.component.css'],
 })
 export class KyThiCuaToiComponent {
   danhSachDKKyThi: MatTableDataSource<DangKyKH> = new MatTableDataSource();
@@ -23,12 +21,13 @@ export class KyThiCuaToiComponent {
     'stt',
     'kyThi',
     'tenHocVien',
-    'trangThai',
     'ngayDangKy',
+    'trangThai',
     'action',
   ];
   searchTerm: string = '';
   currentDateTime: Date = new Date();
+  username!: string;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -37,11 +36,13 @@ export class KyThiCuaToiComponent {
     private dangKyThiService: DangKyThiService,
     private toastr: ToastrService,
     private dialog: MatDialog,
-    private ketQuaThiService: KetQuaThiService
-
+    private ketQuaThiService: KetQuaThiService,
+    private storageService: StorageService
   ) {}
 
   ngOnInit(): void {
+    const user = this.storageService.getUser();
+    this.username = user.tenTaiKhoan;
     this.loadDanhSachDKKyThi();
     setInterval(() => {
       this.currentDateTime = new Date();
@@ -54,7 +55,7 @@ export class KyThiCuaToiComponent {
   }
 
   loadDanhSachDKKyThi() {
-    this.dangKyThiService.layTatCa().subscribe({
+    this.dangKyThiService.layDangKyTheoTenDangNhap(this.username).subscribe({
       next: (data) => {
         // Gán dữ liệu vào danhSachDKKyThi
         this.danhSachDKKyThi.data = data;
@@ -80,10 +81,10 @@ export class KyThiCuaToiComponent {
     }
     this.loadDanhSachDKKyThi();
   }
-  xemDiem(ma:any){
+  xemDiem(ma: any) {
     this.ketQuaThiService.layKetQuaThiTheoMaDangKy(ma).subscribe({
-      next:data1=>{
-        console.log(data1)
+      next: (data1) => {
+        console.log(data1);
         var popup = this.dialog.open(ChiTietDiemComponent, {
           data: {
             item: data1,
@@ -92,12 +93,11 @@ export class KyThiCuaToiComponent {
           enterAnimationDuration: '300ms',
           exitAnimationDuration: '300ms',
         });
-      }
-      ,error:err=>{
-        console.log(err)
-      }
-    })
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
-
 }
 

@@ -55,20 +55,30 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header
         >Trạng thái</mat-header-cell
       >
-      <mat-cell *matCellDef="let DangKyKH">{{
-        DangKyKH.trangThaiDangKyHoc
-      }}</mat-cell>
+      <mat-cell *matCellDef="let DangKyKH">
+        {{ translateStatus(DangKyKH.trangThaiDangKyHoc) }}
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let DangKyKH">
-        <button  *ngIf="DangKyKH.trangThaiDangKyHoc === 'DA_DUYET'"
-          mat-stroked-button color="primary" (click)="layDanhSachLopHoc(DangKyKH, 'them')"
-         >Phân lớp</button>
-         <button  *ngIf="DangKyKH.trangThaiDangKyHoc ==='DA_PHAN_LOP'"
-         mat-stroked-button color="primary" (click)="layDanhSachLopHoc(DangKyKH, 'chuyen' )"
-        >Chuyển lớp</button>
+        <button
+          *ngIf="DangKyKH.trangThaiDangKyHoc === 'DA_DUYET'"
+          mat-stroked-button
+          color="primary"
+          (click)="layDanhSachLopHoc(DangKyKH, 'them')"
+        >
+          Phân lớp
+        </button>
+        <button
+          *ngIf="DangKyKH.trangThaiDangKyHoc === 'DA_PHAN_LOP'"
+          mat-stroked-button
+          color="primary"
+          (click)="layDanhSachLopHoc(DangKyKH, 'chuyen')"
+        >
+          Chuyển lớp
+        </button>
       </mat-cell>
     </ng-container>
 
@@ -82,5 +92,4 @@
     showFirstLastButtons
   >
   </mat-paginator>
-
 </div>

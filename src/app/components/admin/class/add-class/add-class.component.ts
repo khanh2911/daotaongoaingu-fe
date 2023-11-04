@@ -50,7 +50,7 @@ export class AddClassComponent implements OnInit {
       '',
       [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)],
     ],
-    hinhThucHoc: [`${HinhThucHoc.Offline}`, Validators.required],
+    hinhThucHoc: ['', Validators.required],
   });
 
   savetypeclass() {

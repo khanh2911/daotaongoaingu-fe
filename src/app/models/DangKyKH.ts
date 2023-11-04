@@ -8,4 +8,9 @@ export interface DangKyKH {
   ngayDangKy: Date;
 
 }
+export enum TrangThaiDangKyHoc {
+  CHUA_DUYET,
+  DA_DUYET,
+  DA_PHAN_LOP,
+}
 
