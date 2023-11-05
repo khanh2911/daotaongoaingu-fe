@@ -131,4 +131,17 @@ export class MyCourseComponent implements OnInit {
         return statusCode; // Or return a default/fallback status if you wish
     }
   }
+
+  getStatusColor(status: string) {
+    switch (status) {
+      case 'CHUA_DUYET':
+        return { color: 'red' }; // Màu đỏ cho "Chua_Duyet"
+      case 'DA_DUYET':
+        return { color: 'blue' }; // Màu xanh cho "Da_Duyet"
+      case 'DA_PHAN_LOP':
+        return { color: 'green' }; // Màu xanh dương cho "Da_Sap_Lich"
+      default:
+        return {}; // Màu mặc định hoặc trường hợp khác
+    }
+  }
 }

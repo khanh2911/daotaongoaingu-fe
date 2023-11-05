@@ -9,6 +9,8 @@ import { LichHocService } from './../../../../services/lich-hoc.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { DanhSachPhongThiComponent } from './danh-sach-phong-thi/danh-sach-phong-thi.component';
+import { DetailPhongThiComponent } from '../detail-phong-thi/detail-phong-thi.component';
+import { KyThi } from 'src/app/models/KyThi';
 
 @Component({
   selector: 'app-phan-cong-phong-thi',
@@ -26,6 +28,7 @@ export class PhanCongPhongThiComponent implements OnInit {
     'giaoVienGT',
     'giaoVienLD',
     'dsHocVien',
+    'chitiet',
     'actions',
   ];
   searchTerm: string = '';
@@ -114,5 +117,15 @@ export class PhanCongPhongThiComponent implements OnInit {
   }
   return() {
     this.router.navigate([`/nhan-vien/quan-ly-ky-thi`]);
+  }
+  detailPhongThi(item: any): void {
+    var popup = this.dialog.open(DetailPhongThiComponent, {
+      data: {
+        item: item,
+      },
+      width: '40%',
+      enterAnimationDuration: '300ms',
+      exitAnimationDuration: '300ms',
+    });
   }
 }

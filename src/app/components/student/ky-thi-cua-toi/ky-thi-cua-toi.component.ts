@@ -9,6 +9,9 @@ import { DangKyThiService } from './../../../services/dang-ky-thi.service';
 import { KetQuaThiService } from './../../../services/ket-qua-thi.service';
 import { ChiTietDiemComponent } from '../../lecturer/quan-ly-len-diem/chi-tiet-diem/chi-tiet-diem.component';
 import { StorageService } from 'src/app/services/storage.service';
+import { DetailKyThiCuaToiComponent } from './detail-ky-thi-cua-toi/detail-ky-thi-cua-toi.component';
+import { KyThi } from 'src/app/models/KyThi';
+import { DetailKyThiComponent } from '../../admin/ky-thi/detail-ky-thi/detail-ky-thi.component';
 
 @Component({
   selector: 'app-ky-thi-cua-toi',
@@ -23,6 +26,7 @@ export class KyThiCuaToiComponent {
     'tenHocVien',
     'ngayDangKy',
     'trangThai',
+    'detail',
     'action',
   ];
   searchTerm: string = '';
@@ -97,6 +101,41 @@ export class KyThiCuaToiComponent {
       error: (err) => {
         console.log(err);
       },
+    });
+  }
+
+  translateStatus(statusCode: string): string {
+    switch (statusCode) {
+      case 'Da_Duyet':
+        return 'ĐÃ DUYỆT';
+      case 'Chua_Duyet':
+        return 'CHƯA DUYỆT';
+      case 'Da_Sap_Lich':
+        return 'ĐÃ SẮP LỊCH';
+      case 'Da_Len_Diem':
+        return 'ĐÃ LÊN ĐIỂM';
+      default:
+        return statusCode; // Or return a default/fallback status if you wish
+    }
+  }
+  getStatusColor(status: string) {
+    switch (status) {
+      case 'Chua_Duyet':
+        return { color: 'red' }; // Màu đỏ cho "Chua_Duyet"
+      case 'Da_Duyet':
+        return { color: 'blue' }; // Màu xanh cho "Da_Duyet"
+      case 'Da_Sap_Lich':
+        return { color: 'green' }; // Màu xanh dương cho "Da_Sap_Lich"
+      case 'Da_Len_Diem':
+        return { color: 'purple' }; // Màu tím cho "Da_Len_Diem"
+      default:
+        return {}; // Màu mặc định hoặc trường hợp khác
+    }
+  }
+  detail(kyThi: KyThi) {
+    const dialogRef = this.dialog.open(DetailKyThiCuaToiComponent, {
+      width: '45%',
+      data: { kyThi },
     });
   }
 }

@@ -19,9 +19,9 @@ import { ChiTietLichThiComponent } from './chi-tiet-lich-thi/chi-tiet-lich-thi.c
 @Component({
   selector: 'app-phan-bo-thi',
   templateUrl: './phan-bo-thi.component.html',
-  styleUrls: ['./phan-bo-thi.component.css']
+  styleUrls: ['./phan-bo-thi.component.css'],
 })
-export class PhanBoThiComponent implements OnInit{
+export class PhanBoThiComponent implements OnInit {
   danhSachDKKyThi: MatTableDataSource<DangKyKH> = new MatTableDataSource();
   displayedColumns: string[] = [
     'stt',
@@ -34,14 +34,14 @@ export class PhanBoThiComponent implements OnInit{
   ];
   searchTerm: string = '';
   currentDateTime: Date = new Date();
-  dsLich: LichThi[]=[]
+  dsLich: LichThi[] = [];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
     private dangKyThiService: DangKyThiService,
     private router: Router,
-    private dialog: MatDialog,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -82,15 +82,45 @@ export class PhanBoThiComponent implements OnInit{
     }
     this.loadDanhSachDKKyThi();
   }
-  chonLich(item: any, trangThai:number) {
-
-    this.router.navigate([`/nhan-vien/phan-bo-thi/${item.maDangKyThi}/chon-lich-thi/${item.kyThi.maKyThi}/${trangThai}`]);
+  chonLich(item: any, trangThai: number) {
+    this.router.navigate([
+      `/nhan-vien/phan-bo-thi/${item.maDangKyThi}/chon-lich-thi/${item.kyThi.maKyThi}/${trangThai}`,
+    ]);
   }
-  chiTietLich(item:any){
+  chiTietLich(item: any) {
     const dialogRef = this.dialog.open(ChiTietLichThiComponent, {
       width: '45%',
-      data: { kyThi:item.kyThi, lichThi: item.lichThi },
+      data: { kyThi: item.kyThi, lichThi: item.lichThi },
     });
+  }
+
+  translateStatus(statusCode: string): string {
+    switch (statusCode) {
+      case 'Da_Duyet':
+        return 'ĐÃ DUYỆT';
+      case 'Chua_Duyet':
+        return 'CHƯA DUYỆT';
+      case 'Da_Sap_Lich':
+        return 'ĐÃ SẮP LỊCH';
+      case 'Da_Len_Diem':
+        return 'ĐÃ LÊN ĐIỂM';
+      default:
+        return statusCode; // Or return a default/fallback status if you wish
+    }
+  }
+  getStatusColor(status: string) {
+    switch (status) {
+      case 'Chua_Duyet':
+        return { color: 'red' }; // Màu đỏ cho "Chua_Duyet"
+      case 'Da_Duyet':
+        return { color: 'blue' }; // Màu xanh cho "Da_Duyet"
+      case 'Da_Sap_Lich':
+        return { color: 'green' }; // Màu xanh dương cho "Da_Sap_Lich"
+      case 'Da_Len_Diem':
+        return { color: 'purple' }; // Màu tím cho "Da_Len_Diem"
+      default:
+        return {}; // Màu mặc định hoặc trường hợp khác
+    }
   }
 }
 

@@ -1,6 +1,7 @@
-<h2 mat-dialog-title>Chỉnh sửa </h2>
+
 <div mat-dialog-content>
   <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <h1 mat-dialog-title>Chỉnh sửa </h1>
     <mat-form-field appearance="outline" class="full-width">
       <input matInput placeholder="Họ tên" formControlName="hoTen" required />
     </mat-form-field>
@@ -13,6 +14,13 @@
     <mat-form-field appearance="outline" class="full-width">
       <input matInput placeholder="Địa chỉ" formControlName="diaChi" required />
     </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Giới tính</mat-label>
+      <mat-select formControlName="gioiTinh">
+        <mat-option value="Nam">Nam</mat-option>
+        <mat-option value="Nu">Nữ</mat-option>
+      </mat-select>
+    </mat-form-field>
      <mat-form-field>
       <mat-label>Choose a date</mat-label>
       <input matInput formControlName="ngaySinh" [matDatepicker]="picker" />
@@ -23,13 +31,7 @@
       ></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-      <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Giới tính</mat-label>
-      <mat-select formControlName="gioiTinh">
-        <mat-option value="Nam">Nam</mat-option>
-        <mat-option value="Nu">Nữ</mat-option>
-      </mat-select>
-    </mat-form-field>
+
     <!-- Trường dành cho Học viên -->
     <mat-form-field appearance="outline" class="full-width" *ngIf="roles ==='HocVien'">
       <input matInput placeholder="Lớp" formControlName="lop" required />

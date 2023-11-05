@@ -1,3 +1,4 @@
+import { DetailKyThiCuaToiComponent } from './components/student/ky-thi-cua-toi/detail-ky-thi-cua-toi/detail-ky-thi-cua-toi.component';
 import { TypeClassComponent } from './components/admin/type-class/type-class.component';
 
 import { ChangePasswordComponent } from './components/auth/change-password/change-password.component';
@@ -139,6 +140,7 @@ import { DetailClassroomComponent } from './components/admin/classroom/detail-cl
 import { ListGiaoVienRaDeComponent } from './components/admin/ky-thi/list-giao-vien-ra-de/list-giao-vien-ra-de.component';
 import { DetailGiaoVienRaDeComponent } from './components/admin/ky-thi/detail-giao-vien-ra-de/detail-giao-vien-ra-de.component';
 import { QuanLiRaDeComponent } from './components/lecturer/quan-li-ra-de/quan-li-ra-de.component';
+import { DetailPhongThiComponent } from './components/admin/ky-thi/detail-phong-thi/detail-phong-thi.component';
 
 
 @NgModule({
@@ -274,7 +276,9 @@ import { QuanLiRaDeComponent } from './components/lecturer/quan-li-ra-de/quan-li
     DanhSachLichThiComponent,
     ListGiaoVienRaDeComponent,
     DetailGiaoVienRaDeComponent,
-    QuanLiRaDeComponent
+    QuanLiRaDeComponent,
+    DetailPhongThiComponent,
+    DetailKyThiCuaToiComponent
 
   ],
   imports: [

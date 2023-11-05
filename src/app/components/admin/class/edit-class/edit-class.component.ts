@@ -15,7 +15,8 @@ export class EditClassComponent implements OnInit {
   editForm: FormGroup;
   availableLichHoc: any[] = [];
   availablePhongHoc: any[] = [];
-  hinhThucHocs: HinhThucHoc[]=[];
+  hinhThucHocs: HinhThucHoc[] = [];
+  isEdit = false;
   constructor(
     private dialogRef: MatDialogRef<EditClassComponent>,
     private formBuilder: FormBuilder,
@@ -24,7 +25,7 @@ export class EditClassComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA)
     public data: {
       lopHoc: any;
-    },
+    }
   ) {
     this.editForm = this.formBuilder.group({
       lichHoc: ['', Validators.required],
@@ -39,7 +40,6 @@ export class EditClassComponent implements OnInit {
   ngOnInit(): void {
     this.getAvailableLichHoc();
     this.availablePhongHoc = [];
-
   }
   isOnline(): boolean {
     return this.editForm.get('hinhThucHoc')?.value === HinhThucHoc.Online;
@@ -78,9 +78,9 @@ export class EditClassComponent implements OnInit {
   getAvailableLichHoc(): void {
     this.lopHocService.getAvailableLichHoc(this.data.lopHoc.maLop).subscribe({
       next: (data) => {
-        if(data.message && data.message ==='no'){
-          this.toastr.warning('Không có lịch học khả dụng')
-        }else{
+        if (data.message && data.message === 'no') {
+          this.toastr.warning('Không có lịch học khả dụng');
+        } else {
           this.availableLichHoc = data;
         }
       },
@@ -98,16 +98,18 @@ export class EditClassComponent implements OnInit {
 
     if (phongHocControl && hinhThucHocControl) {
       // Subscribe to changes in hinhThucHoc
-      this.editForm.get('hinhThucHoc')?.valueChanges.subscribe(hinhThucHoc => {
-        if (hinhThucHoc === HinhThucHoc.Online) {
-          // If hinhThucHoc is Online, clear validators for phongHoc
-          phongHocControl.clearValidators();
-          phongHocControl.updateValueAndValidity(); // update value and validation
-        } else {
-          // If hinhThucHoc is not Online, set required validator for phongHoc
-          phongHocControl.setValidators(Validators.required);
-        }
-      });
+      this.editForm
+        .get('hinhThucHoc')
+        ?.valueChanges.subscribe((hinhThucHoc) => {
+          if (hinhThucHoc === HinhThucHoc.Online) {
+            // If hinhThucHoc is Online, clear validators for phongHoc
+            phongHocControl.clearValidators();
+            phongHocControl.updateValueAndValidity(); // update value and validation
+          } else {
+            // If hinhThucHoc is not Online, set required validator for phongHoc
+            phongHocControl.setValidators(Validators.required);
+          }
+        });
     }
   }
 
@@ -124,7 +126,7 @@ export class EditClassComponent implements OnInit {
         // Tạo body cho request
         const body: any = {
           maLichHoc: maLichHoc,
-          hinhThucHoc: hinhThucHoc
+          hinhThucHoc: hinhThucHoc,
         };
 
         // Nếu hình thức học không phải là Online, thêm maPhong vào body
@@ -133,20 +135,23 @@ export class EditClassComponent implements OnInit {
         }
 
         // Gửi request
-        this.lopHocService.capNhatPhongHoc(this.data.lopHoc.maLop, body).subscribe(
-          (response) => {
-            console.log(response);
-            this.dialogRef.close(true);
-          },
-          (error) => {
-            console.error('There was an error while updating the phong hoc!', error);
-          }
-        );
+        this.lopHocService
+          .capNhatPhongHoc(this.data.lopHoc.maLop, body)
+          .subscribe(
+            (response) => {
+              console.log(response);
+              this.dialogRef.close(true);
+            },
+            (error) => {
+              console.error(
+                'There was an error while updating the phong hoc!',
+                error
+              );
+            }
+          );
       }
     }
   }
-
-
 
   onCancel(): void {
     this.dialogRef.close();

@@ -34,21 +34,18 @@
         item.hocVien.taiKhoan.hoTen
       }}</mat-cell>
     </ng-container>
-    <ng-container matColumnDef="trangThai">
+     <ng-container matColumnDef="trangThai">
       <mat-header-cell *matHeaderCellDef mat-sort-header
         >Trạng thái</mat-header-cell
       >
-      <mat-cell *matCellDef="let item">
-        <span *ngIf="item.trangThaiDangKyThi === 'Chua_Duyet'">CHƯA DUYỆT</span>
-        <span *ngIf="item.trangThaiDangKyThi === 'Da_Duyet'">ĐÃ DUYỆT</span>
-        <span *ngIf="item.trangThaiDangKyThi === 'Da_Sap_Lich'"
-          >ĐÃ SẮP LỊCH</span
-        >
-        <span *ngIf="item.trangThaiDangKyThi === 'Da_Len_Diem'"
-          >ĐÃ LÊN ĐIỂM</span
-        >
+      <mat-cell
+        *matCellDef="let item"
+        [ngStyle]="getStatusColor(item.trangThaiDangKyThi)"
+      >
+        {{ translateStatus(item.trangThaiDangKyThi) }}
       </mat-cell>
     </ng-container>
+
     <ng-container matColumnDef="ngayDangKy">
       <mat-header-cell *matHeaderCellDef mat-sort-header
         >Ngày đăng ký</mat-header-cell
