@@ -12,6 +12,7 @@ import { StorageService } from 'src/app/services/storage.service';
 import { DetailKyThiCuaToiComponent } from './detail-ky-thi-cua-toi/detail-ky-thi-cua-toi.component';
 import { KyThi } from 'src/app/models/KyThi';
 import { DetailKyThiComponent } from '../../admin/ky-thi/detail-ky-thi/detail-ky-thi.component';
+import { ChiTietLichThiComponent } from '../../staff/phan-bo-thi/chi-tiet-lich-thi/chi-tiet-lich-thi.component';
 
 @Component({
   selector: 'app-ky-thi-cua-toi',
@@ -132,10 +133,10 @@ export class KyThiCuaToiComponent {
         return {}; // Màu mặc định hoặc trường hợp khác
     }
   }
-  detail(kyThi: KyThi) {
-    const dialogRef = this.dialog.open(DetailKyThiCuaToiComponent, {
+  chiTietLich(item: any) {
+    const dialogRef = this.dialog.open(ChiTietLichThiComponent, {
       width: '45%',
-      data: { kyThi },
+      data: { kyThi: item.kyThi, lichThi: item.lichThi },
     });
   }
 }

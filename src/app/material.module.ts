@@ -35,7 +35,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTooltipModule } from '@angular/material/tooltip';
-
+import { MatBadgeModule } from '@angular/material/badge';
 @NgModule({
   declarations: [],
   imports: [
@@ -68,6 +68,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatCheckboxModule,
     MatAutocompleteModule,
     MatTooltipModule,
+    MatBadgeModule,
   ],
   exports: [
     MatToolbarModule,
@@ -99,6 +100,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatCheckboxModule,
     MatAutocompleteModule,
     MatTooltipModule,
+    MatBadgeModule,
   ],
 })
 export class MaterialModule {}

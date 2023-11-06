@@ -56,6 +56,7 @@ import { DanhSachLichThiComponent } from './components/lecturer/danh-sach-lich-t
 import { HosoStaffComponent } from './components/staff/hoso-staff/hoso-staff.component';
 import { ListGiaoVienRaDeComponent } from './components/admin/ky-thi/list-giao-vien-ra-de/list-giao-vien-ra-de.component';
 import { QuanLiRaDeComponent } from './components/lecturer/quan-li-ra-de/quan-li-ra-de.component';
+import { ThongBaoComponent } from './components/thong-bao/thong-bao.component';
 
 
 const routes: Routes = [
@@ -178,6 +179,15 @@ const routes: Routes = [
       //   },
       // },
       {
+        path: 'thong-bao',
+        component: ThongBaoComponent,
+        data: {
+          titulo: 'Thông báo',
+          breadcrumbs: [{ label: 'Thông báo ', url: '/' }],
+        },
+      },
+
+      {
         path: 'dang-ky-khoa-hoc',
         component: RegisterCourseComponent,
         data: {
@@ -260,6 +270,14 @@ const routes: Routes = [
         data: {
           titulo: 'Quản lý lớp học',
           breadcrumbs: [{ label: 'Quản lý lớp học ', url: '/' }],
+        },
+      },
+      {
+        path: 'thong-bao',
+        component: ThongBaoComponent,
+        data: {
+          titulo: 'Thông báo',
+          breadcrumbs: [{ label: 'Thông báo ', url: '/' }],
         },
       },
 

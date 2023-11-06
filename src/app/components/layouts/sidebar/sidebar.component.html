@@ -112,6 +112,18 @@
     </a>
   </mat-list-item>
   <mat-list-item>
+    <a routerLink="/hoc-vien/thong-bao" routerLinkActive="active-link">
+      <mat-icon
+        matBadge="{{ soThongBao }}"
+        matBadgeColor="warn"
+        matBadgeSize="small"
+        aria-hidden="false"
+        >notifications</mat-icon
+      >
+      <span>Thông báo</span>
+    </a>
+  </mat-list-item>
+  <mat-list-item>
     <a routerLink="/hoc-vien/dang-ky-khoa-hoc" routerLinkActive="active-link">
       <mat-icon>how_to_vote</mat-icon> <span>Đăng ký khóa học</span>
     </a>
@@ -154,18 +166,32 @@
     </a>
   </mat-list-item>
   <mat-list-item>
+    <a routerLink="/giao-vien/thong-bao" routerLinkActive="active-link">
+      <mat-icon
+        matBadge="{{ soThongBao }}"
+        matBadgeColor="warn"
+        matBadgeSize="small"
+        aria-hidden="false"
+        >notifications</mat-icon
+      >
+      <span>Thông báo</span>
+    </a>
+  </mat-list-item>
+  <mat-list-item>
     <a routerLink="/giao-vien/quan-ly-lop-hoc" routerLinkActive="active-link">
       <mat-icon>location_city</mat-icon> <span>Quản lý lớp học</span>
     </a>
   </mat-list-item>
-    <mat-list-item>
+  <mat-list-item>
     <a routerLink="/giao-vien/quan-ly-ra-de" routerLinkActive="active-link">
       <mat-icon>picture_as_pdf</mat-icon> <span>Quản lý ra đề</span>
     </a>
   </mat-list-item>
   <mat-list-item>
-    <a routerLink="/giao-vien/danh-sach-lich-gac-thi"
-      routerLinkActive="active-link">
+    <a
+      routerLink="/giao-vien/danh-sach-lich-gac-thi"
+      routerLinkActive="active-link"
+    >
       <mat-icon>date_range</mat-icon> <span>Lịch gác thi</span>
     </a>
   </mat-list-item>

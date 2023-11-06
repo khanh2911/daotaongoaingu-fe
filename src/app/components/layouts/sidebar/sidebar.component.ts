@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { StorageService } from 'src/app/services/storage.service';
 import { TaiKhoanService } from 'src/app/services/tai-khoan.service';
 import { NhanVienService } from 'src/app/services/nhan-vien.service';
+import { ThongBaoService } from 'src/app/services/thong-bao.service';
 export const Roles = {
   QuanTriVien: 'QuanTriVien',
   GiaoVien: 'GiaoVien',
@@ -20,10 +21,12 @@ export class SidebarComponent {
   vaiTro: string = '';
   vaiTroNhanVien: string[] = [];
   tenDangNhap: string = '';
+  soThongBao: number = 0;
   constructor(
     private storageService: StorageService,
     private router: Router,
-    private nhanVienService: NhanVienService
+    private nhanVienService: NhanVienService,
+    private thongBaoService: ThongBaoService
   ) {}
 
   ngOnInit(): void {
@@ -31,8 +34,9 @@ export class SidebarComponent {
     this.roles = user.quyen;
     this.tenDangNhap = user.tenTaiKhoan;
     if (this.roles === 'NhanVien') {
-      this.loadVaiTroNhanVien(user.tenTaiKhoan)
+      this.loadVaiTroNhanVien(user.tenTaiKhoan);
     }
+    this.laySoThongBao();
   }
   toggleMenu() {
     this.showMenu = !this.showMenu;
@@ -40,7 +44,7 @@ export class SidebarComponent {
   loadVaiTroNhanVien(ten: any) {
     this.nhanVienService.layVaiTroCuaNhanVien(ten).subscribe({
       next: (response: any[]) => {
-        this.vaiTroNhanVien = response.map(item => item.tenVaiTro);
+        this.vaiTroNhanVien = response.map((item) => item.tenVaiTro);
       },
       error: (err) => {},
     });
@@ -50,5 +54,14 @@ export class SidebarComponent {
     return this.vaiTroNhanVien.includes(vaiTro);
   }
 
-
+  laySoThongBao() {
+    this.thongBaoService.laySoThongBaoChuaDocTheoNguoiDungId().subscribe({
+      next: (data) => {
+        this.soThongBao = data;
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
 }

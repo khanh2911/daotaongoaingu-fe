@@ -141,6 +141,8 @@ import { ListGiaoVienRaDeComponent } from './components/admin/ky-thi/list-giao-v
 import { DetailGiaoVienRaDeComponent } from './components/admin/ky-thi/detail-giao-vien-ra-de/detail-giao-vien-ra-de.component';
 import { QuanLiRaDeComponent } from './components/lecturer/quan-li-ra-de/quan-li-ra-de.component';
 import { DetailPhongThiComponent } from './components/admin/ky-thi/detail-phong-thi/detail-phong-thi.component';
+import { ThongBaoComponent } from './components/thong-bao/thong-bao.component';
+import { DetailThongBaoComponent } from './components/thong-bao/detail-thong-bao/detail-thong-bao.component';
 
 
 @NgModule({
@@ -278,7 +280,9 @@ import { DetailPhongThiComponent } from './components/admin/ky-thi/detail-phong-
     DetailGiaoVienRaDeComponent,
     QuanLiRaDeComponent,
     DetailPhongThiComponent,
-    DetailKyThiCuaToiComponent
+    DetailKyThiCuaToiComponent,
+    ThongBaoComponent,
+    DetailThongBaoComponent
 
   ],
   imports: [

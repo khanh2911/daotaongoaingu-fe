@@ -56,19 +56,19 @@
       </mat-cell>
     </ng-container>
     <ng-container matColumnDef="detail">
-      <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+      <mat-header-cell *matHeaderCellDef ></mat-header-cell>
       <mat-cell *matCellDef="let DangKyKH">
-        <mat-icon (click)="detail(DangKyKH)">infor </mat-icon>
+        <mat-icon matTooltip="Chi tiết"(click)="chiTietLich(DangKyKH)">infor </mat-icon>
       </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let DangKyKT">
-        <mat-icon
+        <mat-icon matTooltip="Xem kết quả thi"
           *ngIf="DangKyKT.trangThaiDangKyThi === 'Da_Len_Diem'"
           (click)="xemDiem(DangKyKT.maDangKyThi)"
-          >blur_circular</mat-icon
+          >chrome_reader_mode</mat-icon
         >
       </mat-cell>
     </ng-container>

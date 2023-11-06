@@ -1,3 +1,4 @@
+import { PhanCongGiaoVienService } from 'src/app/services/phan-cong-giao-vien.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -43,7 +44,8 @@ export class PhanCongPhongThiComponent implements OnInit {
     private toastr: ToastrService,
     private activateRoute: ActivatedRoute,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private phanCongGiaoVienService: PhanCongGiaoVienService
   ) {}
 
   ngOnInit(): void {
@@ -119,13 +121,21 @@ export class PhanCongPhongThiComponent implements OnInit {
     this.router.navigate([`/nhan-vien/quan-ly-ky-thi`]);
   }
   detailPhongThi(item: any): void {
-    var popup = this.dialog.open(DetailPhongThiComponent, {
-      data: {
-        item: item,
-      },
-      width: '40%',
-      enterAnimationDuration: '300ms',
-      exitAnimationDuration: '300ms',
-    });
+    this.phanCongGiaoVienService
+      .layGiaoVienGacThiTheoLichThi(item.maLichThi)
+      .subscribe((giaoVienGacThi) => {
+        this.phanCongGiaoVienService
+          .layGiaoVienLenDiemTheoLichThi(item.maLichThi)
+          .subscribe((giaoVienLenDiem) => {
+            var popup = this.dialog.open(DetailPhongThiComponent, {
+              data: {
+                item: item,
+                danhSachGiaoVienGacThi: giaoVienGacThi,
+                danhSachGiaoVienLenDiem: giaoVienLenDiem,
+              },
+              width: '40%',
+            });
+          });
+      });
   }
 }

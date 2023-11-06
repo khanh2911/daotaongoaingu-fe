@@ -17,7 +17,8 @@ export class DetailKyThiComponent implements OnInit {
       kyThi: any;
     },
     private dialogRef: MatDialogRef<DetailKyThiComponent>,
-    private lichThiService: LichThiService
+    private lichThiService: LichThiService,
+
   ) {}
   ngOnInit(): void {
     this.loadLichThiCuaKyThi()
@@ -40,6 +41,26 @@ export class DetailKyThiComponent implements OnInit {
       },
     });
   }
+
+// loadLichThiCuaKyThi() {
+//   this.lichThiService.layLichThiKyThi(this.data.kyThi.maKyThi).subscribe({
+//     next: (data) => {
+//       console.log(data);
+//       this.lichThis = data;
+//       const dateSet = new Set();
+//       for (const lichThi of this.lichThis) {
+//         // No need to parse date if ngayThi is already a Date object
+//         dateSet.add(lichThi.ngayThi); // Directly add the Date object
+//       }
+//       this.uniqueDates = Array.from(dateSet) as string[];
+//     },
+//     error: (err) => {
+//       console.log(err);
+//     },
+//   });
+// }
+
+
   closePopup() {
     this.dialogRef.close();
   }

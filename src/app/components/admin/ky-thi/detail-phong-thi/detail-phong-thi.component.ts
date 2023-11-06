@@ -9,11 +9,20 @@ import { GiaoVien } from 'src/app/models/GiaoVien';
 })
 export class DetailPhongThiComponent {
   giaoVien!: GiaoVien;
-  soLuongLopDaDayHienTai!: number;
+  danhSachGiaoVienGacThi: GiaoVien[];
+  danhSachGiaoVienLenDiem: GiaoVien[];
+
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { item: any },
+    @Inject(MAT_DIALOG_DATA)
+    public data: {
+      item: any;
+      danhSachGiaoVienGacThi: GiaoVien[];
+      danhSachGiaoVienLenDiem: GiaoVien[];
+    },
     private dialogRef: MatDialogRef<DetailPhongThiComponent>
   ) {
+    this.danhSachGiaoVienGacThi = data.danhSachGiaoVienGacThi;
+    this.danhSachGiaoVienLenDiem = data.danhSachGiaoVienLenDiem;
     console.log(data.item);
   }
 

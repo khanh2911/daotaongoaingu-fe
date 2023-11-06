@@ -13,7 +13,7 @@ mat-list-item {
   padding: 0;
   height: 100%;
   margin-bottom: 0;
-  
+
 }
 
 mat-list-item a {
@@ -55,6 +55,7 @@ mat-nav-list {
 mat-nav-list a {
   display: flex;
   height: 50px;
+
 }
 
 mat-nav-list a:hover {
@@ -72,5 +73,6 @@ mat-nav-list span {
 .active-link {
   background-color: #072f9e;
   border-left: 5px solid #e0d107;
+  border-radius: 8px;
 }
 
