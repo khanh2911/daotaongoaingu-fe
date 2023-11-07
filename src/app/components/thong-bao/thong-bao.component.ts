@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { StorageService } from 'src/app/services/storage.service';
 import { ToastrService } from 'ngx-toastr';
 import { DetailThongBaoComponent } from './detail-thong-bao/detail-thong-bao.component';
+import { Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-thong-bao',
@@ -18,16 +19,25 @@ export class ThongBaoComponent implements OnInit, OnDestroy {
   TBDaDoc: ThongBao[] = [];
   selectedNotification!: ThongBao | null;
   displayedColumns: string[] = ['tieuDe', 'ngayTao'];
+  isLinear = false;
+
+  firstFormGroup = this._formBuilder.group({
+    firstCtrl: ['', Validators.required],
+  });
+  secondFormGroup = this._formBuilder.group({
+    secondCtrl: ['', Validators.required],
+  });
   constructor(
     private thongBaoService: ThongBaoService,
     private dialog: MatDialog,
     private storageService: StorageService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private formBuilder: FormBuilder,
+    private _formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
     this.loadNotifications();
-
   }
 
   loadNotifications(): void {
@@ -108,7 +118,5 @@ export class ThongBaoComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy(): void {
-   
-  }
+  ngOnDestroy(): void {}
 }

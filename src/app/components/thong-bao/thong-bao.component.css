@@ -1,46 +1,36 @@
-.flex {
-  display: flex;
-  gap: 1rem;
-  flex-direction: row;
-  margin: 16px;
-  padding: 16px;
+/* Set a maximum height for the mat-tab-group */
+mat-tab-group {
+  max-height: 400px;
+  overflow-y: auto;
+  margin: 40px;
+}
+/* Style the "tieuDe" text to make it bold */
+
+
+mat-stepper {
+  margin: 10px 0;
+font-weight: bold;
 }
 
-.spinner-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
+/* Style the ngayTao date with a green color */
 
-.notifications-list {
-  flex: 1;
-  margin: 5px;
-  height: 400px;
-  max-width: 100%;
-  overflow: auto;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+/* Style elements with the "green-text" class */
+.green-text {
+  color: rgb(21, 197, 21);
+  font-weight: bold;
 }
-
-.page-header {
-  text-align: center;
-  margin: 16px;
+.button-container button.mat-button[color="warn"] {
+  background-color: #ff5252;
+  margin-top: 10px;
 }
-
 .button-container {
   display: flex;
   justify-content: center;
   margin: 16px;
 }
-
-@media (max-width: 900px) {
-  .flex {
-    flex-direction: column;
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  mat-tab-group {
+    max-height: none; /* Remove the maximum height on smaller screens */
   }
-}
-
-.element-row:hover {
-  background: whitesmoke;
 }
