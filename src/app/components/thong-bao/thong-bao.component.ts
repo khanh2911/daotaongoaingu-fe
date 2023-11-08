@@ -18,7 +18,6 @@ export class ThongBaoComponent implements OnInit, OnDestroy {
   TBChuaDoc: ThongBao[] = [];
   TBDaDoc: ThongBao[] = [];
   selectedNotification!: ThongBao | null;
-  displayedColumns: string[] = ['tieuDe', 'ngayTao'];
   isLinear = false;
 
   firstFormGroup = this._formBuilder.group({
@@ -88,7 +87,6 @@ export class ThongBaoComponent implements OnInit, OnDestroy {
   }
 
   handleNotificationClick(notification: ThongBao | null): void {
-    // Bước 4: Mở dialog thay vì đặt selectedNotification
     if (notification) {
       var popup = this.dialog.open(DetailThongBaoComponent, {
         data: {
@@ -100,7 +98,6 @@ export class ThongBaoComponent implements OnInit, OnDestroy {
         exitAnimationDuration: '300ms',
       });
       popup.afterClosed().subscribe((item) => {
-        // console.log(item)
         this.loadNotifications();
       });
       if (notification.trangThai === 'ChuaDoc') {

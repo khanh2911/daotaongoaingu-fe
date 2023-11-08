@@ -4,33 +4,38 @@ mat-tab-group {
   overflow-y: auto;
   margin: 40px;
 }
-/* Style the "tieuDe" text to make it bold */
 
 
 mat-stepper {
   margin: 10px 0;
-font-weight: bold;
+  font-weight: bold;
 }
 
-/* Style the ngayTao date with a green color */
 
-/* Style elements with the "green-text" class */
 .green-text {
   color: rgb(21, 197, 21);
   font-weight: bold;
+
 }
+
+.text {
+  font-weight: bold;
+  color: cadetblue;
+}
+
 .button-container button.mat-button[color="warn"] {
   background-color: #ff5252;
   margin-top: 10px;
 }
+
 .button-container {
   display: flex;
   justify-content: center;
   margin: 16px;
 }
-/* Responsive styles */
+
 @media screen and (max-width: 768px) {
   mat-tab-group {
-    max-height: none; /* Remove the maximum height on smaller screens */
+    max-height: none;
   }
 }

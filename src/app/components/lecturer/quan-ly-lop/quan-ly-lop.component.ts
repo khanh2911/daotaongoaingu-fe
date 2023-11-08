@@ -22,6 +22,7 @@ export class QuanLyLopComponent implements OnInit {
     'stt',
     'tenLop',
     'hinhThucHoc',
+    'dshv',
     'actions',
   ];
   length: number = 0;
@@ -87,7 +88,7 @@ export class QuanLyLopComponent implements OnInit {
     }
   }
 
-  
+
   listHv(LopHoc: any): void {
     this.router.navigate([
       `/giao-vien/quan-ly-lop-hoc/${LopHoc.khoaHoc.maKhoaHoc}/danh-sach-lop-hoc/${LopHoc.maLop}/danh-sach-hoc-vien`,

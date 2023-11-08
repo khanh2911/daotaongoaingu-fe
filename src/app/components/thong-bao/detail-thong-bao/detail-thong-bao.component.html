@@ -1,13 +1,24 @@
-
-<h1 mat-dialog-title>Chi tiết thông báo<hr></h1>
-
+<h1 mat-dialog-title>
+  Chi tiết Thông Báo
+  <hr />
+</h1>
 <div mat-dialog-content>
-  <p>{{ data.notification.noiDung }}</p>
-  <p>{{ data.notification.ngayTao | date : "HH:mm:ss dd/MM/yyyy" }}</p>
+  <p class="text">{{ data.notification.noiDung }}</p>
+  <p class="green-text">
+    {{ data.notification.ngayTao | date : "HH:mm:ss dd/MM/yyyy" }}
+  </p>
+  <button mat-button color="warn" (click)="handleDelete()">
+    <mat-icon>delete</mat-icon>
+    Xóa
+  </button>
 </div>
 <div mat-dialog-actions>
-  <button mat-raised-button color="warn" (click)="closePopup()">Đóng</button>
-  <button mat-button color="warn" (click)="handleDelete()">
-    Xóa
+  <button
+    style="margin-left: 220px; margin-bottom: 8px"
+    mat-stroked-button
+    color="warn"
+    (click)="closePopup()"
+  >
+    Đóng
   </button>
 </div>

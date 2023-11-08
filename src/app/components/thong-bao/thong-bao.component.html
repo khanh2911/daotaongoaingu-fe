@@ -7,13 +7,13 @@
       <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
         <mat-step *ngFor="let thongBao of TBChuaDoc">
           <ng-template matStepLabel>
-            {{ thongBao.tieuDe }}
+          <span class="text">{{ thongBao.tieuDe }}</span>
           </ng-template>
           <form [formGroup]="firstFormGroup">
            <span class="green-text">{{ thongBao.ngayTao | date : "dd/MM/yyyy" }}</span>
             <div>
               <button  mat-button  color="accent"  (click)="handleNotificationClick(thongBao)">
-                Xem chi tiết
+                Xem chi tiết...
               </button>
             </div>
           </form>
@@ -25,13 +25,13 @@
       <mat-stepper orientation="vertical" [linear]="isLinear" #stepper2>
         <mat-step *ngFor="let thongBao of TBDaDoc">
           <ng-template matStepLabel>
-            {{ thongBao.tieuDe }}
+           <span class="text">{{ thongBao.tieuDe }}</span>
           </ng-template>
           <form [formGroup]="secondFormGroup">
           <span class="green-text">{{ thongBao.ngayTao | date : "dd/MM/yyyy" }}</span>
             <div>
               <button  mat-button  color="accent"   (click)="handleNotificationClick(thongBao)">
-                Xem chi tiết
+                Xem chi tiết...
               </button>
             </div>
           </form>

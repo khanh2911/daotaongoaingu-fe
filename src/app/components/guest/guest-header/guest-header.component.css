@@ -3,7 +3,7 @@
 }
 
 .navbar-dark .nav-item .nav-link:hover {
-  
+
   transition: all 0.3s ease;
   border-radius: 0.25rem;
 
@@ -11,6 +11,8 @@
 
 .nav-item a.nav-link {
   font-weight: bold;
+  color: rgb(8, 8, 126);
+  font-size: large;
 }
 .fa-li {
   position: relative;

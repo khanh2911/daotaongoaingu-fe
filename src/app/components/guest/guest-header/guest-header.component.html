@@ -25,43 +25,27 @@
       <!-- Left links -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" routerLink="trang-chu">Trang chủ</a>
+          <a class="nav-link" >Trang chủ</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="lich-khai-giang">Lịch khai giảng</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="dang-ky-khoa-hoc">Đăng ký khóa học</a>
+          <a class="nav-link" routerLink="/dang-nhap">Đăng ký khóa học</a>
         </li>
       </ul>
-      <!-- Left links -->
 
-      <!-- Search form -->
-      <!-- <div class="search-form">
-        <form class="input-group">
-          <input
-            type="search"
-            class="form-control"
-            placeholder="Tìm kiếm..."
-            aria-label="Tìm kiếm"
-          />
-          <button class="btn btn-primary" type="submit">Tìm kiếm</button>
-        </form>
-      </div> -->
     </div>
 
     <!-- <button mat-mini-fab color="primary"  [matMenuTriggerFor]="menu">
           <mat-icon>menu</mat-icon>
         </button> -->
     <button
-      mat-button
+      mat-stroked-button color="primary"
       [matMenuTriggerFor]="menu"
       class="user mt-2 d-flex align-items-center"
     >
-      <img src="" alt="" class="user-image mr-1 p-2" />
 
       Xin chào! {{ loggedInUsername }}
       <mat-icon class="user-image-icon ml-1">keyboard_arrow_down</mat-icon>
+      <mat-icon>account_circle</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item routerLink="/dang-nhap" >

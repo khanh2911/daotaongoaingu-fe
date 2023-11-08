@@ -42,10 +42,4 @@ mat-sidenav {
 .layout-breadcrumb a {
   display: flex;
 }
-.demo-section {
-  display: flex;
-  margin-left: 74%;
-  color: rgb(50, 48, 61);
-
-}
 
