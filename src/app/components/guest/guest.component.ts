@@ -7,7 +7,13 @@ import { StorageService } from 'src/app/services/storage.service';
   template: `<app-guest-header></app-guest-header>
     <router-outlet></router-outlet>
     <app-guest-footer></app-guest-footer>`,
-  styles: [''],
+  styles: [
+    `
+      :host {
+        overflow-x: hidden;
+      }
+    `,
+  ],
 })
 export class GuestComponent {
   private role: string = '';
