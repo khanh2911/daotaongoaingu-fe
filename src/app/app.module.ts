@@ -143,6 +143,8 @@ import { QuanLiRaDeComponent } from './components/lecturer/quan-li-ra-de/quan-li
 import { DetailPhongThiComponent } from './components/admin/ky-thi/detail-phong-thi/detail-phong-thi.component';
 import { ThongBaoComponent } from './components/thong-bao/thong-bao.component';
 import { DetailThongBaoComponent } from './components/thong-bao/detail-thong-bao/detail-thong-bao.component';
+import { DsHocVienComponent } from './components/admin/ky-thi/ds-hoc-vien/ds-hoc-vien.component';
+import { GuiThongBaoComponent } from './components/lecturer/quan-ly-lop/gui-thong-bao/gui-thong-bao.component';
 
 
 @NgModule({
@@ -282,7 +284,10 @@ import { DetailThongBaoComponent } from './components/thong-bao/detail-thong-bao
     DetailPhongThiComponent,
     DetailKyThiCuaToiComponent,
     ThongBaoComponent,
-    DetailThongBaoComponent
+    DetailThongBaoComponent,
+    DsHocVienComponent,
+    GuiThongBaoComponent
+
 
   ],
   imports: [

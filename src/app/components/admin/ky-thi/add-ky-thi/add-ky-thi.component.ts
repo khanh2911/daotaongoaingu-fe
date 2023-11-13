@@ -21,7 +21,7 @@ export class AddKyThiComponent implements OnInit {
   months: number[] = [];
   currentKyThi: any | null = null;
   isEdit = false;
-  lichThis:LichThi[]=[]
+  lichThis:LichThi[]=[];
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialogRef: MatDialogRef<AddKyThiComponent>,
@@ -106,7 +106,7 @@ export class AddKyThiComponent implements OnInit {
     namThi: ['', [Validators.required, Validators.min(1)]],
     soLuongDuocDangKy:['', [Validators.required, Validators.min(1)]],
     maChungChi: ['', [Validators.required]],
-    danhSachNgayThi: [[], [Validators.required]],
+    danhSachNgayThi: [],
   });
 
   saveKyThi() {

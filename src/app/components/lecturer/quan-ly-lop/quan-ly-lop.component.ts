@@ -10,6 +10,7 @@ import { LopHoc } from 'src/app/models/LopHoc';
 import { LopHocService } from 'src/app/services/lop-hoc.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { DetailLopComponent } from './detail-lop/detail-lop.component';
+import { GuiThongBaoComponent } from './gui-thong-bao/gui-thong-bao.component';
 
 @Component({
   selector: 'app-quan-ly-lop',
@@ -22,8 +23,10 @@ export class QuanLyLopComponent implements OnInit {
     'stt',
     'tenLop',
     'hinhThucHoc',
+    'thongbao',
     'dshv',
     'actions',
+
   ];
   length: number = 0;
   searchTerm: string = '';
@@ -88,10 +91,23 @@ export class QuanLyLopComponent implements OnInit {
     }
   }
 
-
   listHv(LopHoc: any): void {
     this.router.navigate([
       `/giao-vien/quan-ly-lop-hoc/${LopHoc.khoaHoc.maKhoaHoc}/danh-sach-lop-hoc/${LopHoc.maLop}/danh-sach-hoc-vien`,
     ]);
+  }
+
+  ThongBaoLop(lopHoc: LopHoc | null): void {
+    if (lopHoc) {
+      console.log(lopHoc);
+      var popup = this.dialog.open(GuiThongBaoComponent, {
+        data: {
+          lopHoc: lopHoc,
+        },
+        width: '40%',
+        enterAnimationDuration: '300ms',
+        exitAnimationDuration: '300ms',
+      });
+    }
   }
 }

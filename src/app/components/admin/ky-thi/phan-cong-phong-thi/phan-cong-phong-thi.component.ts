@@ -112,7 +112,7 @@ export class PhanCongPhongThiComponent implements OnInit {
   }
   dsHv(lichThi: any) {
     const trangThai = 1;
-    //chuyển đến Danhsachhocvien trong  phân công lên điểm cảu staff
+   
     this.router.navigate([
       `/nhan-vien/quan-ly-ky-thi/${this.maKyThi}/lich-thi/${lichThi.maLichThi}/danh-sach-hoc-vien/${trangThai}`,
     ]);

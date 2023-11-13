@@ -1,0 +1,78 @@
+
+h1 {
+  text-align: center;
+  /* Căn giữa tiêu đề */
+  font-size: 24px;
+  /* Điều chỉnh cỡ chữ */
+  color: #333;
+  /* Màu chữ */
+  margin-top: 0;
+  /* Loại bỏ margin trên cùng */
+}
+
+hr {
+  border: none;
+  /* Loại bỏ đường viền mặc định */
+  height: 2px;
+  /* Độ dày của dòng */
+  background-color: #4a90e2;
+  /* Màu của dòng phân cách */
+  width: 80%;
+  /* Chiều rộng của dòng phân cách */
+  margin: 0 auto;
+  /* Căn giữa dòng phân cách */
+}
+div {
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  margin: auto;
+  font-family: Arial, sans-serif;
+}
+
+/* Style cho label */
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Style cho input và textarea */
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Style khi nhập vào input và textarea */
+input[type="text"]:focus,
+textarea:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+  outline: none;
+}
+
+/* Style cho nút submit */
+button[type="submit"] {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #357ab8;
+}

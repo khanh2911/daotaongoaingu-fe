@@ -2,7 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { LopHocService } from 'src/app/services/lop-hoc.service';
-import { LichHoc } from './../../../../models/LichHoc';
 import { ToastrService } from 'ngx-toastr';
 import { HinhThucHoc } from 'src/app/models/LopHoc';
 
@@ -28,10 +27,9 @@ export class EditClassComponent implements OnInit {
     }
   ) {
     this.editForm = this.formBuilder.group({
-      lichHoc: ['', Validators.required],
+      lichHoc: [this.data.lopHoc.lichHoc.maLichHoc, Validators.required],
       phongHoc: ['', Validators.required],
-      // hinhThucHoc: [`${HinhThucHoc.Offline}`, Validators.required],
-      hinhThucHoc: ['', Validators.required],
+      hinhThucHoc: [this.data.lopHoc.hinhThucHoc, Validators.required],
     });
     this.setupPhongHocValidators();
     this.hinhThucHocs = Object.values(HinhThucHoc);
@@ -39,23 +37,21 @@ export class EditClassComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAvailableLichHoc();
-    this.availablePhongHoc = [];
+    this.getAvailablePhongHoc(this.data.lopHoc.lichHoc.maLichHoc);
   }
+
   isOnline(): boolean {
     return this.editForm.get('hinhThucHoc')?.value === HinhThucHoc.Online;
   }
+
   onLichHocChange(event: any): void {
     const selectedLichHoc = event.value;
-    if (selectedLichHoc) {
-      this.getAvailablePhongHoc(selectedLichHoc);
-    } else {
-      this.availablePhongHoc = [];
-    }
+    this.getAvailablePhongHoc(selectedLichHoc);
   }
 
   getAvailablePhongHoc(maLichHoc: number): void {
     if (!maLichHoc) {
-      return;
+      maLichHoc = this.data.lopHoc.lichHoc.maLichHoc;
     }
     this.lopHocService
       .getAvailablePhongHoc(this.data.lopHoc.maLop, maLichHoc)
@@ -92,24 +88,24 @@ export class EditClassComponent implements OnInit {
       },
     });
   }
+
   private setupPhongHocValidators(): void {
     const phongHocControl = this.editForm.get('phongHoc');
-    const hinhThucHocControl = this.editForm.get('hinhThucHoc');
 
-    if (phongHocControl && hinhThucHocControl) {
-      // Subscribe to changes in hinhThucHoc
+    if (phongHocControl) {
       this.editForm
         .get('hinhThucHoc')
         ?.valueChanges.subscribe((hinhThucHoc) => {
           if (hinhThucHoc === HinhThucHoc.Online) {
-            // If hinhThucHoc is Online, clear validators for phongHoc
             phongHocControl.clearValidators();
-            phongHocControl.updateValueAndValidity(); // update value and validation
           } else {
-            // If hinhThucHoc is not Online, set required validator for phongHoc
             phongHocControl.setValidators(Validators.required);
           }
+          phongHocControl.updateValueAndValidity();
         });
+    } else {
+      // Xử lý trường hợp phongHocControl là null
+      console.error('phongHocControl is null');
     }
   }
 

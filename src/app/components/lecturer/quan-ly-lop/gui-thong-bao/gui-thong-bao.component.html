@@ -1,0 +1,14 @@
+ <h1 mat-dialog-title>Thông tin chi tiết<hr></h1>
+<div>
+  <form (ngSubmit)="onSubmit()">
+    <div>
+      <label for="tieuDe">Tiêu Đề</label>
+      <input type="text" id="tieuDe" [(ngModel)]="thongBao.tieuDe" name="tieuDe" required>
+    </div>
+    <div>
+      <label for="noiDung">Nội Dung</label>
+      <textarea id="noiDung" [(ngModel)]="thongBao.noiDung" name="noiDung" required></textarea>
+    </div>
+    <button style="margin-left: 150px;margin-bottom: 16px;margin-top: 16px;"  mat-stroked-button  type="submit">Gửi Thông Báo</button>
+  </form>
+</div>

@@ -1,0 +1,99 @@
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { DangKyKH } from 'src/app/models/DangKyKH';
+import { LopHoc } from 'src/app/models/LopHoc';
+import { DangKyThiService } from 'src/app/services/dang-ky-thi.service';
+import { KetQuaThiService } from 'src/app/services/ket-qua-thi.service';
+import { StorageService } from 'src/app/services/storage.service';
+
+@Component({
+  selector: 'app-ds-hoc-vien',
+  templateUrl: './ds-hoc-vien.component.html',
+  styleUrls: ['./ds-hoc-vien.component.css'],
+})
+export class DsHocVienComponent implements OnInit {
+  danhSachGiaoVien: MatTableDataSource<any> = new MatTableDataSource();
+  danhSachGiaoVienFull: any[] = [];
+  displayedColumns: string[] = [
+    'STT',
+    'taiKhoan.hoTen',
+    'taiKhoan.soDienThoai',
+    'taiKhoan.gioiTinh',
+  ];
+  searchTerm: string = '';
+  maLichThi!: number;
+  trangThai!: number;
+  maKyThi!: number;
+  dangKy!: DangKyKH;
+  lopHoc!: LopHoc;
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+  constructor(
+    private dangKyThiService: DangKyThiService,
+    private storageService: StorageService,
+    private toastr: ToastrService,
+    private dialog: MatDialog,
+    private ketQuaThiService: KetQuaThiService,
+    private activateRoute: ActivatedRoute,
+    private router: Router
+  ) {}
+  ngOnInit(): void {
+    this.loadDL();
+  }
+  loadDL() {
+    this.activateRoute.params.subscribe((params: Params) => {
+      this.maLichThi = +params['maLichThi'];
+      this.trangThai = +params['trangThai'];
+      this.maKyThi = +params['maKyThi'];
+      this.loadDanhSachHocVienCuaLichThi();
+    });
+  }
+
+  loadDanhSachHocVienCuaLichThi() {
+    this.dangKyThiService.dsHocVienLichThi(this.maLichThi).subscribe({
+      next: (data) => {
+        this.danhSachGiaoVien = new MatTableDataSource(data);
+        this.danhSachGiaoVien.paginator = this.paginator;
+        this.danhSachGiaoVien.sort = this.sort;
+        this.danhSachGiaoVienFull = data;
+      },
+      error: (error) => {
+        this.toastr.error(
+          'Có lỗi xảy ra khi tải danh sách học viên!',
+          error.message
+        );
+      },
+    });
+  }
+
+  onSearch() {
+    const searchTermLowercase = this.searchTerm.trim().toLowerCase(); // Đảm bảo tìm kiếm không phân biệt hoa thường
+    // Lọc danh sách học viên dựa trên điều kiện tìm kiếm
+    const filteredHocVien = this.danhSachGiaoVienFull.filter((hocVien) => {
+      return hocVien.taiKhoan.hoTen.toLowerCase().includes(searchTermLowercase);
+    });
+    // Cập nhật dữ liệu cho MatTableDataSource
+    this.danhSachGiaoVien = new MatTableDataSource(filteredHocVien);
+    this.danhSachGiaoVien.paginator = this.paginator;
+    this.danhSachGiaoVien.sort = this.sort;
+  }
+  refresh() {
+    this.searchTerm = '';
+    if (this.paginator) {
+      this.paginator.firstPage();
+    }
+    this.loadDL();
+  }
+  return() {
+    // Thực hiện điều hướng đến địa chỉ mong muốn khi quay lại
+    this.router.navigate([
+      `/nhan-vien/quan-ly-ky-thi/${this.maKyThi}/danh-sach-lich-thi`,
+    ]);
+  }
+}

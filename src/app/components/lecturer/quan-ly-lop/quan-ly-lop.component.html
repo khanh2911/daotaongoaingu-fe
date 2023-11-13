@@ -29,6 +29,14 @@
           {{ LopHoc.hinhThucHoc }}
         </mat-cell>
       </ng-container>
+      <ng-container matColumnDef="thongbao">
+        <mat-header-cell *matHeaderCellDef>Gửi thông báo</mat-header-cell>
+        <mat-cell *matCellDef="let LopHoc">
+         <mat-icon matTooltip="Gửi thông báo cho Lớp" (click)="ThongBaoLop(LopHoc)"
+              >send </mat-icon
+            >
+        </mat-cell>
+      </ng-container>
       <ng-container matColumnDef="dshv">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell *matCellDef="let LopHoc">
@@ -45,7 +53,6 @@
           </mat-icon>
         </mat-cell>
       </ng-container>
-
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row
         matRipple

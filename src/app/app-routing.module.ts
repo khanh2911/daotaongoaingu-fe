@@ -57,6 +57,7 @@ import { HosoStaffComponent } from './components/staff/hoso-staff/hoso-staff.com
 import { ListGiaoVienRaDeComponent } from './components/admin/ky-thi/list-giao-vien-ra-de/list-giao-vien-ra-de.component';
 import { QuanLiRaDeComponent } from './components/lecturer/quan-li-ra-de/quan-li-ra-de.component';
 import { ThongBaoComponent } from './components/thong-bao/thong-bao.component';
+import { DsHocVienComponent } from './components/admin/ky-thi/ds-hoc-vien/ds-hoc-vien.component';
 
 
 const routes: Routes = [
@@ -493,7 +494,7 @@ const routes: Routes = [
       },
       {
         path: 'quan-ly-ky-thi/:maKyThi/lich-thi/:maLichThi/danh-sach-hoc-vien/:trangThai',
-        component: DanhSachHocVienComponent,
+        component: DsHocVienComponent,
         data: {
           titulo: 'Danh sách học viên',
           breadcrumbs: [{ label: 'Chọn giáo viên', url: '/' }],

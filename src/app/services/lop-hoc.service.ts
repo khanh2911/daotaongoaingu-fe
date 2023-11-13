@@ -96,43 +96,44 @@ export class LopHocService {
   //     `${this.apiBaseUrl}/lop-hoc/khoa-hoc/${maKhoaHoc}/lop-hoc-da-sap-lich`
   //   );
   // }
-    datGiaoVienDay(maLop: number, maGiaoVien: number): Observable<any> {
-      return this.http.post(
-        `${this.apiBaseUrl}/lop-hoc/${maLop}/them-giao-vien/${maGiaoVien}`,
-        null
-      );
-    }
-    getAvailableGiaoVien(maLop: number): Observable<any> {
-      return this.http.get(
-        `${this.apiBaseUrl}/lop-hoc/${maLop}/danh-sach-giao-vien-hop-le`
-      );
-    }
-    laySLLHDGD(tenGiaoVien: string): Observable<any> {
-      return this.http.get(
-        `${this.apiBaseUrl}/lop-hoc/so-luong-lop-day-hien-tai-cua-giao-vien/${tenGiaoVien}`,{responseType:'text'}
-      );
-    }
-    layLopHocHVDTGTMKH(tenDangNhap: string, khoaHocId:number): Observable<any> {
-      return this.http.get(
-        `${this.apiBaseUrl}/lop-hoc/tim-lop-hoc/${tenDangNhap}/${khoaHocId}`);
+  datGiaoVienDay(maLop: number, maGiaoVien: number): Observable<any> {
+    return this.http.post(
+      `${this.apiBaseUrl}/lop-hoc/${maLop}/them-giao-vien/${maGiaoVien}`,
+      null
+    );
+  }
+  getAvailableGiaoVien(maLop: number): Observable<any> {
+    return this.http.get(
+      `${this.apiBaseUrl}/lop-hoc/${maLop}/danh-sach-giao-vien-hop-le`
+    );
+  }
+  laySLLHDGD(tenGiaoVien: string): Observable<any> {
+    return this.http.get(
+      `${this.apiBaseUrl}/lop-hoc/so-luong-lop-day-hien-tai-cua-giao-vien/${tenGiaoVien}`,
+      { responseType: 'text' }
+    );
+  }
+  layLopHocHVDTGTMKH(tenDangNhap: string, khoaHocId: number): Observable<any> {
+    return this.http.get(
+      `${this.apiBaseUrl}/lop-hoc/tim-lop-hoc/${tenDangNhap}/${khoaHocId}`
+    );
+  }
+  //lịch dạy của một giáo viên
+  lichDayCuaGiaoVien(tenDangNhap: string): Observable<any> {
+    return this.http.get(
+      `${this.apiBaseUrl}/lay-lich-hoc-cua-mot-giao-vien/${tenDangNhap}`
+    );
+  }
+  lopHocCuaGiaoVien(tenDangNhap: string): Observable<any> {
+    return this.http.get(
+      `${this.apiBaseUrl}/lop-hoc/lay-lop-hoc-cua-mot-giao-vien/${tenDangNhap}`
+    );
+  }
 
-    }
-    //lịch dạy của một giáo viên
-    lichDayCuaGiaoVien(tenDangNhap: string): Observable<any> {
-      return this.http.get(
-        `${this.apiBaseUrl}/lay-lich-hoc-cua-mot-giao-vien/${tenDangNhap}`);
-
-    }
-    lopHocCuaGiaoVien(tenDangNhap: string): Observable<any> {
-      return this.http.get(
-        `${this.apiBaseUrl}/lop-hoc/lay-lop-hoc-cua-mot-giao-vien/${tenDangNhap}`
-      );
-    }
-
-    guiThongBao(maLop: number): Observable<any> {
-      return this.http.post(
-        `${this.apiBaseUrl}/lop-hoc/gui-thong-bao/${maLop}`,
-        null
-      );
-    }
+  guiThongBao(maLop: number, thongBao: any): Observable<any> {
+    return this.http.post(
+      `${this.apiBaseUrl}/lop-hoc/gui-thong-bao/${maLop}`,
+      thongBao
+    );
+  }
 }
