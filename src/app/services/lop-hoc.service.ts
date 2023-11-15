@@ -136,4 +136,8 @@ export class LopHocService {
       thongBao
     );
   }
+   // Lấy danh sách học viên của một lớp học
+  getHocViensDiemDanhhByLopHoc(maLop: number): Observable<any> {
+    return this.http.get(`${this.apiBaseUrl}/lop-hoc/${maLop}/hoc-vien-diem-danh`);
+  }
 }

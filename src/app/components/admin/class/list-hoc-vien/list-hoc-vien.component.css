@@ -96,3 +96,6 @@ mat-paginator {
   margin: 10px;
   /* Điều chỉnh khoảng cách giữa icon và nút */
 }
+.hidden {
+  display: none !important;
+}

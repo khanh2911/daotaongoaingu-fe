@@ -15,7 +15,8 @@ import { DetailHocVienComponent } from '../detail-hoc-vien/detail-hoc-vien.compo
 import { DangKyKhoaHocService } from 'src/app/services/dang-ky-khoa-hoc.service';
 import { DangKyKH } from 'src/app/models/DangKyKH';
 import { LopHoc } from 'src/app/models/LopHoc';
-
+import * as XLSX from 'xlsx';
+import * as XLSXStyle from 'xlsx-js-style';
 @Component({
   selector: 'app-list-hoc-vien',
   templateUrl: './list-hoc-vien.component.html',
@@ -37,6 +38,9 @@ export class ListHocVienComponent {
   maKhoaHoc!: number;
   dangKy!: DangKyKH;
   lopHoc!: LopHoc;
+  nameFile = 'Danh sách học viên ';
+  dataExel: any;
+  lopHocInfo: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(
@@ -60,8 +64,61 @@ export class ListHocVienComponent {
     ); // Lấy maLopHoc từ URL
     this.loadDanhSachHocVienCuaLopHoc();
     this.layLopHoc();
+    this.loadDsHocVienDiemDanh(this.maLopHoc)
+    this.loadThongTinLopHoc(this.maLopHoc)
   }
+  //lấy thông tin lớp học
+  loadThongTinLopHoc(ma:any) {
+    this.lopHocService.layLopHoc(ma).subscribe({
+      next: data => {
+        this.lopHocInfo = data
+         this.nameFile = `Danh sách học viên lớp ${this.lopHocInfo.tenLop} `;
+      }
+      ,
+      error: err => {
+        console.log(err)
+      }
+    })
+  }
+  //lấy danh sách xuất excel
+  loadDsHocVienDiemDanh(ma: any) {
+    this.lopHocService.getHocViensDiemDanhhByLopHoc(ma).subscribe({
+      next: (data) => {
+        this.dataExel = data
+        console.log(data);
+      },
+      error: (err) => {},
+    });
+  }
+  //xuất excel
+  exportToExcel(): void {
+    const element = document.getElementById('season-tble');
+    const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+    //gộp ô
+    worksheet['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }];
+    //custom style
+    worksheet['A1'] = {
+      t: 's',
+      v: this.nameFile,
+      s: { alignment: { horizontal: 'center' }, font: { bold: true } },
+    };
 
+    for (let col = 0; col <= 3; col++) {
+      const cell = XLSX.utils.encode_cell({ r: 1, c: col });
+      worksheet[cell].s = { font: { bold: true } };
+    }
+    const columnWidths = [
+      { wch: 5 }, // A
+      { wch: 25 }, // B
+      { wch: 25 }, // C
+      { wch: 25 }, // C
+    ];
+    worksheet['!cols'] = columnWidths;
+
+    const book: XLSXStyle.WorkBook = XLSXStyle.utils.book_new();
+    XLSXStyle.utils.book_append_sheet(book, worksheet, 'Sheet1');
+    XLSXStyle.writeFile(book, `${this.nameFile}.xlsx`);
+  }
   loadDanhSachHocVienCuaLopHoc() {
     if (!this.maLopHoc) {
       this.toastr.error('Mã lớp học không hợp lệ!');

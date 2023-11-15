@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "allowedCommonJsDependencies": ["crypto-js"],
+            "allowedCommonJsDependencies": ["crypto-js", "xlsx", "xlsx-js-style"],
             "outputPath": "dist/trungtamngoaingu-fe",
             "index": "src/index.html",
             "main": "src/main.ts",
